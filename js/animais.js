@@ -1,5 +1,5 @@
 /* =========================================================
-   Animais e histórias: lê os JSON e monta cards
+   Animais e histórias: monta cards (dados vêm de js/dados.js)
    ========================================================= */
 
 const ROTULOS = {
@@ -24,7 +24,6 @@ function carregarJson(url) {
   return cacheJson[url];
 }
 
-const carregarAnimais = () => carregarJson("data/animais.json").then((d) => d.animais);
 const carregarHistorias = () => carregarJson("data/historias.json");
 
 function artigo(a) {

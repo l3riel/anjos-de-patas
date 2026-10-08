@@ -19,6 +19,11 @@ const ONG = {
   // [PREENCHER] URL do Formspree/Getform para receber os formulários por e-mail.
   // Vazio = o formulário monta a mensagem e abre o WhatsApp.
   formEndpoint: "",
+  // Supabase (veja supabase/LEIA-ME.md). Vazio = o site lê data/animais.json.
+  // A chave anon é pública por design; a segurança vem das políticas RLS.
+  // Nunca coloque aqui a chave service_role.
+  supabaseUrl: "",
+  supabaseAnonKey: "",
 };
 
 function linkWhatsApp(mensagem = "Olá! Vim pelo site da Anjos de Patas.") {
@@ -114,7 +119,7 @@ function paginaAtual(href) {
 function sociais() {
   return `
     <a class="icone-social" href="${ONG.instagram}" target="_blank" rel="noopener" aria-label="Instagram da ONG (abre em nova aba)">${icone("instagram")}</a>
-    <a class="icone-social" href="${linkWhatsApp()}" target="_blank" rel="noopener" aria-label="WhatsApp da ONG (abre em nova aba)">${icone("whatsapp")}</a>`;
+    <a class="icone-social" href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" aria-label="WhatsApp da ONG (abre em nova aba)">${icone("whatsapp")}</a>`;
 }
 
 function montarHeader() {
@@ -211,8 +216,8 @@ function montarRodape() {
         <h2>Fale com a gente</h2>
         <ul class="rodape__contato" role="list">
           <li>${icone("local")}<span>${ONG.endereco}<br>${ONG.cidade}</span></li>
-          <li>${icone("whatsapp")}<a href="${linkWhatsApp()}" target="_blank" rel="noopener">${ONG.whatsappTexto}</a></li>
-          <li>${icone("email")}<a href="mailto:${ONG.email}">${ONG.email}</a></li>
+          <li>${icone("whatsapp")}<a href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" data-conteudo="whatsapp_texto">${ONG.whatsappTexto}</a></li>
+          <li>${icone("email")}<a href="mailto:${ONG.email}" data-email data-conteudo="email">${ONG.email}</a></li>
           <li>${icone("relogio")}<span>${ONG.horario}</span></li>
           <li>${icone("alerta")}<span>Denúncia anônima de maus-tratos: ligue <strong>181</strong></span></li>
         </ul>
@@ -235,7 +240,7 @@ function montarRodape() {
       </div>
     </div>
   </footer>
-  <a class="whats-flutuante" href="${linkWhatsApp()}" target="_blank" rel="noopener" aria-label="Conversar com a ONG no WhatsApp (abre em nova aba)">${icone("whatsapp")}</a>`;
+  <a class="whats-flutuante" href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" aria-label="Conversar com a ONG no WhatsApp (abre em nova aba)">${icone("whatsapp")}</a>`;
 }
 
 /* Links marcados com data-whatsapp usam o número configurado em ONG */

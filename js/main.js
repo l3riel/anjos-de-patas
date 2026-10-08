@@ -28,6 +28,7 @@ function observarRevelar(raiz = document) {
 
 /* ---------- Contadores animados ---------- */
 function animarContador(el) {
+  el.dataset.animado = "1";
   const alvo = Number(el.dataset.contador);
   const formatar = (n) => n.toLocaleString("pt-BR");
   if (reduzirMovimento.matches) {

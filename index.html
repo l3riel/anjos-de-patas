@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
   <script src="js/layout.js" defer></script>
+  <script src="js/dados.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/animais.js" defer></script>
   <script src="js/form.js" defer></script>
@@ -114,9 +115,9 @@
           <p>Com o apoio do <strong>Dr. Salvador Sabino</strong>, o projeto cresceu e virou ONG. Hoje resgatamos animais feridos e em situação de risco, castramos para frear o abandono e acompanhamos cada adoção, guiados pelas leis de proteção animal.</p>
           <p>Somos uma equipe pequena, movida por amor e pela certeza de que cada vida importa, uma pata de cada vez.</p>
           <ul class="sobre__fatos" role="list">
-            <li><strong><span class="preencher">[PREENCHER]</span></strong><span>ano de fundação</span></li>
-            <li><strong><span class="preencher">[PREENCHER]</span></strong><span>voluntários ativos</span></li>
-            <li><strong><span class="preencher">[PREENCHER]</span></strong><span>comedouros na cidade</span></li>
+            <li><strong><span class="preencher" data-conteudo="ano_fundacao">[PREENCHER]</span></strong><span>ano de fundação</span></li>
+            <li><strong><span class="preencher" data-conteudo="voluntarios">[PREENCHER]</span></strong><span>voluntários ativos</span></li>
+            <li><strong><span class="preencher" data-conteudo="comedouros">[PREENCHER]</span></strong><span>comedouros na cidade</span></li>
           </ul>
           <a class="btn btn--contorno" href="quem-somos.html">Conheça nossa história</a>
         </div>
@@ -185,22 +186,22 @@
         <ul class="contadores__lista" role="list">
           <li>
             <svg data-icone="resgate"></svg>
-            <!-- [PREENCHER] troque os números de data-contador pelos reais -->
-            <p class="contadores__numero">+<span data-contador="350">350</span></p>
+            <!-- Números editáveis no painel (admin.html); estes são só o padrão -->
+            <p class="contadores__numero">+<span data-contador="350" data-conteudo="contador_resgatados">350</span></p>
             <p>animais resgatados</p>
           </li>
           <li>
             <svg data-icone="coracao"></svg>
-            <p class="contadores__numero">+<span data-contador="210">210</span></p>
+            <p class="contadores__numero">+<span data-contador="210" data-conteudo="contador_adotados">210</span></p>
             <p>animais adotados</p>
           </li>
           <li>
             <svg data-icone="seringa"></svg>
-            <p class="contadores__numero">+<span data-contador="480">480</span></p>
+            <p class="contadores__numero">+<span data-contador="480" data-conteudo="contador_castrados">480</span></p>
             <p>animais castrados</p>
           </li>
         </ul>
-        <p class="contadores__nota"><span class="preencher">[PREENCHER]</span> números ilustrativos, substituir pelos dados reais da ONG</p>
+        <p class="contadores__nota" data-some-com="contador_resgatados"><span class="preencher">[PREENCHER]</span> números ilustrativos, substituir pelos dados reais da ONG</p>
       </div>
     </section>
 

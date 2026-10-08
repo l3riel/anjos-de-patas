@@ -574,6 +574,11 @@
   gap: 0.4rem;
 }
 
+fieldset.campo {
+  border: 0;
+  min-width: 0;
+}
+
 .campo label,
 .campo legend {
   font-weight: 600;

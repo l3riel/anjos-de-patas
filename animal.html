@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conheça este animal | ONG Anjos de Patas</title>
+  <meta name="description" content="Conheça a história de um animal resgatado pela ONG Anjos de Patas e faça uma adoção responsável em Matipó - MG.">
+  <meta name="theme-color" content="#78114F">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="ONG Anjos de Patas">
+  <meta property="og:title" content="Adote | ONG Anjos de Patas">
+  <meta property="og:description" content="Cães e gatos resgatados esperando por uma família em Matipó - MG.">
+  <meta property="og:image" content="https://anjos-de-patas.vercel.app/assets/img/brand/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/img/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script src="/js/layout.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animais.js" defer></script>
+  <script src="/js/form.js" defer></script>
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <section class="secao detalhe" aria-live="polite">
+      <div class="container">
+        <ol class="trilha" aria-label="Você está em">
+          <li><a href="/">Início</a></li>
+          <li><a href="/adote">Adote</a></li>
+          <li aria-current="page" data-trilha-nome>Animal</li>
+        </ol>
+
+        <!-- Preenchido por js/animais.js a partir de data/animais.json -->
+        <div data-detalhe>
+          <p class="carregando">Carregando…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao secao--suave" id="interesse" aria-labelledby="interesse-titulo" data-bloco-interesse hidden>
+      <div class="container interesse__grid">
+        <div class="interesse__texto">
+          <p class="sobretitulo"><svg data-icone="coracao"></svg>Adoção responsável</p>
+          <h2 id="interesse-titulo">Quero adotar <span data-nome-animal>este animal</span></h2>
+          <p class="lead">Conte um pouco sobre você e sua casa. Uma voluntária entra em contato em até 3 dias úteis.</p>
+          <ul class="lista-check" role="list">
+            <li><svg data-icone="check"></svg>Ter 18 anos ou mais</li>
+            <li><svg data-icone="check"></svg>Ambiente seguro, telado ou murado</li>
+            <li><svg data-icone="check"></svg>Concordar com o termo e com visitas de acompanhamento</li>
+            <li><svg data-icone="check"></svg>Manter vacinas e cuidados veterinários em dia</li>
+          </ul>
+        </div>
+
+        <form class="card form interesse__form" data-form data-titulo="Interesse em adoção" novalidate>
+          <input type="hidden" name="animal" data-campo-animal>
+          <div class="campo">
+            <label for="a-nome">Nome completo <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="a-nome" name="nome" type="text" autocomplete="name" required aria-describedby="a-nome-erro">
+            <p class="campo__erro" id="a-nome-erro" aria-live="polite"></p>
+          </div>
+          <div class="form__linha">
+            <div class="campo">
+              <label for="a-email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <input id="a-email" name="email" type="email" autocomplete="email" required aria-describedby="a-email-erro">
+              <p class="campo__erro" id="a-email-erro" aria-live="polite"></p>
+            </div>
+            <div class="campo">
+              <label for="a-tel">WhatsApp <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <input id="a-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-describedby="a-tel-erro">
+              <p class="campo__erro" id="a-tel-erro" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="form__linha">
+            <div class="campo">
+              <label for="a-cidade">Cidade e bairro <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <input id="a-cidade" name="cidade" type="text" autocomplete="address-level2" required aria-describedby="a-cidade-erro">
+              <p class="campo__erro" id="a-cidade-erro" aria-live="polite"></p>
+            </div>
+            <div class="campo">
+              <label for="a-moradia">Tipo de moradia <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <select id="a-moradia" name="moradia" required aria-describedby="a-moradia-erro">
+                <option value="">Escolha</option>
+                <option>Casa com quintal murado/telado</option>
+                <option>Casa sem quintal fechado</option>
+                <option>Apartamento telado</option>
+                <option>Apartamento sem tela</option>
+                <option>Sítio / zona rural</option>
+              </select>
+              <p class="campo__erro" id="a-moradia-erro" aria-live="polite"></p>
+            </div>
+          </div>
+          <fieldset class="campo">
+            <legend>Já tem outros animais? <span class="obrigatorio" aria-hidden="true">*</span></legend>
+            <div class="opcoes">
+              <label class="opcao"><input type="radio" name="outros_animais" value="Sim" required aria-describedby="a-outros-erro">Sim</label>
+              <label class="opcao"><input type="radio" name="outros_animais" value="Não" aria-describedby="a-outros-erro">Não</label>
+            </div>
+            <p class="campo__erro" id="a-outros-erro" aria-live="polite"></p>
+          </fieldset>
+          <div class="campo">
+            <label for="a-motivo">Por que você quer adotar? <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <textarea id="a-motivo" name="motivo" required minlength="20" aria-describedby="a-motivo-ajuda a-motivo-erro"></textarea>
+            <p class="campo__ajuda" id="a-motivo-ajuda">Conte sua rotina, quem mora com você e quem vai cuidar do animal.</p>
+            <p class="campo__erro" id="a-motivo-erro" aria-live="polite"></p>
+          </div>
+          <div class="campo">
+            <label class="opcao opcao--termo"><input type="checkbox" name="termo" value="Concordo" required aria-describedby="a-termo-erro">Concordo em assinar o termo de adoção responsável e receber visitas de acompanhamento.</label>
+            <p class="campo__erro" id="a-termo-erro" aria-live="polite"></p>
+          </div>
+          <button class="btn" type="submit">Enviar interesse<svg data-icone="seta-dir"></svg></button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="secao" aria-labelledby="outros-titulo" data-bloco-outros hidden>
+      <div class="container">
+        <div class="secao__topo">
+          <h2 id="outros-titulo">Conheça também</h2>
+        </div>
+        <div class="grade-animais" data-outros-animais></div>
+        <div class="secao__rodape">
+          <a class="btn btn--contorno" href="/adote">Ver todos os animais<svg data-icone="seta-dir"></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

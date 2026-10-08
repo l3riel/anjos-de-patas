@@ -1054,3 +1054,285 @@
   color: var(--cor-texto-suave);
   margin-top: 0.4rem;
 }
+
+/* =========================================================
+   ADOTE
+   ========================================================= */
+.filtros {
+  display: grid;
+  gap: var(--e-2);
+  padding: var(--e-3);
+  border-radius: var(--raio-card);
+  background: var(--cor-fundo-suave);
+}
+
+.filtros__grupo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filtros__rotulo {
+  font-weight: 600;
+  color: var(--cor-titulo);
+  min-width: 5.5rem;
+}
+
+/* Botões pílula azuis com contorno */
+.filtro {
+  min-height: 44px;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--raio-pilula);
+  border: 2px solid var(--cor-destaque);
+  background: #fff;
+  color: var(--cor-botao);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color var(--t-rapido), color var(--t-rapido),
+    transform var(--t-rapido), box-shadow var(--t-rapido);
+}
+
+.filtro:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-btn);
+}
+
+.filtro[aria-pressed="true"] {
+  background: var(--cor-botao);
+  border-color: var(--cor-botao);
+  color: #fff;
+  box-shadow: var(--sombra-btn);
+}
+
+.filtros__resumo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-2);
+  margin: var(--e-3) 0;
+  font-weight: 500;
+  color: var(--cor-texto-suave);
+}
+
+.filtros__limpar {
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--cor-botao);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.filtros__limpar:hover {
+  color: var(--cor-menu-hover);
+}
+
+.passos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: var(--e-3);
+  list-style: none;
+}
+
+.passos li {
+  padding: var(--e-4) var(--e-3) var(--e-3);
+}
+
+.passos li p {
+  color: var(--cor-texto-suave);
+  margin-top: 0.4rem;
+}
+
+.passos__num {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cor-secundaria);
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: var(--e-2);
+}
+
+.ajudar-cta__card {
+  overflow: visible;
+  display: grid;
+  gap: var(--e-3);
+  align-items: center;
+  padding: clamp(1.75rem, 1rem + 3vw, 3rem);
+  background: var(--cor-principal);
+  color: #fff;
+}
+
+.ajudar-cta__card h2 {
+  color: #fff;
+  margin-bottom: var(--e-1);
+}
+
+@media (min-width: 900px) {
+  .ajudar-cta__card {
+    grid-template-columns: 1.5fr auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .com-fitas::before,
+  .com-fitas::after {
+    display: none;
+  }
+}
+
+/* ---------- Detalhe do animal ---------- */
+.trilha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  font-size: 0.9rem;
+  margin-bottom: var(--e-4);
+  color: var(--cor-texto-suave);
+}
+
+.trilha li + li::before {
+  content: "/";
+  margin-right: 0.4rem;
+}
+
+.detalhe__grid {
+  display: grid;
+  gap: var(--e-5);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .detalhe__grid {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+
+.detalhe__foto {
+  position: relative;
+}
+
+.detalhe__foto::before {
+  content: "";
+  position: absolute;
+  inset: 8% -4% -5% 8%;
+  border-radius: 46% 54% 42% 58% / 50% 44% 56% 50%;
+  background: var(--cor-secundaria);
+  z-index: -1;
+}
+
+.detalhe__foto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+}
+
+.detalhe__info > * + * {
+  margin-top: var(--e-3);
+}
+
+.detalhe__selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tags--grandes li {
+  font-size: 0.95rem;
+  padding: 0.35rem 0.95rem;
+}
+
+.detalhe__historia {
+  font-size: var(--fs-lead);
+}
+
+.detalhe__temperamento {
+  color: var(--cor-texto-suave);
+}
+
+.detalhe__saude {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  list-style: none;
+}
+
+.detalhe__saude li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: var(--cor-texto-suave);
+}
+
+.detalhe__saude li.ok {
+  color: var(--cor-titulo);
+}
+
+.detalhe__saude .icone {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--cor-borda);
+}
+
+.detalhe__saude li.ok .icone {
+  background: var(--cor-secundaria);
+  color: #fff;
+  stroke-width: 3;
+}
+
+.detalhe__aviso {
+  padding: var(--e-2);
+  border-radius: 12px;
+  background: var(--cor-secundaria-clara);
+  color: var(--cor-principal-escura);
+}
+
+.interesse__grid {
+  display: grid;
+  gap: var(--e-5);
+  align-items: start;
+}
+
+.interesse__texto > * + * {
+  margin-top: var(--e-2);
+}
+
+@media (min-width: 960px) {
+  .interesse__grid {
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  .interesse__texto {
+    position: sticky;
+    top: calc(var(--altura-header) + var(--e-3));
+  }
+}
+
+.interesse__form {
+  padding: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+}
+
+.interesse__form .btn {
+  justify-self: start;
+}
+
+.opcao--termo {
+  align-items: flex-start;
+  font-weight: 400;
+}
+
+.opcao--termo input {
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adote um cão ou gato | ONG Anjos de Patas</title>
+  <meta name="description" content="Conheça os cães e gatos resgatados pela ONG Anjos de Patas que esperam um lar em Matipó - MG. Filtre por espécie, porte, sexo e idade.">
+  <link rel="canonical" href="https://anjos-de-patas.vercel.app/adote">
+  <meta name="theme-color" content="#78114F">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="ONG Anjos de Patas">
+  <meta property="og:title" content="Adote um cão ou gato | ONG Anjos de Patas">
+  <meta property="og:description" content="Cães e gatos vacinados e castrados esperando por uma família em Matipó - MG.">
+  <meta property="og:url" content="https://anjos-de-patas.vercel.app/adote">
+  <meta property="og:image" content="https://anjos-de-patas.vercel.app/assets/img/brand/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/img/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script src="/js/layout.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animais.js" defer></script>
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <section class="pagina-topo">
+      <img class="pagina-topo__pet pet-espiando" src="/assets/img/decor/gato-direita.webp" alt="" width="466" height="600">
+      <div class="container">
+        <ol class="pagina-topo__trilha" aria-label="Você está em">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Adote</li>
+        </ol>
+        <h1>Adotar é um ato de amor que muda duas vidas</h1>
+        <p class="lead">Conheça quem foi resgatado, tratado e agora espera pelo final feliz. Todos saem vacinados, vermifugados e, quando adultos, castrados.</p>
+      </div>
+    </section>
+
+    <section class="secao" aria-labelledby="lista-titulo">
+      <div class="container">
+        <h2 id="lista-titulo" class="visualmente-oculto">Animais disponíveis para adoção</h2>
+
+        <form class="filtros revelar" data-filtros aria-label="Filtrar animais">
+          <div class="filtros__grupo" role="group" aria-labelledby="f-especie">
+            <span class="filtros__rotulo" id="f-especie">Espécie</span>
+            <button type="button" class="filtro" data-filtro="especie" data-valor="" aria-pressed="true">Todos</button>
+            <button type="button" class="filtro" data-filtro="especie" data-valor="cachorro" aria-pressed="false">Cães</button>
+            <button type="button" class="filtro" data-filtro="especie" data-valor="gato" aria-pressed="false">Gatos</button>
+          </div>
+          <div class="filtros__grupo" role="group" aria-labelledby="f-porte">
+            <span class="filtros__rotulo" id="f-porte">Porte</span>
+            <button type="button" class="filtro" data-filtro="porte" data-valor="" aria-pressed="true">Todos</button>
+            <button type="button" class="filtro" data-filtro="porte" data-valor="pequeno" aria-pressed="false">Pequeno</button>
+            <button type="button" class="filtro" data-filtro="porte" data-valor="medio" aria-pressed="false">Médio</button>
+            <button type="button" class="filtro" data-filtro="porte" data-valor="grande" aria-pressed="false">Grande</button>
+          </div>
+          <div class="filtros__grupo" role="group" aria-labelledby="f-sexo">
+            <span class="filtros__rotulo" id="f-sexo">Sexo</span>
+            <button type="button" class="filtro" data-filtro="sexo" data-valor="" aria-pressed="true">Todos</button>
+            <button type="button" class="filtro" data-filtro="sexo" data-valor="macho" aria-pressed="false">Macho</button>
+            <button type="button" class="filtro" data-filtro="sexo" data-valor="femea" aria-pressed="false">Fêmea</button>
+          </div>
+          <div class="filtros__grupo" role="group" aria-labelledby="f-idade">
+            <span class="filtros__rotulo" id="f-idade">Idade</span>
+            <button type="button" class="filtro" data-filtro="idade" data-valor="" aria-pressed="true">Todas</button>
+            <button type="button" class="filtro" data-filtro="idade" data-valor="filhote" aria-pressed="false">Filhote</button>
+            <button type="button" class="filtro" data-filtro="idade" data-valor="adulto" aria-pressed="false">Adulto</button>
+            <button type="button" class="filtro" data-filtro="idade" data-valor="idoso" aria-pressed="false">Idoso</button>
+          </div>
+        </form>
+
+        <div class="filtros__resumo">
+          <p data-contagem role="status" aria-live="polite">Carregando animais…</p>
+          <button type="button" class="filtros__limpar" data-limpar hidden>Limpar filtros</button>
+        </div>
+
+        <div class="grade-animais" data-animais-adote></div>
+      </div>
+    </section>
+
+    <!-- COMO ADOTAR -->
+    <section class="secao secao--suave" aria-labelledby="passos-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Adoção responsável</p>
+          <h2 id="passos-titulo">Como funciona a adoção</h2>
+        </div>
+        <ol class="passos" role="list">
+          <li class="card revelar"><span class="passos__num">1</span><h3>Escolha</h3><p>Conheça os animais e clique em quem conquistou você.</p></li>
+          <li class="card revelar" style="--atraso:60ms"><span class="passos__num">2</span><h3>Formulário</h3><p>Preencha o formulário de interesse na página do animal.</p></li>
+          <li class="card revelar" style="--atraso:120ms"><span class="passos__num">3</span><h3>Conversa</h3><p>Uma voluntária entra em contato para conhecer você e sua casa.</p></li>
+          <li class="card revelar" style="--atraso:180ms"><span class="passos__num">4</span><h3>Termo e novo lar</h3><p>Assinamos o termo de adoção e acompanhamos a adaptação.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- NÃO POSSO ADOTAR -->
+    <section class="secao ajudar-cta" aria-labelledby="ajudar-titulo">
+      <div class="container">
+        <div class="card ajudar-cta__card com-fitas revelar">
+          <div>
+            <h2 id="ajudar-titulo">Não posso adotar agora, mas quero ajudar!</h2>
+            <p>Apadrinhando um animal você paga parte da ração e dos remédios dele todo mês, e acompanha a recuperação de perto.</p>
+          </div>
+          <div class="grupo-botoes">
+            <a class="btn btn--branco" href="/apadrinhe">Quero apadrinhar</a>
+            <a class="btn btn--contorno-claro" href="/doe">Fazer uma doação</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="secao secao--suave" aria-labelledby="faq-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <h2 id="faq-titulo">Tem alguma dúvida?</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Só quem mora em Matipó pode adotar?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Damos preferência a Matipó e cidades vizinhas, para conseguir acompanhar a adaptação. Fale com a gente se você mora mais longe. <span class="preencher">[PREENCHER] confirmar regra</span></p></div>
+          </details>
+          <details>
+            <summary>Preencher o formulário já garante a adoção?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Não. O formulário é o primeiro passo. Depois conversamos com você para garantir que o animal e a família combinam.</p></div>
+          </details>
+          <details>
+            <summary>A adoção tem custo?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>A adoção é gratuita. Pedimos o compromisso de cuidar bem, manter as vacinas em dia e nunca abandonar. <span class="preencher">[PREENCHER] confirmar se há taxa</span></p></div>
+          </details>
+          <details>
+            <summary>Posso adotar mais de um animal?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Pode, desde que tenha espaço e condições para cuidar de todos. Avaliamos cada caso na conversa.</p></div>
+          </details>
+          <details>
+            <summary>E se não der certo?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Nunca abandone. Fale com a ONG, que ajudamos a resolver ou recebemos o animal de volta.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

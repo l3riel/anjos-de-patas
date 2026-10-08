@@ -1,0 +1,16 @@
+/* =========================================================
+   Estilos específicos de cada página
+   ========================================================= */
+
+/* ---------- 404 ---------- */
+.erro-404 {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--e-2);
+  max-width: 640px;
+}
+
+.erro-404 img {
+  width: 200px;
+}

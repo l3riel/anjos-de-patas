@@ -1,0 +1,360 @@
+/* =========================================================
+   Painel da ONG (admin.html)
+   ========================================================= */
+
+.admin {
+  background: var(--cor-fundo-suave);
+}
+
+.admin-topo {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-header);
+  height: var(--altura-header);
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.admin-topo__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+}
+
+.admin-topo__titulo {
+  font-weight: 600;
+  color: var(--cor-titulo);
+  font-size: 1.1rem;
+}
+
+.admin-topo__acoes {
+  margin-left: auto;
+  display: flex;
+  gap: var(--e-1);
+}
+
+.admin-main {
+  padding-block: var(--e-5);
+}
+
+.admin-aviso,
+.admin-login {
+  max-width: 560px;
+  margin: var(--e-4) auto;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  display: grid;
+  gap: var(--e-2);
+  border-top: 6px solid var(--cor-principal);
+}
+
+.admin-aviso h1,
+.admin-login h1 {
+  font-size: var(--fs-h2);
+}
+
+.admin-aviso ol {
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.admin-aviso code {
+  background: var(--cor-fundo-suave);
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+.admin-login .btn {
+  justify-self: start;
+}
+
+.campo-senha {
+  position: relative;
+}
+
+.campo-senha input {
+  padding-right: 6rem;
+}
+
+.campo-senha__ver {
+  position: absolute;
+  right: 0.35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  min-height: 40px;
+  padding: 0 0.9rem;
+  border: 0;
+  border-radius: 10px;
+  background: var(--cor-fundo-suave);
+  color: var(--cor-titulo);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ---------- Abas ---------- */
+.admin-abas {
+  display: flex;
+  gap: var(--e-1);
+  border-bottom: 2px solid var(--cor-borda);
+  margin-bottom: var(--e-4);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.admin-aba {
+  min-height: 48px;
+  padding: 0 var(--e-3);
+  border: 0;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  background: none;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.admin-aba[aria-selected="true"] {
+  color: var(--cor-principal);
+  border-bottom-color: var(--cor-principal);
+}
+
+.admin-aba:hover {
+  color: var(--cor-menu-hover);
+}
+
+/* ---------- Barra e lista ---------- */
+.admin-barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+  align-items: center;
+}
+
+.admin-busca {
+  flex: 1 1 220px;
+}
+
+.admin-barra .btn {
+  margin-left: auto;
+}
+
+.admin-contagem {
+  margin: var(--e-3) 0 var(--e-2);
+  color: var(--cor-texto-suave);
+  font-weight: 500;
+}
+
+.admin-lista {
+  display: grid;
+  gap: var(--e-2);
+}
+
+.admin-item {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: var(--e-2) var(--e-3);
+  align-items: center;
+  padding: var(--e-2);
+}
+
+.admin-item img {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: var(--cor-secundaria-clara);
+}
+
+.admin-item h3 {
+  font-size: 1.1rem;
+}
+
+.admin-item p {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+.admin-item__selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+}
+
+.admin-item__acoes {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-1);
+  align-items: center;
+}
+
+.admin-item--adotado {
+  opacity: 0.8;
+}
+
+.admin-remover {
+  min-height: 44px;
+  margin-left: auto;
+  padding: 0 0.75rem;
+  border: 0;
+  background: none;
+  color: var(--cor-principal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.admin-remover:hover {
+  color: var(--cor-menu-hover);
+}
+
+@media (min-width: 900px) {
+  .admin-item {
+    grid-template-columns: 96px 1fr auto;
+  }
+
+  .admin-item__acoes {
+    grid-column: auto;
+  }
+}
+
+.admin-vazio {
+  padding: var(--e-4);
+  text-align: center;
+  color: var(--cor-texto-suave);
+}
+
+/* ---------- Diálogo de edição ---------- */
+.admin-dialogo {
+  width: min(100% - 2rem, 760px);
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  border: 0;
+  border-radius: var(--raio-card);
+  padding: clamp(1.25rem, 1rem + 1.5vw, 2rem);
+  box-shadow: 0 30px 80px rgba(40, 0, 30, 0.35);
+}
+
+.admin-dialogo::backdrop {
+  background: rgba(40, 0, 30, 0.55);
+}
+
+.admin-dialogo__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-2);
+}
+
+.admin-fechar {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--cor-fundo-suave);
+  color: var(--cor-titulo);
+}
+
+.admin-foto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-3);
+  align-items: center;
+}
+
+.admin-foto img {
+  width: 180px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.admin-foto .campo {
+  flex: 1 1 240px;
+}
+
+.admin-foto input[type="file"] {
+  padding: 0.6rem;
+}
+
+@media (min-width: 700px) {
+  .form__linha--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.admin-dialogo__rodape {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--e-1);
+  flex-wrap: wrap;
+}
+
+/* ---------- Textos ---------- */
+.admin-intro {
+  margin-bottom: var(--e-3);
+}
+
+.admin-textos {
+  padding: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+}
+
+.admin-textos .btn {
+  justify-self: start;
+}
+
+.admin-grupo {
+  border: 0;
+  display: grid;
+  gap: var(--e-2);
+}
+
+.admin-grupo + .admin-grupo {
+  margin-top: var(--e-3);
+  padding-top: var(--e-3);
+  border-top: 1px solid var(--cor-borda);
+}
+
+.admin-grupo legend {
+  font-weight: 700;
+  color: var(--cor-principal);
+  font-size: 1.1rem;
+  margin-bottom: var(--e-1);
+}
+
+.admin-grupo__campos {
+  display: grid;
+  gap: var(--e-2);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+}
+
+/* ---------- Aviso flutuante ---------- */
+.admin-aviso-flutuante {
+  position: fixed;
+  left: 50%;
+  bottom: var(--e-3);
+  z-index: 200;
+  transform: translate(-50%, 150%);
+  max-width: calc(100% - 2rem);
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--raio-pilula);
+  background: var(--cor-principal);
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(40, 0, 30, 0.3);
+  transition: transform var(--t-medio) var(--ease-saida);
+}
+
+.admin-aviso-flutuante.visivel {
+  transform: translate(-50%, 0);
+}
+
+.admin-aviso-flutuante:empty {
+  display: none;
+}

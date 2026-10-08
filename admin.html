@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel da ONG | Anjos de Patas</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#78114F">
+  <link rel="icon" href="assets/img/brand/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+  <script src="js/layout.js" defer></script>
+  <script src="js/admin.js" defer></script>
+</head>
+<body class="admin">
+  <header class="admin-topo">
+    <div class="container admin-topo__inner">
+      <a class="topo__logo" href="index.html" aria-label="Ver o site">
+        <img src="assets/img/brand/logo.webp" alt="ONG Anjos de Patas" width="176" height="165">
+      </a>
+      <p class="admin-topo__titulo">Painel da ONG</p>
+      <div class="admin-topo__acoes">
+        <a class="btn btn--contorno btn--pequeno" href="index.html" target="_blank" rel="noopener">Ver site</a>
+        <button class="btn btn--pequeno" type="button" data-sair hidden>Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container admin-main">
+    <!-- Supabase ainda não configurado -->
+    <section class="card admin-aviso" data-tela="config" hidden>
+      <h1>Falta conectar o Supabase</h1>
+      <p>O painel salva os dados no Supabase. Enquanto ele não estiver configurado, o site continua mostrando os animais de <code>data/animais.json</code>.</p>
+      <ol>
+        <li>Siga o passo a passo em <code>supabase/LEIA-ME.md</code>.</li>
+        <li>Preencha <code>supabaseUrl</code> e <code>supabaseAnonKey</code> no objeto <code>ONG</code>, no início de <code>js/layout.js</code>.</li>
+        <li>Recarregue esta página.</li>
+      </ol>
+    </section>
+
+    <!-- Login -->
+    <section class="card admin-login" data-tela="login" hidden aria-labelledby="login-titulo">
+      <h1 id="login-titulo">Entrar no painel</h1>
+      <p>Acesso só para a equipe da Anjos de Patas.</p>
+      <form class="form" data-form-login>
+        <div class="campo">
+          <label for="l-email">E-mail</label>
+          <input id="l-email" name="email" type="email" autocomplete="username" required>
+        </div>
+        <div class="campo">
+          <label for="l-senha">Senha</label>
+          <div class="campo-senha">
+            <input id="l-senha" name="senha" type="password" autocomplete="current-password" required>
+            <button type="button" class="campo-senha__ver" data-ver-senha aria-pressed="false">Mostrar</button>
+          </div>
+        </div>
+        <button class="btn" type="submit">Entrar</button>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Logado sem permissão -->
+    <section class="card admin-aviso" data-tela="sem-acesso" hidden>
+      <h1>Sem permissão de administrador</h1>
+      <p>Você entrou como <strong data-email-usuario></strong>, mas esse e-mail não está na lista de administradores. Peça para quem cuida do Supabase incluir você na tabela <code>admins</code>.</p>
+    </section>
+
+    <!-- Painel -->
+    <section data-tela="painel" hidden>
+      <div class="admin-abas" role="tablist" aria-label="Seções do painel">
+        <button class="admin-aba" role="tab" id="aba-animais" aria-controls="painel-animais" aria-selected="true">Animais</button>
+        <button class="admin-aba" role="tab" id="aba-textos" aria-controls="painel-textos" aria-selected="false" tabindex="-1">Textos e números</button>
+      </div>
+
+      <div id="painel-animais" role="tabpanel" aria-labelledby="aba-animais">
+        <div class="admin-barra">
+          <div class="campo admin-busca">
+            <label for="busca" class="visualmente-oculto">Buscar animal</label>
+            <input id="busca" type="search" placeholder="Buscar pelo nome" data-busca>
+          </div>
+          <div class="campo">
+            <label for="filtro-status" class="visualmente-oculto">Mostrar</label>
+            <select id="filtro-status" data-filtro-status>
+              <option value="todos">Todos</option>
+              <option value="adocao">Para adoção</option>
+              <option value="padrinho">Precisam de padrinho</option>
+              <option value="adotados">Adotados</option>
+            </select>
+          </div>
+          <button class="btn" type="button" data-novo><svg data-icone="coracao"></svg>Novo animal</button>
+        </div>
+        <p class="admin-contagem" data-contagem-admin role="status" aria-live="polite"></p>
+        <ul class="admin-lista" role="list" data-lista-admin></ul>
+      </div>
+
+      <div id="painel-textos" role="tabpanel" aria-labelledby="aba-textos" hidden>
+        <p class="lead admin-intro">Esses textos aparecem no site no lugar das marcações <span class="preencher">[PREENCHER]</span>. Deixe em branco para manter o texto padrão.</p>
+        <form class="card form admin-textos" data-form-textos>
+          <div data-campos-textos></div>
+          <button class="btn" type="submit">Salvar textos</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cadastro / edição de animal -->
+  <dialog class="admin-dialogo" data-dialogo aria-labelledby="dialogo-titulo">
+    <form class="form" data-form-animal method="dialog" novalidate>
+      <div class="admin-dialogo__topo">
+        <h2 id="dialogo-titulo" data-dialogo-titulo>Novo animal</h2>
+        <button type="button" class="admin-fechar" data-fechar aria-label="Fechar sem salvar"><svg data-icone="fechar"></svg></button>
+      </div>
+
+      <div class="admin-foto">
+        <img data-preview alt="" width="300" height="225" hidden>
+        <div class="campo">
+          <label for="f-foto">Foto</label>
+          <input id="f-foto" type="file" accept="image/*" data-foto aria-describedby="f-foto-ajuda">
+          <p class="campo__ajuda" id="f-foto-ajuda">A foto é reduzida e convertida para WebP antes de enviar.</p>
+        </div>
+      </div>
+
+      <div class="form__linha">
+        <div class="campo">
+          <label for="f-nome">Nome *</label>
+          <input id="f-nome" name="nome" required>
+        </div>
+        <div class="campo">
+          <label for="f-idade-texto">Idade (como aparece) *</label>
+          <input id="f-idade-texto" name="idade_texto" placeholder="ex.: 2 anos" required>
+        </div>
+      </div>
+      <div class="form__linha form__linha--4">
+        <div class="campo">
+          <label for="f-especie">Espécie</label>
+          <select id="f-especie" name="especie"><option value="cachorro">Cachorro</option><option value="gato">Gato</option></select>
+        </div>
+        <div class="campo">
+          <label for="f-sexo">Sexo</label>
+          <select id="f-sexo" name="sexo"><option value="macho">Macho</option><option value="femea">Fêmea</option></select>
+        </div>
+        <div class="campo">
+          <label for="f-porte">Porte</label>
+          <select id="f-porte" name="porte"><option value="pequeno">Pequeno</option><option value="medio">Médio</option><option value="grande">Grande</option></select>
+        </div>
+        <div class="campo">
+          <label for="f-idade">Faixa de idade</label>
+          <select id="f-idade" name="idade"><option value="filhote">Filhote</option><option value="adulto">Adulto</option><option value="idoso">Idoso</option></select>
+        </div>
+      </div>
+      <div class="campo">
+        <label for="f-historia">História (1ª pessoa) *</label>
+        <textarea id="f-historia" name="historia" required></textarea>
+      </div>
+      <div class="form__linha">
+        <div class="campo">
+          <label for="f-temperamento">Jeitinho</label>
+          <input id="f-temperamento" name="temperamento" placeholder="dócil, brincalhão, calmo" aria-describedby="f-temp-ajuda">
+          <p class="campo__ajuda" id="f-temp-ajuda">Separe por vírgulas.</p>
+        </div>
+        <div class="campo">
+          <label for="f-alt">Descrição da foto</label>
+          <input id="f-alt" name="alt" placeholder="ex.: Cachorro caramelo deitado na grama" aria-describedby="f-alt-ajuda">
+          <p class="campo__ajuda" id="f-alt-ajuda">Lida para pessoas cegas. Diga o que aparece na foto.</p>
+        </div>
+      </div>
+      <fieldset class="campo">
+        <legend>Situação</legend>
+        <div class="opcoes">
+          <label class="opcao"><input type="checkbox" name="castrado">Castrado(a)</label>
+          <label class="opcao"><input type="checkbox" name="vacinado">Vacinado(a)</label>
+          <label class="opcao"><input type="checkbox" name="vermifugado">Vermifugado(a)</label>
+          <label class="opcao"><input type="checkbox" name="disponivel_adocao">Disponível para adoção</label>
+          <label class="opcao"><input type="checkbox" name="precisa_padrinho">Precisa de padrinho</label>
+        </div>
+      </fieldset>
+
+      <div class="admin-dialogo__rodape">
+        <button class="btn btn--contorno" type="button" data-fechar>Cancelar</button>
+        <button class="btn" type="submit" data-salvar>Salvar animal</button>
+      </div>
+      <p class="form__status" role="status" aria-live="polite" data-status-animal></p>
+    </form>
+  </dialog>
+
+  <div class="admin-aviso-flutuante" role="status" aria-live="polite" data-aviso></div>
+</body>
+</html>

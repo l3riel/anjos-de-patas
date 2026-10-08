@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seja padrinho ou madrinha | ONG Anjos de Patas</title>
+  <meta name="description" content="Não pode adotar? Apadrinhe um cão ou gato resgatado pela ONG Anjos de Patas e ajude todo mês com ração, remédios e tratamento em Matipó - MG.">
+  <link rel="canonical" href="https://anjos-de-patas.vercel.app/apadrinhe">
+  <meta name="theme-color" content="#78114F">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="ONG Anjos de Patas">
+  <meta property="og:title" content="Seja padrinho ou madrinha | ONG Anjos de Patas">
+  <meta property="og:description" content="Ajude todo mês com a ração e os remédios de um animal resgatado.">
+  <meta property="og:url" content="https://anjos-de-patas.vercel.app/apadrinhe">
+  <meta property="og:image" content="https://anjos-de-patas.vercel.app/assets/img/brand/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/img/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script src="/js/layout.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animais.js" defer></script>
+  <script src="/js/form.js" defer></script>
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <section class="pagina-topo">
+      <img class="pagina-topo__pet pet-espiando" src="/assets/img/decor/cachorro1.webp" alt="" width="191" height="288">
+      <div class="container">
+        <ol class="pagina-topo__trilha" aria-label="Você está em">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Apadrinhe</li>
+        </ol>
+        <h1>Não pode adotar? Seja padrinho ou madrinha</h1>
+        <p class="lead">Alguns animais precisam de tratamento longo, remédio contínuo ou simplesmente esperam mais por uma família. Com uma ajuda mensal, você cuida de um deles à distância.</p>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="secao" aria-labelledby="como-titulo">
+      <div class="container apadrinhe__intro">
+        <div class="revelar">
+          <p class="sobretitulo"><svg data-icone="maos"></svg>Como funciona</p>
+          <h2 id="como-titulo">Um compromisso de carinho, todo mês</h2>
+          <ol class="lista-numerada" role="list">
+            <li><span>1</span><div><h3>Escolha seu afilhado</h3><p>Veja abaixo quem precisa de ajuda e escolha um animal, ou deixe a ONG escolher quem mais precisa.</p></div></li>
+            <li><span>2</span><div><h3>Defina o valor</h3><p>Você contribui todo mês com o valor que cabe no seu bolso, por Pix agendado.</p></div></li>
+            <li><span>3</span><div><h3>Acompanhe</h3><p>Recebe notícias e fotos do seu afilhado pelo WhatsApp e pode visitá-lo combinando antes.</p></div></li>
+          </ol>
+        </div>
+        <aside class="card apadrinhe__cobre com-fitas revelar" style="--atraso:100ms" aria-labelledby="cobre-titulo">
+          <h3 id="cobre-titulo">Seu apadrinhamento ajuda a pagar</h3>
+          <ul class="lista-check" role="list">
+            <li><svg data-icone="check"></svg>Ração de qualidade</li>
+            <li><svg data-icone="check"></svg>Remédios e tratamentos contínuos</li>
+            <li><svg data-icone="check"></svg>Consultas e exames</li>
+            <li><svg data-icone="check"></svg>Vacinas, vermífugo e antipulgas</li>
+            <li><svg data-icone="check"></svg>Lar temporário até a adoção</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ANIMAIS -->
+    <section class="secao secao--suave" aria-labelledby="afilhados-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="coracao"></svg>Esperando um padrinho</p>
+          <h2 id="afilhados-titulo">Quem precisa de você</h2>
+          <p>Clique em um animal para escolhê-lo no formulário.</p>
+        </div>
+        <div class="grade-animais" data-animais-padrinho aria-live="polite">
+          <p class="carregando">Carregando animais…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="secao" id="formulario" aria-labelledby="form-titulo">
+      <div class="container interesse__grid">
+        <div class="interesse__texto revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Quero apadrinhar</p>
+          <h2 id="form-titulo">Vamos combinar seu apadrinhamento</h2>
+          <p class="lead">Preencha os dados e a equipe envia a chave Pix e as primeiras fotos do seu afilhado.</p>
+          <div class="valores" aria-hidden="true">
+            <p><strong>R$ 30</strong>/mês ajuda com a ração</p>
+            <p><strong>R$ 50</strong>/mês cobre ração e vermífugo</p>
+            <p><strong>R$ 100</strong>/mês banca o tratamento contínuo</p>
+          </div>
+          <p class="form__nota"><span class="preencher">[PREENCHER]</span> confirmar valores sugeridos</p>
+        </div>
+
+        <form class="card form interesse__form revelar" data-form data-titulo="Quero apadrinhar" style="--atraso:100ms">
+          <div class="campo">
+            <label for="p-nome">Nome completo <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <input id="p-nome" name="nome" type="text" autocomplete="name" required aria-describedby="p-nome-erro">
+            <p class="campo__erro" id="p-nome-erro" aria-live="polite"></p>
+          </div>
+          <div class="form__linha">
+            <div class="campo">
+              <label for="p-email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <input id="p-email" name="email" type="email" autocomplete="email" required aria-describedby="p-email-erro">
+              <p class="campo__erro" id="p-email-erro" aria-live="polite"></p>
+            </div>
+            <div class="campo">
+              <label for="p-tel">WhatsApp <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <input id="p-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-describedby="p-tel-erro">
+              <p class="campo__erro" id="p-tel-erro" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="p-animal">Afilhado <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <select id="p-animal" name="afilhado" required data-select-animal aria-describedby="p-animal-erro">
+              <option value="">Escolha um animal</option>
+              <option value="Quem mais precisar">A ONG escolhe quem mais precisa</option>
+            </select>
+            <p class="campo__erro" id="p-animal-erro" aria-live="polite"></p>
+          </div>
+          <fieldset class="campo">
+            <legend>Valor mensal <span class="obrigatorio" aria-hidden="true">*</span></legend>
+            <div class="opcoes opcoes--pilula">
+              <label class="opcao"><input type="radio" name="valor" value="R$ 30" required aria-describedby="p-valor-erro">R$ 30</label>
+              <label class="opcao"><input type="radio" name="valor" value="R$ 50" aria-describedby="p-valor-erro">R$ 50</label>
+              <label class="opcao"><input type="radio" name="valor" value="R$ 100" aria-describedby="p-valor-erro">R$ 100</label>
+              <label class="opcao"><input type="radio" name="valor" value="Outro valor" aria-describedby="p-valor-erro">Outro valor</label>
+            </div>
+            <p class="campo__erro" id="p-valor-erro" aria-live="polite"></p>
+          </fieldset>
+          <div class="campo">
+            <label for="p-msg">Mensagem (opcional)</label>
+            <textarea id="p-msg" name="mensagem" aria-describedby="p-msg-ajuda"></textarea>
+            <p class="campo__ajuda" id="p-msg-ajuda">Se escolheu "outro valor", conte aqui quanto pode contribuir.</p>
+          </div>
+          <button class="btn" type="submit"><svg data-icone="coracao"></svg>Quero apadrinhar</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

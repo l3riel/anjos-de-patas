@@ -54,7 +54,7 @@ function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
       <div class="animal-card__selos">${selos}</div>
     </div>
     <div class="animal-card__corpo">
-      <h3 class="animal-card__nome"><a href="${modo === "padrinho" ? href + "#apadrinhar" : href}">${esc(a.nome)}</a></h3>
+      <h3 class="animal-card__nome"><a href="${modo === "padrinho" ? `/apadrinhe?animal=${encodeURIComponent(a.id)}#formulario` : href}">${esc(a.nome)}</a></h3>
       <ul class="tags" role="list" aria-label="Características">
         <li>${esc(a.idadeTexto || ROTULOS.idade[a.idade])}</li>
         <li>${ROTULOS.porte[a.porte]}</li>
@@ -261,7 +261,47 @@ async function montarDetalhe() {
   }
 }
 
+/* /apadrinhe: animais que precisam de padrinho + select do formulário */
+async function montarApadrinhe() {
+  const alvo = document.querySelector("[data-animais-padrinho]");
+  if (!alvo) return;
+  const select = document.querySelector("[data-select-animal]");
+  let animais;
+  try {
+    animais = (await carregarAnimais()).filter((a) => a.precisaPadrinho);
+  } catch (e) {
+    console.error(e);
+    return erroCarregamento(alvo);
+  }
+  alvo.innerHTML = animais.map((a, i) => cardAnimal(a, { modo: "padrinho", atraso: (i % 3) * 60 })).join("");
+  observarRevelar(alvo);
+
+  select.insertAdjacentHTML(
+    "beforeend",
+    animais.map((a) => `<option value="${esc(a.nome)}">${esc(a.nome)} (${ROTULOS.especie[a.especie].toLowerCase()})</option>`).join("")
+  );
+  const escolhido = animais.find((a) => a.id === new URLSearchParams(location.search).get("animal"));
+  if (escolhido) {
+    select.value = escolhido.nome;
+    if (location.hash === "#formulario") document.getElementById("formulario").scrollIntoView();
+  }
+
+  // Clicar num card já escolhe o animal no formulário, sem recarregar a página
+  alvo.addEventListener("click", (e) => {
+    const link = e.target.closest(".animal-card__nome a");
+    if (!link) return;
+    e.preventDefault();
+    const id = new URL(link.href).searchParams.get("animal");
+    const animal = animais.find((a) => a.id === id);
+    select.value = animal.nome;
+    history.replaceState(null, "", link.href);
+    document.getElementById("formulario").scrollIntoView({ behavior: reduzirMovimento.matches ? "auto" : "smooth" });
+    select.focus({ preventScroll: true });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  montarApadrinhe();
   montarAnimaisHome();
   montarHistorias();
   montarAdote();

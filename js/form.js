@@ -5,7 +5,7 @@
    ========================================================= */
 
 const MENSAGENS_ERRO = {
-  valueMissing: (rotulo) => `Preencha o campo ${rotulo}.`,
+  valueMissing: () => "Preencha este campo.",
   typeMismatch: () => "Confira o formato. Ex.: nome@email.com",
   patternMismatch: () => "Use DDD + número. Ex.: (31) 99999-9999",
   tooShort: (rotulo, el) => `Escreva pelo menos ${el.minLength} caracteres.`,
@@ -20,11 +20,16 @@ function validarCampo(campo) {
   const erro = document.getElementById(campo.getAttribute("aria-describedby")?.split(" ").find((id) => id.endsWith("-erro")));
   const v = campo.validity;
   let msg = "";
-  if (!v.valid) {
+  if (!v.valid && campo.type === "checkbox") {
+    msg = "Marque esta opção para continuar.";
+  } else if (!v.valid && campo.type === "radio") {
+    msg = "Escolha uma das opções.";
+  } else if (!v.valid) {
     const tipo = Object.keys(MENSAGENS_ERRO).find((k) => v[k]);
     msg = tipo ? MENSAGENS_ERRO[tipo](rotuloDo(campo), campo) : "Confira este campo.";
   }
-  campo.setAttribute("aria-invalid", msg ? "true" : "false");
+  const grupo = campo.type === "radio" ? campo.form.querySelectorAll(`[name="${campo.name}"]`) : [campo];
+  grupo.forEach((c) => c.setAttribute("aria-invalid", msg ? "true" : "false"));
   if (erro) erro.textContent = msg;
   return !msg;
 }
@@ -76,14 +81,26 @@ async function enviar(form) {
 function iniciarFormulario(form) {
   const status = form.querySelector(".form__status");
   const botao = form.querySelector('[type="submit"]');
-  const campos = [...form.querySelectorAll("input, select, textarea")].filter((c) => c.willValidate);
+  // Um item por grupo de rádio, para não contar o mesmo erro várias vezes
+  const vistos = new Set();
+  const campos = [...form.querySelectorAll("input, select, textarea")].filter((c) => {
+    if (!c.willValidate) return false;
+    if (c.type !== "radio") return true;
+    if (vistos.has(c.name)) return false;
+    vistos.add(c.name);
+    return true;
+  });
 
   form.setAttribute("novalidate", "");
   form.querySelectorAll('input[type="tel"]').forEach(mascararTelefone);
 
   campos.forEach((c) => {
-    c.addEventListener("blur", () => { if (c.value) validarCampo(c); });
-    c.addEventListener("input", () => { if (c.getAttribute("aria-invalid") === "true") validarCampo(c); });
+    const grupo = c.type === "radio" ? form.querySelectorAll(`[name="${c.name}"]`) : [c];
+    grupo.forEach((el) => {
+      el.addEventListener("blur", () => { if (el.value && !/radio|checkbox/.test(el.type)) validarCampo(c); });
+      el.addEventListener("input", () => { if (c.getAttribute("aria-invalid") === "true") validarCampo(c); });
+      el.addEventListener("change", () => { if (c.getAttribute("aria-invalid") === "true") validarCampo(c); });
+    });
   });
 
   form.addEventListener("submit", async (e) => {
@@ -105,7 +122,7 @@ function iniciarFormulario(form) {
       status.className = "form__status form__status--ok";
       status.textContent = msg;
       form.reset();
-      campos.forEach((c) => c.removeAttribute("aria-invalid"));
+      form.querySelectorAll("[aria-invalid]").forEach((c) => c.removeAttribute("aria-invalid"));
     } catch (err) {
       console.error(err);
       status.className = "form__status form__status--erro";

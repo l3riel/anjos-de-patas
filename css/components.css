@@ -122,7 +122,7 @@
 }
 
 .topo__logo img {
-  height: 58px;
+  height: 66px;
   width: auto;
 }
 
@@ -452,7 +452,7 @@
 /* ---------- Cards de animal ---------- */
 .grade-animais {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: var(--e-3);
 }
 

@@ -50,7 +50,7 @@
 
   --largura: 1200px;
   --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
-  --altura-header: 72px;
+  --altura-header: 80px;
 
   /* Movimento */
   --t-rapido: 160ms;

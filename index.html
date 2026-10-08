@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ONG Anjos de Patas | Resgate e adoção de cães e gatos em Matipó - MG</title>
+  <meta name="description" content="A ONG Anjos de Patas resgata, trata, castra e encaminha para adoção cães e gatos de rua em Matipó - MG. Adote, apadrinhe ou faça uma doação.">
+  <link rel="canonical" href="https://anjos-de-patas.vercel.app/">
+  <meta name="theme-color" content="#78114F">
+  <!-- Open Graph: troque o domínio quando o site tiver endereço próprio -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="ONG Anjos de Patas">
+  <meta property="og:title" content="ONG Anjos de Patas | Toda vida importa!">
+  <meta property="og:description" content="Resgate, tratamento e adoção responsável de cães e gatos em Matipó - MG.">
+  <meta property="og:url" content="https://anjos-de-patas.vercel.app/">
+  <meta property="og:image" content="https://anjos-de-patas.vercel.app/assets/img/brand/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/img/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="preload" as="image" href="/assets/img/fotos/ong2.webp" fetchpriority="high">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script src="/js/layout.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/animais.js" defer></script>
+  <script src="/js/form.js" defer></script>
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+
+    <!-- 1. HERO ============================================== -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <img class="pet-espiando hero__gato-esq" src="/assets/img/decor/gato-esquerda.webp" alt="" width="197" height="600">
+      <div class="container hero__grid">
+        <div class="hero__texto">
+          <p class="hero__sobretitulo"><svg data-icone="pata"></svg>Proteção animal em Matipó - MG</p>
+          <h1 id="hero-titulo" class="hero__titulo">Toda vida <span>importa!</span></h1>
+          <p class="hero__lead">Resgatamos, tratamos e encontramos lares cheios de amor para cães e gatos que vivem nas ruas de Matipó. Cada ajuda vira ração, remédio e uma segunda chance.</p>
+          <div class="grupo-botoes">
+            <a class="btn" href="/doe"><svg data-icone="coracao"></svg>Faça uma doação</a>
+            <a class="btn btn--contorno-claro" href="/adote">Quero adotar</a>
+          </div>
+        </div>
+
+        <div class="hero__carrossel" data-hero-carrossel role="region" aria-roledescription="carrossel" aria-label="Fotos de animais resgatados">
+          <img class="pet-espiando hero__gato-dir" src="/assets/img/decor/gato-direita.webp" alt="" width="466" height="600">
+          <div class="hero__moldura">
+            <figure class="hero__slide ativo">
+              <img src="/assets/img/fotos/ong2.webp" alt="Cães resgatados no espaço da ONG" width="1050" height="1400" fetchpriority="high">
+            </figure>
+            <figure class="hero__slide">
+              <img src="/assets/img/fotos/cachorro1.webp" alt="Cachorra branca de roupinha amarela descansando" width="1050" height="1400" loading="lazy">
+            </figure>
+            <figure class="hero__slide">
+              <img src="/assets/img/fotos/ong3.webp" alt="Área externa onde os animais resgatados tomam sol" width="1050" height="1400" loading="lazy">
+            </figure>
+            <figure class="hero__slide">
+              <!-- TROCAR: foto placeholder (Unsplash) por uma foto real da ONG -->
+              <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=900&h=1200&fit=crop&q=70&auto=format" alt="Um gato e um cachorro dormindo juntos" width="900" height="1200" loading="lazy">
+            </figure>
+          </div>
+          <div class="hero__controles">
+            <button class="hero__seta" type="button" data-anterior aria-label="Foto anterior"><svg data-icone="chevron-esq"></svg></button>
+            <div class="hero__pontos"></div>
+            <button class="hero__seta" type="button" data-pausar aria-label="Pausar troca automática das fotos"></button>
+            <button class="hero__seta" type="button" data-proximo aria-label="Próxima foto"><svg data-icone="chevron-dir"></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CARDS DE AÇÃO ===================================== -->
+    <section class="acoes" aria-label="Como você pode ajudar">
+      <div class="container acoes__grid">
+        <article class="card acao-card revelar">
+          <div class="acao-card__icone"><img src="/assets/img/icons/icone3.webp" alt="" width="105" height="105"></div>
+          <h2>Faça uma doação</h2>
+          <p>Pix, depósito ou ração: tudo vira cuidado para quem ainda está na rua.</p>
+          <a class="btn btn--pequeno" href="/doe">Quero doar</a>
+        </article>
+        <article class="card acao-card acao-card--destaque revelar" style="--atraso:80ms">
+          <div class="acao-card__icone"><img src="/assets/img/icons/icone2.webp" alt="" width="146" height="105"></div>
+          <h2>Seja padrinho ou madrinha</h2>
+          <p>Custeie todo mês a ração e os remédios de um animal em tratamento.</p>
+          <a class="btn btn--branco btn--pequeno" href="/apadrinhe">Quero apadrinhar</a>
+        </article>
+        <article class="card acao-card revelar" style="--atraso:160ms">
+          <div class="acao-card__icone"><img src="/assets/img/icons/icone1.webp" alt="" width="105" height="105"></div>
+          <h2>Quero adotar</h2>
+          <p>Conheça quem está esperando por você e faça uma adoção responsável.</p>
+          <a class="btn btn--pequeno" href="/adote">Ver animais</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. SOBRE ============================================= -->
+    <section class="secao sobre" aria-labelledby="sobre-titulo">
+      <div class="container sobre__grid">
+        <div class="sobre__texto revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Quem somos</p>
+          <h2 id="sobre-titulo">Tudo começou com um pote de ração na calçada</h2>
+          <p>A Anjos de Patas nasceu de um projeto idealizado pela <strong>Dra. Joice</strong> durante a graduação em Medicina Veterinária: comedouros comunitários espalhados por Matipó para que nenhum animal de rua passasse fome.</p>
+          <p>Com o apoio do <strong>Dr. Salvador Sabino</strong>, o projeto cresceu e virou ONG. Hoje resgatamos animais feridos e em situação de risco, castramos para frear o abandono e acompanhamos cada adoção, guiados pelas leis de proteção animal.</p>
+          <p>Somos uma equipe pequena, movida por amor e pela certeza de que cada vida importa, uma pata de cada vez.</p>
+          <ul class="sobre__fatos" role="list">
+            <li><strong><span class="preencher">[PREENCHER]</span></strong><span>ano de fundação</span></li>
+            <li><strong><span class="preencher">[PREENCHER]</span></strong><span>voluntários ativos</span></li>
+            <li><strong><span class="preencher">[PREENCHER]</span></strong><span>comedouros na cidade</span></li>
+          </ul>
+          <a class="btn btn--contorno" href="/quem-somos">Conheça nossa história</a>
+        </div>
+        <figure class="sobre__foto revelar" style="--atraso:120ms">
+          <!-- TROCAR: o arquivo fundadora.png do site antigo mostra um cachorro; coloque aqui a foto da Dra. Joice -->
+          <img src="/assets/img/equipe/fundadora.webp" alt="Cachorro spitz preto em moldura com formas roxas e azuis" width="205" height="202" loading="lazy">
+          <figcaption><strong>Dra. Joice</strong> idealizadora do projeto <span class="preencher">[PREENCHER] foto</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 4. COMO FUNCIONA ===================================== -->
+    <section class="secao secao--suave como-funciona" aria-labelledby="como-titulo">
+      <img class="pet-espiando como-funciona__gato" src="/assets/img/decor/gato-direita.webp" alt="" width="466" height="600" loading="lazy">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Do resgate ao novo lar</p>
+          <h2 id="como-titulo">Como funciona nosso trabalho</h2>
+          <p>Nem toda cicatriz é visível. Até chegar o grande dia da adoção, cada animal percorre um longo caminho com a gente.</p>
+        </div>
+        <ol class="linha-tempo" role="list">
+          <li class="revelar" style="--atraso:0ms">
+            <span class="linha-tempo__icone"><svg data-icone="alerta"></svg></span>
+            <span class="linha-tempo__num">1</span>
+            <h3>Denúncia</h3>
+            <p>Você nos avisa pelo WhatsApp, com foto e local do animal.</p>
+          </li>
+          <li class="revelar" style="--atraso:60ms">
+            <span class="linha-tempo__icone"><svg data-icone="resgate"></svg></span>
+            <span class="linha-tempo__num">2</span>
+            <h3>Resgate</h3>
+            <p>Voluntários vão até lá com caixa de transporte e muita calma.</p>
+          </li>
+          <li class="revelar" style="--atraso:120ms">
+            <span class="linha-tempo__icone"><svg data-icone="estetoscopio"></svg></span>
+            <span class="linha-tempo__num">3</span>
+            <h3>Atendimento veterinário</h3>
+            <p>Exames, vacinas, vermífugo, antipulgas e curativos.</p>
+          </li>
+          <li class="revelar" style="--atraso:180ms">
+            <span class="linha-tempo__icone"><svg data-icone="seringa"></svg></span>
+            <span class="linha-tempo__num">4</span>
+            <h3>Tratamento e castração</h3>
+            <p>Tratamos o que for preciso e castramos para evitar novas ninhadas.</p>
+          </li>
+          <li class="revelar" style="--atraso:240ms">
+            <span class="linha-tempo__icone"><svg data-icone="casa"></svg></span>
+            <span class="linha-tempo__num">5</span>
+            <h3>Lar temporário</h3>
+            <p>Ele se recupera numa casa acolhedora enquanto espera a família.</p>
+          </li>
+          <li class="revelar" style="--atraso:300ms">
+            <span class="linha-tempo__icone"><svg data-icone="coracao"></svg></span>
+            <span class="linha-tempo__num">6</span>
+            <h3>Adoção</h3>
+            <p>Entrevista, termo de adoção responsável e acompanhamento.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5. CONTADORES ======================================== -->
+    <section class="contadores" aria-labelledby="contadores-titulo">
+      <div class="container">
+        <h2 id="contadores-titulo" class="visualmente-oculto">Nossos números</h2>
+        <ul class="contadores__lista" role="list">
+          <li>
+            <svg data-icone="resgate"></svg>
+            <!-- [PREENCHER] troque os números de data-contador pelos reais -->
+            <p class="contadores__numero">+<span data-contador="350">350</span></p>
+            <p>animais resgatados</p>
+          </li>
+          <li>
+            <svg data-icone="coracao"></svg>
+            <p class="contadores__numero">+<span data-contador="210">210</span></p>
+            <p>animais adotados</p>
+          </li>
+          <li>
+            <svg data-icone="seringa"></svg>
+            <p class="contadores__numero">+<span data-contador="480">480</span></p>
+            <p>animais castrados</p>
+          </li>
+        </ul>
+        <p class="contadores__nota"><span class="preencher">[PREENCHER]</span> números ilustrativos, substituir pelos dados reais da ONG</p>
+      </div>
+    </section>
+
+    <!-- 6. HISTÓRIAS ========================================= -->
+    <section class="secao historias" aria-labelledby="historias-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Histórias de superação</p>
+          <h2 id="historias-titulo">Eles contam a própria história</h2>
+          <p>Por trás de cada resgate existe alguém que voltou a confiar. Sua doação escreve o próximo final feliz.</p>
+        </div>
+        <div class="carrossel" data-carrossel role="region" aria-roledescription="carrossel" aria-label="Histórias de superação">
+          <ul class="carrossel__trilho" data-historias role="list">
+            <li class="carregando">Carregando histórias…</li>
+          </ul>
+          <div class="carrossel__controles">
+            <button class="carrossel__btn" type="button" data-anterior aria-label="História anterior"><svg data-icone="chevron-esq"></svg></button>
+            <button class="carrossel__btn" type="button" data-proximo aria-label="Próxima história"><svg data-icone="chevron-dir"></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ANIMAIS PARA ADOÇÃO =============================== -->
+    <section class="secao secao--suave" aria-labelledby="adocao-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Adoção responsável</p>
+          <h2 id="adocao-titulo">Esperando por você</h2>
+          <p>Todos vacinados, vermifugados e, quando adultos, castrados. Só falta uma família.</p>
+        </div>
+        <div class="grade-animais" data-animais-home aria-live="polite">
+          <p class="carregando">Carregando animais…</p>
+        </div>
+        <div class="secao__rodape">
+          <a class="btn btn--contorno" href="/adote">Ver todos os animais<svg data-icone="seta-dir"></svg></a>
+          <p>Não pode adotar agora? <a href="/apadrinhe">Seja padrinho ou madrinha</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FAIXA WHATSAPP/INSTAGRAM ========================== -->
+    <section class="faixa-redes" aria-labelledby="redes-titulo">
+      <img class="pet-espiando faixa-redes__cao-esq" src="/assets/img/decor/cachorro1.webp" alt="" width="191" height="288" loading="lazy">
+      <div class="container">
+        <div class="faixa-redes__card com-fitas revelar">
+          <h2 id="redes-titulo">Acompanhe a Anjos de Patas de pertinho</h2>
+          <p>Resgates, pedidos de lar temporário, campanhas de castração e animais procurando família. Tudo primeiro no nosso grupo e no Instagram.</p>
+          <div class="grupo-botoes">
+            <a class="btn btn--branco" href="https://chat.whatsapp.com/EZXPNb8ATfT1UnAckykyNl" target="_blank" rel="noopener"><svg data-icone="whatsapp"></svg>Entrar no grupo</a>
+            <a class="btn btn--contorno-claro" href="https://www.instagram.com/anjosdepatasmatipo/" target="_blank" rel="noopener"><svg data-icone="instagram"></svg>@anjosdepatasmatipo</a>
+          </div>
+        </div>
+      </div>
+      <img class="pet-espiando faixa-redes__cao-dir" src="/assets/img/decor/cachorro2.webp" alt="" width="454" height="452" loading="lazy">
+    </section>
+
+    <!-- 9. CONTATO =========================================== -->
+    <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
+      <div class="container contato__grid">
+        <div class="contato__info revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Fale com a gente</p>
+          <h2 id="contato-titulo">Como podemos ajudar?</h2>
+          <p class="lead">Quer adotar, doar, ser voluntário ou viu um animal precisando de ajuda? Mande uma mensagem.</p>
+          <ul class="contato__lista" role="list">
+            <li><svg data-icone="local"></svg><span>Rua E, Bairro Exposição, ao lado do ESF<br>Matipó - MG</span></li>
+            <li><svg data-icone="relogio"></svg><span>Seg. a sex.: 9h às 16h<br>Sáb.: 9h às 12h</span></li>
+            <li><svg data-icone="alerta"></svg><span>Maus-tratos? Denuncie anonimamente pelo <strong>181</strong>.</span></li>
+          </ul>
+        </div>
+
+        <form class="card form contato__form revelar" data-form data-titulo="Contato pelo site" style="--atraso:100ms">
+          <div class="form__linha">
+            <div class="campo">
+              <label for="c-nome">Nome <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <input id="c-nome" name="nome" type="text" autocomplete="name" required aria-describedby="c-nome-erro">
+              <p class="campo__erro" id="c-nome-erro" aria-live="polite"></p>
+            </div>
+            <div class="campo">
+              <label for="c-email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="c-email-erro">
+              <p class="campo__erro" id="c-email-erro" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="form__linha">
+            <div class="campo">
+              <label for="c-tel">Telefone / WhatsApp</label>
+              <input id="c-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-describedby="c-tel-erro">
+              <p class="campo__erro" id="c-tel-erro" aria-live="polite"></p>
+            </div>
+            <div class="campo">
+              <label for="c-assunto">Assunto <span class="obrigatorio" aria-hidden="true">*</span></label>
+              <select id="c-assunto" name="assunto" required aria-describedby="c-assunto-erro">
+                <option value="">Escolha um assunto</option>
+                <option>Doação</option>
+                <option>Adoção</option>
+                <option>Apadrinhamento</option>
+                <option>Voluntariado</option>
+                <option>Denúncia</option>
+                <option>Parcerias</option>
+              </select>
+              <p class="campo__erro" id="c-assunto-erro" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="c-msg">Mensagem <span class="obrigatorio" aria-hidden="true">*</span></label>
+            <textarea id="c-msg" name="mensagem" required minlength="10" aria-describedby="c-msg-ajuda c-msg-erro"></textarea>
+            <p class="campo__ajuda" id="c-msg-ajuda">Em caso de denúncia, informe o endereço e, se puder, mande fotos pelo WhatsApp.</p>
+            <p class="campo__erro" id="c-msg-erro" aria-live="polite"></p>
+          </div>
+          <p class="form__nota"><span aria-hidden="true">*</span> Campos obrigatórios. Usamos seus dados só para responder a esta mensagem.</p>
+          <button class="btn" type="submit">Enviar mensagem<svg data-icone="seta-dir"></svg></button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

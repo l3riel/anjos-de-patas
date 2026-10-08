@@ -29,7 +29,7 @@ Textos marcados com **[PREENCHER]** dependem de informação real da ONG. Imagen
 
 ### Campos de um animal (`data/animais.json`)
 
-```json
+```jsonc
 {
   "id": "thor",                     // vira a URL: /animal?id=thor
   "nome": "Thor",

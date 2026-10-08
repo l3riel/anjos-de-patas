@@ -6,9 +6,58 @@ Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Un
 
 **Site no ar:** https://l3riel.github.io/anjos-de-patas/
 
-## Stack
+## Arquitetura
 
-HTML, CSS e JavaScript puros, sem build. Todos os caminhos são relativos (`css/base.css`, `doe.html`), então o site funciona no GitHub Pages (em subpasta), na Vercel ou em qualquer hospedagem estática.
+```
+Navegador ──► GitHub Pages (HTML, CSS, JS estáticos)
+    │
+    ├──► Supabase REST  (lê animais e textos: tabelas animais e conteudo)
+    └──► admin.html ──► Supabase Auth + banco + Storage (grava, com RLS)
+```
+
+- **Front-end:** HTML, CSS e JavaScript puros, sem build. Todos os caminhos são relativos (`css/base.css`, `doe.html`), então o site funciona no GitHub Pages (em subpasta), na Vercel, no Cloudflare Pages ou em qualquer hospedagem estática.
+- **Back-end:** [Supabase](https://supabase.com) no plano gratuito: PostgreSQL, login do painel, políticas de acesso (RLS) e armazenamento de fotos (1 GB). O site público lê pela API REST; o painel `admin.html` usa o `supabase-js`.
+- **Sem Supabase configurado, nada quebra:** o site lê `data/animais.json` e mantém os textos do HTML. Como configurar: [`supabase/LEIA-ME.md`](supabase/LEIA-ME.md).
+
+### Por que não Next.js?
+
+O estudo de custos ([`docs/custos-e-arquitetura.md`](docs/custos-e-arquitetura.md)) recomenda Next.js + Supabase. Mantivemos o HTML puro com o mesmo Supabase porque: o site já está publicado no GitHub Pages (que não roda Next.js com servidor), o painel e as atualizações em tempo real funcionam igual, e quem mantém o site não precisa aprender React nem um processo de build. Se um dia o site precisar de renderização no servidor (por exemplo, SEO por animal), a migração reaproveita o mesmo banco.
+
+## Painel da ONG
+
+`admin.html` (fora do menu, com `noindex`). Depois de entrar com e-mail e senha, a equipe pode:
+
+- cadastrar, editar e remover animais, com upload de foto (convertida para WebP no navegador);
+- marcar um animal como adotado (ele sai do site, mas fica no histórico);
+- editar textos e números: chave Pix, dados bancários, contadores, ano de fundação, WhatsApp e e-mail.
+
+As mudanças aparecem no site no próximo carregamento da página, sem deploy.
+
+## Custos
+
+| Item | Serviço | Custo |
+| --- | --- | --- |
+| Hospedagem | GitHub Pages (ou Cloudflare Pages / Vercel) | Grátis |
+| Banco, login e fotos | Supabase (plano gratuito) | Grátis |
+| Domínio | Registro.br | cerca de R$ 40/ano |
+
+**Total: cerca de R$ 40 por ano**, só o domínio. Doações por Pix não precisam de gateway de pagamento: o site só mostra a chave e o QR Code.
+
+### Domínio
+
+| Opção | Custo/ano | Requisito |
+| --- | --- | --- |
+| anjosdepatas.org.br | R$ 40 | CNPJ de ONG/associação e comprovação de entidade sem fins lucrativos |
+| anjosdepatas.com.br | R$ 40 | CPF ou CNPJ |
+| anjosdepatas.org | US$ 10 a 15 | Nenhum |
+
+O `.org.br` é o ideal; sem CNPJ, use `.com.br` no CPF de um responsável. **Registre no nome da ONG ou de um responsável dela, nunca no de quem desenvolveu.** Ao trocar o domínio, atualize as URLs do Open Graph, do `canonical`, do `sitemap.xml` e do `robots.txt`.
+
+### Cuidados com os planos gratuitos
+
+- **O Supabase pausa o projeto após cerca de 7 dias sem acesso.** O workflow `.github/workflows/manter-supabase-ativo.yml` faz uma consulta a cada 3 dias. O GitHub desliga workflows agendados após 60 dias sem commits no repositório; se isso acontecer, reative em **Actions**.
+- **O plano Hobby da Vercel é para uso não comercial.** Uma ONG geralmente se encaixa, mas o GitHub Pages e o Cloudflare Pages não têm essa restrição.
+- **1 GB de fotos:** o painel comprime cada foto para cerca de 100 a 200 KB, o que dá espaço para milhares de fotos.
 
 ## Publicação
 
@@ -20,15 +69,16 @@ O GitHub Pages publica automaticamente a branch `main` a cada `git push` (leva 1
 npx serve -l 4173 .
 ```
 
-Abra http://localhost:4173. Use um servidor (e não abrir o arquivo direto) porque as páginas carregam `data/*.json` com `fetch`.
+Abra http://localhost:4173. Use um servidor (e não abrir o arquivo direto) porque as páginas carregam dados com `fetch`.
 
 ## Onde editar
 
-| O quê | Arquivo |
+| O quê | Onde |
 |---|---|
-| Animais para adoção e apadrinhamento | `data/animais.json` |
+| Animais, textos e números (com Supabase) | Painel `admin.html` |
+| Animais para adoção e apadrinhamento (sem Supabase) | `data/animais.json` |
 | Histórias de superação e resgates | `data/historias.json` |
-| Menu, rodapé, WhatsApp, Instagram, e-mail | `js/layout.js` (objeto `ONG` no topo) |
+| Menu, rodapé, WhatsApp, Instagram, e-mail, chaves do Supabase | `js/layout.js` (objeto `ONG` no topo) |
 | Cores, fontes, sombras | `css/base.css` (`:root`) |
 
 Textos marcados com **[PREENCHER]** dependem de informação real da ONG. Imagens com o comentário `TROCAR` são placeholders (Unsplash) e devem ser substituídas por fotos reais em `assets/img/`.
@@ -58,8 +108,11 @@ Textos marcados com **[PREENCHER]** dependem de informação real da ONG. Imagen
 ```
 index.html, doe.html, adote.html, animal.html, apadrinhe.html,
 resgates.html, quem-somos.html, 404.html
-css/   base.css (tokens), components.css, pages.css
-js/    layout.js, main.js, animais.js, form.js
-data/  animais.json, historias.json
+admin.html                       painel da ONG
+css/   base.css (tokens), components.css, pages.css, admin.css
+js/    layout.js, dados.js, main.js, animais.js, form.js, admin.js
+data/  animais.json, historias.json  (reserva quando não há Supabase)
+supabase/  migrations/ (tabelas e RLS), seed.sql, LEIA-ME.md
+docs/  custos-e-arquitetura.md
 assets/img/  brand, decor, icons, fotos, equipe
 ```

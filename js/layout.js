@@ -229,7 +229,7 @@ function montarRodape() {
       </svg>
       <div class="rodape__creditos">
         <p>© ${ano} ${ONG.nome} · ${ONG.cidade}</p>
-        <p>Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix</p>
+        <p><a href="/quem-somos#projeto">Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix</a></p>
       </div>
     </div>
   </footer>

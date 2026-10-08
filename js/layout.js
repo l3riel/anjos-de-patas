@@ -236,7 +236,15 @@ function montarRodape() {
   <a class="whats-flutuante" href="${linkWhatsApp()}" target="_blank" rel="noopener" aria-label="Conversar com a ONG no WhatsApp (abre em nova aba)">${icone("whatsapp")}</a>`;
 }
 
+/* Links marcados com data-whatsapp usam o número configurado em ONG */
+function aplicarLinksWhatsApp() {
+  document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
+    a.href = linkWhatsApp(a.dataset.whatsapp || undefined);
+  });
+}
+
 document.documentElement.classList.add("js");
 montarHeader();
 montarRodape();
 aplicarIcones();
+aplicarLinksWhatsApp();

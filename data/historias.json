@@ -1,0 +1,72 @@
+{
+  "_leia-me": "'superacao' alimenta o carrossel da Home (texto em 1ª pessoa). 'resgates' alimenta a página /resgates (fotos de antes e depois). Itens com 'exemplo': true são textos de exemplo [PREENCHER]: troque pelas histórias reais e mude para false.",
+  "superacao": [
+    {
+      "nome": "Branquinha",
+      "titulo": "Oi, eu sou a Branquinha",
+      "foto": "/assets/img/fotos/cachorro1-600.webp",
+      "alt": "Cachorra branca de roupinha amarela deitada no chão",
+      "texto": "Eu vivia encolhida num canto da praça, com frio e com fome. Um dia, uma moça da Anjos de Patas sentou do meu lado, dividiu um pote de ração comigo e voltou no outro dia, e no outro. Quando confiei, ela me levou para o veterinário. Ganhei vacina, banho, uma roupinha amarela e um nome. Hoje eu sei o que é dormir quentinha.",
+      "exemplo": true
+    },
+    {
+      "nome": "Bolt",
+      "titulo": "Oi, eu sou o Bolt",
+      "foto": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=450&fit=crop&q=70&auto=format",
+      "alt": "Cachorro branco com manchas marrons sorrindo",
+      "texto": "Fui atropelado numa estrada perto de Matipó e ninguém parou. Alguém ligou para a ONG e, em menos de uma hora, eu estava sendo atendido. Foram semanas de curativo e fisioterapia. Hoje eu corro de novo, e mais rápido do que antes!",
+      "exemplo": true
+    },
+    {
+      "nome": "Luna",
+      "titulo": "Oi, eu sou a Luna",
+      "foto": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&h=450&fit=crop&q=70&auto=format",
+      "alt": "Gata preta e branca com as patinhas apoiadas numa mesa",
+      "texto": "Minha mãe era uma gata de rua e eu nasci embaixo de um carro. Os voluntários castraram minha mãe para que outras ninhadas não sofressem como eu, e me levaram para um lar temporário. Aprendi que mão humana também faz carinho.",
+      "exemplo": true
+    },
+    {
+      "nome": "Café",
+      "titulo": "Oi, eu sou o Café",
+      "foto": "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=450&fit=crop&q=70&auto=format",
+      "alt": "Cachorro marrom de olhos cor de mel",
+      "texto": "Depois de dez anos com uma família, me deixaram amarrado num poste. Meu coração está cansado, mas tenho padrinhos que pagam meu remédio todo mês. Ainda sonho com um sofá só meu. Será que é o seu?",
+      "exemplo": true
+    }
+  ],
+  "resgates": [
+    {
+      "id": "abrigo-improvisado",
+      "titulo": "Os 12 do terreno baldio",
+      "data": "[PREENCHER] mês/ano",
+      "resumo": "Doze cães viviam presos num terreno sem água nem sombra. Em um mutirão, voluntários limparam o espaço, levaram todos ao veterinário e castraram cada um deles. Hoje, oito já foram adotados.",
+      "antes": "/assets/img/fotos/ong2-600.webp",
+      "antesAlt": "Cães num terreno de terra batida com cercado de madeira",
+      "depois": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=800&fit=crop&q=70&auto=format",
+      "depoisAlt": "Dois cães saudáveis correndo juntos ao ar livre",
+      "exemplo": true
+    },
+    {
+      "id": "ninhada-da-chuva",
+      "titulo": "A ninhada da enchente",
+      "data": "[PREENCHER] mês/ano",
+      "resumo": "Depois de uma noite de temporal, uma moradora encontrou seis filhotes dentro de uma valeta. Todos passaram por tratamento contra verminose e foram para lares temporários até a adoção.",
+      "antes": "/assets/img/fotos/ong1-600.webp",
+      "antesAlt": "Filhotes num ambiente escuro e úmido",
+      "depois": "https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?w=600&h=800&fit=crop&q=70&auto=format",
+      "depoisAlt": "Filhote saudável deitado na grama",
+      "exemplo": true
+    },
+    {
+      "id": "quintal-abandonado",
+      "titulo": "O quintal abandonado",
+      "data": "[PREENCHER] mês/ano",
+      "resumo": "Uma denúncia anônima levou a equipe a uma casa vazia onde cães esperavam pelos donos que não voltaram. Eles receberam atendimento, vacinas e castração. Alguns ainda procuram um lar.",
+      "antes": "/assets/img/fotos/ong3-600.webp",
+      "antesAlt": "Quintal de terra com cães ao fundo e uma casa simples",
+      "depois": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=800&fit=crop&q=70&auto=format",
+      "depoisAlt": "Cachorro brincando com um brinquedo dentro de casa",
+      "exemplo": true
+    }
+  ]
+}

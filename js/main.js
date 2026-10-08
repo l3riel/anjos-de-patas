@@ -152,7 +152,29 @@ function iniciarHero() {
   tocar();
 }
 
+/* ---------- Botão copiar (chave Pix) ---------- */
+function iniciarCopiar() {
+  document.querySelectorAll("[data-copiar]").forEach((botao) => {
+    botao.addEventListener("click", async () => {
+      const origem = document.querySelector(botao.dataset.copiar);
+      const status = botao.parentElement.querySelector("[role=status]");
+      const texto = origem.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(texto);
+        status.className = "form__status form__status--ok";
+        status.textContent = "Chave copiada! Agora é só colar no app do seu banco.";
+      } catch {
+        // Sem permissão de área de transferência: seleciona o texto para copiar à mão
+        getSelection().selectAllChildren(origem);
+        status.className = "form__status form__status--ok";
+        status.textContent = "Chave selecionada. Use Ctrl+C (ou segure e copie) para copiar.";
+      }
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  iniciarCopiar();
   observarRevelar();
   iniciarContadores();
   iniciarHero();

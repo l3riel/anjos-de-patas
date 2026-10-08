@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faça uma doação | ONG Anjos de Patas</title>
+  <meta name="description" content="Doe por Pix, depósito ou com ração e itens. Sua ajuda vira resgate, tratamento e castração de cães e gatos em Matipó - MG.">
+  <link rel="canonical" href="https://anjos-de-patas.vercel.app/doe">
+  <meta name="theme-color" content="#78114F">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="ONG Anjos de Patas">
+  <meta property="og:title" content="Faça uma doação | ONG Anjos de Patas">
+  <meta property="og:description" content="Pix, depósito, ração e itens: tudo vira cuidado para os animais resgatados em Matipó - MG.">
+  <meta property="og:url" content="https://anjos-de-patas.vercel.app/doe">
+  <meta property="og:image" content="https://anjos-de-patas.vercel.app/assets/img/brand/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/img/brand/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/img/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <script src="/js/layout.js" defer></script>
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <section class="pagina-topo">
+      <img class="pagina-topo__pet pet-espiando" src="/assets/img/decor/cachorro2.webp" alt="" width="454" height="452">
+      <div class="container">
+        <ol class="pagina-topo__trilha" aria-label="Você está em">
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Faça uma doação</li>
+        </ol>
+        <h1>Sua doação vira uma segunda chance</h1>
+        <p class="lead">Não recebemos verba pública. Cada resgate, consulta, remédio e castração é pago com a ajuda de pessoas como você.</p>
+      </div>
+    </section>
+
+    <!-- PIX + DADOS BANCÁRIOS -->
+    <section class="secao" aria-labelledby="pix-titulo">
+      <div class="container doe__grid">
+        <article class="card doe-pix com-fitas revelar">
+          <p class="sobretitulo"><svg data-icone="coracao"></svg>Jeito mais rápido</p>
+          <h2 id="pix-titulo">Doe por Pix</h2>
+          <p>Abra o app do seu banco, escolha <strong>Pix</strong> e use a chave ou o QR Code. Qualquer valor faz diferença.</p>
+
+          <div class="doe-pix__conteudo">
+            <!-- TROCAR: substitua o bloco abaixo por <img src="/assets/img/brand/qrcode-pix.png" alt="QR Code Pix da ONG Anjos de Patas"> -->
+            <div class="qr-placeholder" role="img" aria-label="Espaço para o QR Code do Pix">
+              <span>QR Code<br><span class="preencher">[PREENCHER]</span></span>
+            </div>
+            <div class="doe-pix__chave">
+              <p class="doe-pix__rotulo">Chave Pix (CNPJ)</p>
+              <!-- [PREENCHER] chave Pix real no texto e no data-copiar -->
+              <p class="doe-pix__valor" id="chave-pix">[PREENCHER] 00.000.000/0001-00</p>
+              <button class="btn btn--pequeno" type="button" data-copiar="#chave-pix"><svg data-icone="copiar"></svg>Copiar chave</button>
+              <p class="doe-pix__favorecido">Favorecido: <strong>ONG Anjos de Patas</strong> <span class="preencher">[PREENCHER] razão social</span></p>
+              <p class="form__status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card doe-banco revelar" style="--atraso:100ms">
+          <span class="doe-banco__icone"><svg data-icone="banco"></svg></span>
+          <h2>Transferência ou depósito</h2>
+          <dl class="dados-lista">
+            <div><dt>Banco</dt><dd><span class="preencher">[PREENCHER]</span></dd></div>
+            <div><dt>Agência</dt><dd><span class="preencher">[PREENCHER]</span></dd></div>
+            <div><dt>Conta corrente</dt><dd><span class="preencher">[PREENCHER]</span></dd></div>
+            <div><dt>CNPJ</dt><dd><span class="preencher">[PREENCHER]</span></dd></div>
+            <div><dt>Titular</dt><dd>ONG Anjos de Patas</dd></div>
+          </dl>
+          <p class="doe-banco__nota">Quer recibo? Mande o comprovante pelo <a href="/#contato">formulário de contato</a> ou pelo WhatsApp.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PARA ONDE VAI -->
+    <section class="secao secao--suave" aria-labelledby="impacto-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Para onde vai sua doação</p>
+          <h2 id="impacto-titulo">Veja o que cada valor faz</h2>
+          <p>Valores aproximados para você ter uma ideia. <span class="preencher">[PREENCHER] confirmar com os custos reais</span></p>
+        </div>
+        <ul class="impacto" role="list">
+          <li class="card impacto__item revelar">
+            <p class="impacto__valor">R$ 20</p>
+            <p>compram vermífugo e antipulgas para um animal recém-resgatado.</p>
+          </li>
+          <li class="card impacto__item revelar" style="--atraso:60ms">
+            <p class="impacto__valor">R$ 50</p>
+            <p>garantem um saco de ração para alimentar os comedouros comunitários.</p>
+          </li>
+          <li class="card impacto__item impacto__item--destaque revelar" style="--atraso:120ms">
+            <p class="impacto__valor">R$ 100</p>
+            <p>ajudam a pagar a vacinação completa de um filhote.</p>
+          </li>
+          <li class="card impacto__item revelar" style="--atraso:180ms">
+            <p class="impacto__valor">R$ 200</p>
+            <p>cobrem boa parte de uma castração, que evita dezenas de abandonos.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DOAÇÃO DE ITENS -->
+    <section class="secao" aria-labelledby="itens-titulo">
+      <div class="container itens__grid">
+        <div class="revelar">
+          <p class="sobretitulo"><svg data-icone="pacote"></svg>Doação de itens</p>
+          <h2 id="itens-titulo">Ração e itens também salvam vidas</h2>
+          <p class="lead">Se preferir doar produtos, estes são os que mais usamos no dia a dia:</p>
+          <ul class="lista-check" role="list">
+            <li><svg data-icone="check"></svg>Ração para cães e gatos (adultos e filhotes)</li>
+            <li><svg data-icone="check"></svg>Medicamentos, curativos e seringas</li>
+            <li><svg data-icone="check"></svg>Cobertores, toalhas e caminhas</li>
+            <li><svg data-icone="check"></svg>Casinhas, comedouros e bebedouros</li>
+            <li><svg data-icone="check"></svg>Areia higiênica e produtos de limpeza</li>
+            <li><svg data-icone="check"></svg>Coleiras, guias e brinquedos</li>
+          </ul>
+        </div>
+
+        <div class="revelar" style="--atraso:100ms">
+          <h3 class="pontos__titulo">Pontos de coleta em Matipó</h3>
+          <ul class="pontos" role="list">
+            <li class="card ponto">
+              <span class="ponto__icone"><svg data-icone="local"></svg></span>
+              <div>
+                <h4>Sede da ONG</h4>
+                <p>Rua E, Bairro Exposição, ao lado do ESF</p>
+                <p class="ponto__hora">Seg. a sex.: 9h às 16h · Sáb.: 9h às 12h</p>
+              </div>
+            </li>
+            <li class="card ponto">
+              <span class="ponto__icone"><svg data-icone="local"></svg></span>
+              <div>
+                <h4><span class="preencher">[PREENCHER] Nome do parceiro</span></h4>
+                <p><span class="preencher">[PREENCHER] Endereço</span></p>
+                <p class="ponto__hora"><span class="preencher">[PREENCHER] Horário</span></p>
+              </div>
+            </li>
+            <li class="card ponto">
+              <span class="ponto__icone"><svg data-icone="local"></svg></span>
+              <div>
+                <h4><span class="preencher">[PREENCHER] Nome do parceiro</span></h4>
+                <p><span class="preencher">[PREENCHER] Endereço</span></p>
+                <p class="ponto__hora"><span class="preencher">[PREENCHER] Horário</span></p>
+              </div>
+            </li>
+          </ul>
+          <p class="pontos__nota">Não consegue levar? <a href="/#contato">Fale com a gente</a> que combinamos a retirada.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTRAS FORMAS -->
+    <section class="secao secao--suave" aria-labelledby="outras-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Sem dinheiro? Tudo bem</p>
+          <h2 id="outras-titulo">Outras formas de ajudar</h2>
+        </div>
+        <ul class="outras" role="list">
+          <li class="card outras__item revelar"><svg data-icone="pessoas"></svg><h3>Seja voluntário</h3><p>Ajude nos resgates, eventos, transporte, fotos ou divulgação.</p></li>
+          <li class="card outras__item revelar" style="--atraso:60ms"><svg data-icone="casa"></svg><h3>Ofereça lar temporário</h3><p>Abrigue um animal enquanto ele se recupera e espera a adoção.</p></li>
+          <li class="card outras__item revelar" style="--atraso:120ms"><svg data-icone="instagram"></svg><h3>Divulgue</h3><p>Compartilhar nossas publicações ajuda um animal a achar família.</p></li>
+          <li class="card outras__item revelar" style="--atraso:180ms"><svg data-icone="estrela"></svg><h3>Organize um evento</h3><p>Brechós, bingos e rifas beneficentes ajudam muito a ONG.</p></li>
+        </ul>
+        <div class="secao__rodape">
+          <a class="btn" href="/#contato">Quero ajudar de outro jeito</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="secao" aria-labelledby="faq-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <h2 id="faq-titulo">Dúvidas sobre doações</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Como sei que minha doação chega aos animais?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Publicamos a prestação de contas na seção <a href="/quem-somos#transparencia">Transparência</a> e mostramos os resgates no Instagram.</p></div>
+          </details>
+          <details>
+            <summary>A ONG emite recibo?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Sim. Envie o comprovante com seu nome e CPF/CNPJ pelo contato. <span class="preencher">[PREENCHER] confirmar</span></p></div>
+          </details>
+          <details>
+            <summary>Posso doar todo mês?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Pode, e isso ajuda muito a planejar os tratamentos. Agende um Pix recorrente no app do seu banco ou <a href="/apadrinhe">apadrinhe um animal</a>.</p></div>
+          </details>
+          <details>
+            <summary>Ração aberta ou vencida serve?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Ração aberta serve se estiver bem fechada e seca. Ração e remédios vencidos não podem ser usados.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

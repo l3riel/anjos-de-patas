@@ -4,9 +4,15 @@ Site institucional da ONG Anjos de Patas, que resgata, trata e encaminha para ad
 
 Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix.
 
+**Site no ar:** https://l3riel.github.io/anjos-de-patas/
+
 ## Stack
 
-HTML, CSS e JavaScript puros, sem build. O deploy é estático na Vercel (`vercel.json` com `cleanUrls`, então `doe.html` responde em `/doe`).
+HTML, CSS e JavaScript puros, sem build. Todos os caminhos são relativos (`css/base.css`, `doe.html`), então o site funciona no GitHub Pages (em subpasta), na Vercel ou em qualquer hospedagem estática.
+
+## Publicação
+
+O GitHub Pages publica automaticamente a branch `main` a cada `git push` (leva 1 ou 2 minutos). O arquivo `.nojekyll` desliga o processamento Jekyll, que não é usado.
 
 ## Rodar localmente
 
@@ -31,14 +37,14 @@ Textos marcados com **[PREENCHER]** dependem de informação real da ONG. Imagen
 
 ```jsonc
 {
-  "id": "thor",                     // vira a URL: /animal?id=thor
+  "id": "thor",                     // vira a URL: animal.html?id=thor
   "nome": "Thor",
   "especie": "cachorro",            // cachorro | gato
   "sexo": "macho",                  // macho | femea
   "porte": "medio",                 // pequeno | medio | grande
   "idade": "adulto",                // filhote | adulto | idoso
   "idadeTexto": "3 anos",
-  "foto": "assets/img/fotos/thor.webp",
+  "foto": "assets/img/fotos/thor.webp",   // caminho relativo, sem "/" no início
   "castrado": true,
   "vacinado": true,
   "disponivelAdocao": true,

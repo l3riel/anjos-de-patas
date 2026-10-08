@@ -95,18 +95,20 @@ function aplicarIcones(raiz = document) {
 }
 
 const MENU = [
-  { href: "/adote", texto: "Adote" },
-  { href: "/apadrinhe", texto: "Apadrinhe" },
-  { href: "/resgates", texto: "Resgates" },
-  { href: "/quem-somos", texto: "Quem somos" },
-  { href: "/#contato", texto: "Contato" },
+  { href: "adote.html", texto: "Adote" },
+  { href: "apadrinhe.html", texto: "Apadrinhe" },
+  { href: "resgates.html", texto: "Resgates" },
+  { href: "quem-somos.html", texto: "Quem somos" },
+  { href: "index.html#contato", texto: "Contato" },
 ];
 
+/* Nome da página atual ("adote", "doe"...), funcione o site com ou sem ".html" na URL */
 function paginaAtual(href) {
-  const atual = location.pathname.replace(/\.html$/, "").replace(/\/$/, "") || "/";
-  if (href === "/animal") return false;
-  if (atual === "/animal") return href === "/adote";
-  return href === atual;
+  const nome = (h) => h.split(/[?#]/)[0].split("/").pop().replace(/\.html$/, "") || "index";
+  const atual = nome(location.pathname);
+  if (href.includes("#")) return false;
+  if (atual === "animal") return nome(href) === "adote";
+  return nome(href) === atual;
 }
 
 function sociais() {
@@ -126,14 +128,14 @@ function montarHeader() {
   alvo.outerHTML = `
   <header class="topo">
     <div class="container topo__inner">
-      <a class="topo__logo" href="/" aria-label="Anjos de Patas, página inicial">
-        <img src="/assets/img/brand/logo.webp" alt="ONG Anjos de Patas" width="176" height="165">
+      <a class="topo__logo" href="index.html" aria-label="Anjos de Patas, página inicial">
+        <img src="assets/img/brand/logo.webp" alt="ONG Anjos de Patas" width="176" height="165">
       </a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
         ${icone("menu", "icone icone-menu")}${icone("fechar", "icone icone-fechar")}
       </button>
       <nav class="nav" id="menu-principal" aria-label="Menu principal">
-        <a class="btn nav__doar" href="/doe"${paginaAtual("/doe") ? ' aria-current="page"' : ""}>${icone("coracao")}Faça uma doação</a>
+        <a class="btn nav__doar" href="doe.html"${paginaAtual("doe.html") ? ' aria-current="page"' : ""}>${icone("coracao")}Faça uma doação</a>
         <ul class="nav__lista" role="list">${links}</ul>
         <div class="nav__sociais">${sociais()}</div>
       </nav>
@@ -182,27 +184,27 @@ function montarRodape() {
   <footer class="rodape">
     <div class="container rodape__grid">
       <div class="rodape__marca">
-        <img src="/assets/img/brand/logo.webp" alt="ONG Anjos de Patas" width="176" height="165" loading="lazy">
+        <img src="assets/img/brand/logo.webp" alt="ONG Anjos de Patas" width="176" height="165" loading="lazy">
         <p>Resgatamos, tratamos e encontramos lares cheios de amor para cães e gatos de rua em ${ONG.cidade}.</p>
         <div class="rodape__sociais">${sociais()}</div>
       </div>
       <nav aria-label="Links do rodapé">
         <h2>Navegue</h2>
         <ul class="rodape__links" role="list">
-          <li><a href="/">Início</a></li>
-          <li><a href="/quem-somos">Quem somos</a></li>
-          <li><a href="/resgates">Resgates</a></li>
-          <li><a href="/quem-somos#transparencia">Transparência</a></li>
-          <li><a href="/#contato">Contato</a></li>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="quem-somos.html">Quem somos</a></li>
+          <li><a href="resgates.html">Resgates</a></li>
+          <li><a href="quem-somos.html#transparencia">Transparência</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
         </ul>
       </nav>
       <nav aria-label="Como ajudar">
         <h2>Como ajudar</h2>
         <ul class="rodape__links" role="list">
-          <li><a href="/doe">Faça uma doação</a></li>
-          <li><a href="/adote">Adote</a></li>
-          <li><a href="/apadrinhe">Apadrinhe</a></li>
-          <li><a href="/#contato">Seja voluntário</a></li>
+          <li><a href="doe.html">Faça uma doação</a></li>
+          <li><a href="adote.html">Adote</a></li>
+          <li><a href="apadrinhe.html">Apadrinhe</a></li>
+          <li><a href="index.html#contato">Seja voluntário</a></li>
         </ul>
       </nav>
       <div>
@@ -219,9 +221,9 @@ function montarRodape() {
 
     <div class="rodape__base">
       <div class="rodape__pets" aria-hidden="true">
-        <img class="pet-gato" src="/assets/img/decor/gato-footer.webp" alt="" width="427" height="332" loading="lazy">
-        <img class="pet-casa" src="/assets/img/decor/casa.webp" alt="" width="454" height="454" loading="lazy">
-        <img class="pet-cachorro" src="/assets/img/decor/cachorro-footer.webp" alt="" width="353" height="310" loading="lazy">
+        <img class="pet-gato" src="assets/img/decor/gato-footer.webp" alt="" width="427" height="332" loading="lazy">
+        <img class="pet-casa" src="assets/img/decor/casa.webp" alt="" width="454" height="454" loading="lazy">
+        <img class="pet-cachorro" src="assets/img/decor/cachorro-footer.webp" alt="" width="353" height="310" loading="lazy">
       </div>
       <svg class="rodape__ondas" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path fill="#9C3573" d="M0 120C240 40 480 18 720 70s480 50 720-40v190H0Z"/>
@@ -229,7 +231,7 @@ function montarRodape() {
       </svg>
       <div class="rodape__creditos">
         <p>© ${ano} ${ONG.nome} · ${ONG.cidade}</p>
-        <p><a href="/quem-somos#projeto">Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix</a></p>
+        <p><a href="quem-somos.html#projeto">Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix</a></p>
       </div>
     </div>
   </footer>

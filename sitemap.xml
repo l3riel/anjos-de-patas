@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://anjos-de-patas.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://anjos-de-patas.vercel.app/doe</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://anjos-de-patas.vercel.app/adote</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://anjos-de-patas.vercel.app/apadrinhe</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://anjos-de-patas.vercel.app/resgates</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://anjos-de-patas.vercel.app/quem-somos</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://l3riel.github.io/anjos-de-patas/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://l3riel.github.io/anjos-de-patas/doe.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://l3riel.github.io/anjos-de-patas/adote.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://l3riel.github.io/anjos-de-patas/apadrinhe.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://l3riel.github.io/anjos-de-patas/resgates.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://l3riel.github.io/anjos-de-patas/quem-somos.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

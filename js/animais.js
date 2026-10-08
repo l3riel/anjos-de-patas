@@ -24,8 +24,8 @@ function carregarJson(url) {
   return cacheJson[url];
 }
 
-const carregarAnimais = () => carregarJson("/data/animais.json").then((d) => d.animais);
-const carregarHistorias = () => carregarJson("/data/historias.json");
+const carregarAnimais = () => carregarJson("data/animais.json").then((d) => d.animais);
+const carregarHistorias = () => carregarJson("data/historias.json");
 
 function artigo(a) {
   return a.sexo === "femea" ? "a" : "o";
@@ -36,7 +36,7 @@ function seloExemplo(item) {
 }
 
 function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
-  const href = `/animal?id=${encodeURIComponent(a.id)}`;
+  const href = `animal.html?id=${encodeURIComponent(a.id)}`;
   const selos = [
     modo !== "padrinho" && a.precisaPadrinho ? `<span class="selo">${icone("coracao")}Precisa de padrinho</span>` : "",
     modo === "padrinho" && !a.disponivelAdocao ? '<span class="selo">Em tratamento</span>' : "",
@@ -54,7 +54,7 @@ function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
       <div class="animal-card__selos">${selos}</div>
     </div>
     <div class="animal-card__corpo">
-      <h3 class="animal-card__nome"><a href="${modo === "padrinho" ? `/apadrinhe?animal=${encodeURIComponent(a.id)}#formulario` : href}">${esc(a.nome)}</a></h3>
+      <h3 class="animal-card__nome"><a href="${modo === "padrinho" ? `apadrinhe.html?animal=${encodeURIComponent(a.id)}#formulario` : href}">${esc(a.nome)}</a></h3>
       <ul class="tags" role="list" aria-label="Características">
         <li>${esc(a.idadeTexto || ROTULOS.idade[a.idade])}</li>
         <li>${ROTULOS.porte[a.porte]}</li>
@@ -106,7 +106,7 @@ async function montarHistorias() {
             ${seloExemplo(h)}
             <h3>${esc(h.titulo)}</h3>
             <p>${esc(h.texto)}</p>
-            <a class="btn btn--pequeno" href="/doe">${icone("coracao")}Doar agora</a>
+            <a class="btn btn--pequeno" href="doe.html">${icone("coracao")}Doar agora</a>
           </div>
         </article>
       </li>`
@@ -198,7 +198,7 @@ async function montarDetalhe() {
       <div class="vazio">
         <h1>Não encontramos este animal</h1>
         <p>Talvez ele já tenha sido adotado. Que notícia boa!</p>
-        <a class="btn" href="/adote">Ver animais para adoção</a>
+        <a class="btn" href="adote.html">Ver animais para adoção</a>
       </div>`;
     return;
   }
@@ -239,7 +239,7 @@ async function montarDetalhe() {
         </ul>
         <div class="grupo-botoes">
           ${a.disponivelAdocao ? `<a class="btn" href="#interesse">${icone("coracao")}Quero adotar ${o} ${esc(a.nome)}</a>` : ""}
-          ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="/apadrinhe?animal=${encodeURIComponent(a.id)}#formulario">Quero apadrinhar</a>` : ""}
+          ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="apadrinhe.html?animal=${encodeURIComponent(a.id)}#formulario">Quero apadrinhar</a>` : ""}
         </div>
         ${!a.disponivelAdocao ? `<p class="detalhe__aviso">${o === "a" ? "Ela" : "Ele"} ainda está em tratamento e logo fica disponível para adoção. Enquanto isso, você pode apadrinhar.</p>` : ""}
       </div>
@@ -325,7 +325,7 @@ async function montarResgates() {
           <p class="resgate__data">${icone("relogio")}${esc(r.data)}</p>
           <h2>${esc(r.titulo)}</h2>
           <p>${esc(r.resumo)}</p>
-          <a class="btn btn--pequeno" href="/doe">${icone("coracao")}Ajude o próximo resgate</a>
+          <a class="btn btn--pequeno" href="doe.html">${icone("coracao")}Ajude o próximo resgate</a>
         </div>
       </article>`
       )

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anjos-de-patas.vercel.app/sitemap.xml
+Sitemap: https://l3riel.github.io/anjos-de-patas/sitemap.xml

@@ -1,0 +1,31 @@
+# O Supabase gratuito pausa o projeto após ~7 dias sem acesso.
+# Esta consulta leve a cada 3 dias mantém o banco ativo.
+# Precisa dos secrets SUPABASE_URL e SUPABASE_ANON_KEY (veja supabase/LEIA-ME.md).
+name: Manter Supabase ativo
+
+on:
+  schedule:
+    - cron: "0 12 */3 * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Consultar a tabela de animais
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "Secrets do Supabase ainda não configurados; nada a fazer."
+            exit 0
+          fi
+          curl --fail --silent --show-error -o /dev/null \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            "$SUPABASE_URL/rest/v1/animais?select=id&limit=1"
+          echo "Supabase respondeu."

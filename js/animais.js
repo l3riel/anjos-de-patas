@@ -300,7 +300,45 @@ async function montarApadrinhe() {
   });
 }
 
+/* /resgates: histórias com fotos de antes e depois */
+async function montarResgates() {
+  const alvo = document.querySelector("[data-resgates]");
+  if (!alvo) return;
+  try {
+    const { resgates } = await carregarHistorias();
+    alvo.innerHTML = resgates
+      .map(
+        (r) => `
+      <article class="resgate revelar" id="${esc(r.id)}">
+        <div class="resgate__fotos">
+          <figure>
+            <img src="${esc(r.antes)}" alt="Antes: ${esc(r.antesAlt)}" width="450" height="600" loading="lazy" decoding="async">
+            <figcaption>Antes</figcaption>
+          </figure>
+          <figure>
+            <img src="${esc(r.depois)}" alt="Depois: ${esc(r.depoisAlt)}" width="450" height="600" loading="lazy" decoding="async">
+            <figcaption>Depois</figcaption>
+          </figure>
+        </div>
+        <div class="resgate__texto">
+          ${seloExemplo(r)}
+          <p class="resgate__data">${icone("relogio")}${esc(r.data)}</p>
+          <h2>${esc(r.titulo)}</h2>
+          <p>${esc(r.resumo)}</p>
+          <a class="btn btn--pequeno" href="/doe">${icone("coracao")}Ajude o próximo resgate</a>
+        </div>
+      </article>`
+      )
+      .join("");
+    observarRevelar(alvo);
+  } catch (e) {
+    console.error(e);
+    erroCarregamento(alvo, "Não foi possível carregar os resgates agora.");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  montarResgates();
   montarApadrinhe();
   montarAnimaisHome();
   montarHistorias();

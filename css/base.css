@@ -98,6 +98,11 @@ main {
   flex: 1;
 }
 
+/* Garante que o atributo hidden vença classes com display próprio */
+[hidden] {
+  display: none !important;
+}
+
 img,
 svg,
 video {

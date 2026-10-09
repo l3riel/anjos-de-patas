@@ -34,3 +34,8 @@ insert into public.conteudo (chave, rotulo, grupo, ordem) values
   ('whatsapp_texto', 'WhatsApp como aparece no site', 'Contato', 140),
   ('email', 'E-mail da ONG', 'Contato', 150)
 on conflict (chave) do nothing;
+
+-- Dados públicos do CNPJ (Receita Federal, consultados em 2026-10-09)
+update public.conteudo set valor = '2019' where chave = 'ano_fundacao' and valor = '';
+update public.conteudo set valor = '35.761.357/0001-77' where chave = 'cnpj' and valor = '';
+update public.conteudo set valor = 'Anjos de Patas Matipó - APM' where chave = 'pix_favorecido' and valor = '';

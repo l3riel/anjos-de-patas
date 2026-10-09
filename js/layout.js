@@ -5,6 +5,8 @@
 
 const ONG = {
   nome: "ONG Anjos de Patas",
+  razaoSocial: "Anjos de Patas Matipó - APM",
+  cnpj: "35.761.357/0001-77",
   cidade: "Matipó - MG",
   endereco: "Rua E, Bairro Exposição, ao lado do ESF",
   // [PREENCHER] número com DDI+DDD, só dígitos (ex.: "5531999999999").
@@ -235,7 +237,7 @@ function montarRodape() {
         <path fill="#78114F" d="M0 175C200 95 420 82 640 132s480 48 800-42v130H0Z"/>
       </svg>
       <div class="rodape__creditos">
-        <p>© ${ano} ${ONG.nome} · ${ONG.cidade}</p>
+        <p>© ${ano} ${ONG.razaoSocial} · CNPJ ${ONG.cnpj} · ${ONG.cidade}</p>
         <p><a href="quem-somos.html#projeto">Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix</a></p>
       </div>
     </div>

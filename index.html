@@ -32,7 +32,6 @@
   <script src="js/dados.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/animais.js" defer></script>
-  <script src="js/form.js" defer></script>
 </head>
 <body>
   <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
@@ -83,26 +82,38 @@
 
     <!-- 2. CARDS DE AÇÃO ===================================== -->
     <section class="acoes" aria-label="Como você pode ajudar">
-      <div class="container acoes__grid">
-        <article class="card acao-card revelar">
-          <div class="acao-card__icone"><img src="assets/img/icons/icone3.webp" alt="" width="105" height="105"></div>
-          <h2>Faça uma doação</h2>
-          <p>Pix, depósito ou ração: tudo vira cuidado para quem ainda está na rua.</p>
-          <a class="btn btn--pequeno" href="doe.html">Quero doar</a>
-        </article>
-        <article class="card acao-card acao-card--destaque revelar" style="--atraso:80ms">
-          <div class="acao-card__icone"><img src="assets/img/icons/icone2.webp" alt="" width="146" height="105"></div>
-          <h2>Seja padrinho ou madrinha</h2>
-          <p>Custeie todo mês a ração e os remédios de um animal em tratamento.</p>
-          <a class="btn btn--branco btn--pequeno" href="apadrinhe.html">Quero apadrinhar</a>
-        </article>
-        <article class="card acao-card revelar" style="--atraso:160ms">
-          <div class="acao-card__icone"><img src="assets/img/icons/icone1.webp" alt="" width="105" height="105"></div>
-          <h2>Quero adotar</h2>
-          <p>Conheça quem está esperando por você e faça uma adoção responsável.</p>
-          <a class="btn btn--pequeno" href="adote.html">Ver animais</a>
-        </article>
-      </div>
+      <ul class="container acoes__grid" role="list">
+        <li class="revelar">
+          <a class="card acao-card" href="doe.html">
+            <span class="acao-card__icone"><img src="assets/img/icons/icone3.webp" alt="" width="105" height="105"></span>
+            <span class="acao-card__texto">
+              <h2>Faça uma doação</h2>
+              <span>Pix ou ração: tudo vira cuidado para quem ainda está na rua.</span>
+            </span>
+            <span class="acao-card__cta">Quero doar<svg data-icone="seta-dir"></svg></span>
+          </a>
+        </li>
+        <li class="revelar" style="--atraso:60ms">
+          <a class="card acao-card acao-card--destaque" href="apadrinhe.html">
+            <span class="acao-card__icone"><img src="assets/img/icons/icone2.webp" alt="" width="146" height="105"></span>
+            <span class="acao-card__texto">
+              <h2>Seja padrinho ou madrinha</h2>
+              <span>Ajude todo mês com a ração e os remédios de um animal.</span>
+            </span>
+            <span class="acao-card__cta">Quero apadrinhar<svg data-icone="seta-dir"></svg></span>
+          </a>
+        </li>
+        <li class="revelar" style="--atraso:120ms">
+          <a class="card acao-card" href="adote.html">
+            <span class="acao-card__icone"><img src="assets/img/icons/icone1.webp" alt="" width="105" height="105"></span>
+            <span class="acao-card__texto">
+              <h2>Quero adotar</h2>
+              <span>Conheça quem está esperando por um lar de verdade.</span>
+            </span>
+            <span class="acao-card__cta">Ver animais<svg data-icone="seta-dir"></svg></span>
+          </a>
+        </li>
+      </ul>
     </section>
 
     <!-- 3. SOBRE ============================================= -->
@@ -115,17 +126,20 @@
           <p>Com o apoio do <strong>Dr. Salvador Sabino</strong>, o projeto cresceu e virou ONG. Hoje resgatamos animais feridos e em situação de risco, castramos para frear o abandono e acompanhamos cada adoção, guiados pelas leis de proteção animal.</p>
           <p>Somos uma equipe pequena, movida por amor e pela certeza de que cada vida importa, uma pata de cada vez.</p>
           <ul class="sobre__fatos" role="list">
-            <li><strong><span data-conteudo="ano_fundacao">2019</span></strong><span>ano de fundação</span></li>
-            <li><strong><span class="preencher" data-conteudo="voluntarios">[PREENCHER]</span></strong><span>voluntários ativos</span></li>
-            <li><strong><span class="preencher" data-conteudo="comedouros">[PREENCHER]</span></strong><span>comedouros na cidade</span></li>
+            <li><strong data-conteudo="ano_fundacao">2019</strong><span>ano de fundação</span></li>
+            <li><strong>Matipó</strong><span>onde atuamos, em MG</span></li>
+            <!-- Aparecem quando preenchidos no painel (admin.html) -->
+            <li data-requer="voluntarios" hidden><strong data-conteudo="voluntarios"></strong><span>voluntários ativos</span></li>
+            <li data-requer="comedouros" hidden><strong data-conteudo="comedouros"></strong><span>comedouros na cidade</span></li>
           </ul>
           <a class="btn btn--contorno" href="quem-somos.html">Conheça nossa história</a>
         </div>
-        <figure class="sobre__foto revelar" style="--atraso:120ms">
-          <!-- TROCAR: o arquivo fundadora.png do site antigo mostra um cachorro; coloque aqui a foto da Dra. Joice -->
-          <img src="assets/img/equipe/fundadora.webp" alt="Cachorro spitz preto em moldura com formas roxas e azuis" width="205" height="202" loading="lazy">
-          <figcaption><strong>Dra. Joice</strong> idealizadora do projeto <span class="preencher">[PREENCHER] foto</span></figcaption>
-        </figure>
+        <div class="sobre__fotos revelar" style="--atraso:120ms">
+          <!-- TROCAR quando houver: foto da Dra. Joice ou da equipe -->
+          <img class="sobre__foto-grande" src="assets/img/fotos/ong2-600.webp" alt="Cães resgatados descansando no espaço da ONG" width="450" height="600" loading="lazy">
+          <img class="sobre__foto-pequena" src="assets/img/fotos/cachorro1-600.webp" alt="Cachorra resgatada usando uma roupinha amarela" width="450" height="600" loading="lazy">
+          <p class="sobre__selo"><strong>Desde 2019</strong>cuidando dos animais de Matipó</p>
+        </div>
       </div>
     </section>
 
@@ -180,28 +194,28 @@
     </section>
 
     <!-- 5. CONTADORES ======================================== -->
-    <section class="contadores" aria-labelledby="contadores-titulo">
+    <!-- Aparece quando os números reais forem cadastrados no painel -->
+    <section class="contadores" aria-labelledby="contadores-titulo" data-requer="contador_resgatados" hidden>
       <div class="container">
         <h2 id="contadores-titulo" class="visualmente-oculto">Nossos números</h2>
         <ul class="contadores__lista" role="list">
           <li>
             <svg data-icone="resgate"></svg>
-            <!-- Números editáveis no painel (admin.html); estes são só o padrão -->
-            <p class="contadores__numero">+<span data-contador="350" data-conteudo="contador_resgatados">350</span></p>
+            <p class="contadores__numero">+<span data-contador="0" data-conteudo="contador_resgatados">0</span></p>
             <p>animais resgatados</p>
           </li>
           <li>
             <svg data-icone="coracao"></svg>
-            <p class="contadores__numero">+<span data-contador="210" data-conteudo="contador_adotados">210</span></p>
+            <p class="contadores__numero">+<span data-contador="0" data-conteudo="contador_adotados">0</span></p>
             <p>animais adotados</p>
           </li>
           <li>
             <svg data-icone="seringa"></svg>
-            <p class="contadores__numero">+<span data-contador="480" data-conteudo="contador_castrados">480</span></p>
+            <p class="contadores__numero">+<span data-contador="0" data-conteudo="contador_castrados">0</span></p>
             <p>animais castrados</p>
           </li>
         </ul>
-        <p class="contadores__nota" data-some-com="contador_resgatados"><span class="preencher">[PREENCHER]</span> números ilustrativos, substituir pelos dados reais da ONG</p>
+        
       </div>
     </section>
 
@@ -213,6 +227,7 @@
           <h2 id="historias-titulo">Eles contam a própria história</h2>
           <p>Por trás de cada resgate existe alguém que voltou a confiar. Sua doação escreve o próximo final feliz.</p>
         </div>
+        <p class="nota-exemplo" data-nota-exemplo hidden>Histórias ilustrativas enquanto reunimos as dos nossos resgatados.</p>
         <div class="carrossel" data-carrossel role="region" aria-roledescription="carrossel" aria-label="Histórias de superação">
           <ul class="carrossel__trilho" data-historias role="list">
             <li class="carregando">Carregando histórias…</li>
@@ -233,6 +248,7 @@
           <h2 id="adocao-titulo">Esperando por você</h2>
           <p>Todos vacinados, vermifugados e, quando adultos, castrados. Só falta uma família.</p>
         </div>
+        <p class="nota-exemplo" data-nota-exemplo hidden>Perfis ilustrativos enquanto cadastramos os animais da ONG.</p>
         <div class="grade-animais" data-animais-home aria-live="polite">
           <p class="carregando">Carregando animais…</p>
         </div>
@@ -265,57 +281,25 @@
         <div class="contato__info revelar">
           <p class="sobretitulo"><svg data-icone="pata"></svg>Fale com a gente</p>
           <h2 id="contato-titulo">Como podemos ajudar?</h2>
-          <p class="lead">Quer adotar, doar, ser voluntário ou viu um animal precisando de ajuda? Mande uma mensagem.</p>
+          <p class="lead">A gente responde pelo WhatsApp. Escolha o assunto e a mensagem já sai pronta.</p>
           <ul class="contato__lista" role="list">
             <li><svg data-icone="local"></svg><span>Rua E, Bairro Exposição, ao lado do ESF<br>Matipó - MG</span></li>
             <li><svg data-icone="relogio"></svg><span>Seg. a sex.: 9h às 16h<br>Sáb.: 9h às 12h</span></li>
-            <li><svg data-icone="alerta"></svg><span>Maus-tratos? Denuncie anonimamente pelo <strong>181</strong>.</span></li>
+            <li><svg data-icone="alerta"></svg><span>Viu maus-tratos? Denuncie anonimamente pelo <strong>181</strong>.</span></li>
           </ul>
         </div>
 
-        <form class="card form contato__form revelar" data-form data-titulo="Contato pelo site" style="--atraso:100ms">
-          <div class="form__linha">
-            <div class="campo">
-              <label for="c-nome">Nome <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <input id="c-nome" name="nome" type="text" autocomplete="name" required aria-describedby="c-nome-erro">
-              <p class="campo__erro" id="c-nome-erro" aria-live="polite"></p>
-            </div>
-            <div class="campo">
-              <label for="c-email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="c-email-erro">
-              <p class="campo__erro" id="c-email-erro" aria-live="polite"></p>
-            </div>
-          </div>
-          <div class="form__linha">
-            <div class="campo">
-              <label for="c-tel">Telefone / WhatsApp</label>
-              <input id="c-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-describedby="c-tel-erro">
-              <p class="campo__erro" id="c-tel-erro" aria-live="polite"></p>
-            </div>
-            <div class="campo">
-              <label for="c-assunto">Assunto <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <select id="c-assunto" name="assunto" required aria-describedby="c-assunto-erro">
-                <option value="">Escolha um assunto</option>
-                <option>Doação</option>
-                <option>Adoção</option>
-                <option>Apadrinhamento</option>
-                <option>Voluntariado</option>
-                <option>Denúncia</option>
-                <option>Parcerias</option>
-              </select>
-              <p class="campo__erro" id="c-assunto-erro" aria-live="polite"></p>
-            </div>
-          </div>
-          <div class="campo">
-            <label for="c-msg">Mensagem <span class="obrigatorio" aria-hidden="true">*</span></label>
-            <textarea id="c-msg" name="mensagem" required minlength="10" aria-describedby="c-msg-ajuda c-msg-erro"></textarea>
-            <p class="campo__ajuda" id="c-msg-ajuda">Em caso de denúncia, informe o endereço e, se puder, mande fotos pelo WhatsApp.</p>
-            <p class="campo__erro" id="c-msg-erro" aria-live="polite"></p>
-          </div>
-          <p class="form__nota"><span aria-hidden="true">*</span> Campos obrigatórios. Usamos seus dados só para responder a esta mensagem.</p>
-          <button class="btn" type="submit">Enviar mensagem<svg data-icone="seta-dir"></svg></button>
-          <p class="form__status" role="status" aria-live="polite"></p>
-        </form>
+        <div class="card contato__atalhos revelar" style="--atraso:100ms">
+          <h3>Sobre o que você quer falar?</h3>
+          <ul class="atalhos" role="list">
+            <li><a class="atalho" href="#" data-whatsapp="Olá! Quero adotar um animal da Anjos de Patas." target="_blank" rel="noopener"><svg data-icone="coracao"></svg><span>Quero adotar</span><svg class="icone atalho__seta" data-icone="seta-dir"></svg></a></li>
+            <li><a class="atalho" href="#" data-whatsapp="Olá! Quero fazer uma doação para a Anjos de Patas." target="_blank" rel="noopener"><svg data-icone="pacote"></svg><span>Quero doar ração ou itens</span><svg class="icone atalho__seta" data-icone="seta-dir"></svg></a></li>
+            <li><a class="atalho" href="#" data-whatsapp="Olá! Quero ser voluntário(a) na Anjos de Patas." target="_blank" rel="noopener"><svg data-icone="pessoas"></svg><span>Quero ser voluntário</span><svg class="icone atalho__seta" data-icone="seta-dir"></svg></a></li>
+            <li><a class="atalho" href="#" data-whatsapp="Olá! Vi um animal precisando de ajuda. Local:" target="_blank" rel="noopener"><svg data-icone="alerta"></svg><span>Avisar sobre um animal em risco</span><svg class="icone atalho__seta" data-icone="seta-dir"></svg></a></li>
+            <li><a class="atalho" href="#" data-whatsapp="Olá! Tenho interesse em uma parceria com a Anjos de Patas." target="_blank" rel="noopener"><svg data-icone="maos"></svg><span>Parcerias e empresas</span><svg class="icone atalho__seta" data-icone="seta-dir"></svg></a></li>
+          </ul>
+          <a class="atalho atalho--instagram" href="https://www.instagram.com/anjosdepatasmatipo/" target="_blank" rel="noopener"><svg data-icone="instagram"></svg><span>Ou chame no Instagram: @anjosdepatasmatipo</span></a>
+        </div>
       </div>
     </section>
   </main>

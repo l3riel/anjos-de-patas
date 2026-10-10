@@ -15,7 +15,8 @@ const observadorRevelar =
             observadorRevelar.unobserve(e.target);
           });
         },
-        { rootMargin: "0px 0px -8% 0px", threshold: 0.1 }
+        // Dispara assim que a borda do elemento entra na tela (sem buracos ao rolar rápido)
+        { rootMargin: "0px 0px -40px 0px", threshold: 0 }
       )
     : null;
 

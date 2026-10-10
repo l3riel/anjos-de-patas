@@ -279,9 +279,9 @@ strong {
 /* ---------- Animação de entrada ao rolar ---------- */
 .js .revelar {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--t-lento) var(--ease-saida),
-    transform var(--t-lento) var(--ease-saida);
+  transform: translateY(16px);
+  transition: opacity 500ms var(--ease-saida),
+    transform 500ms var(--ease-saida);
   transition-delay: var(--atraso, 0ms);
 }
 

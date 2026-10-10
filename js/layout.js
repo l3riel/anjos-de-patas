@@ -9,18 +9,15 @@ const ONG = {
   cnpj: "35.761.357/0001-77",
   cidade: "Matipó - MG",
   endereco: "Rua E, Bairro Exposição, ao lado do ESF",
-  // [PREENCHER] número com DDI+DDD, só dígitos (ex.: "5531999999999").
+  // Número com DDI+DDD, só dígitos (ex.: "5531999999999"). Também editável no painel.
   // Enquanto estiver vazio, os botões de WhatsApp abrem o grupo abaixo.
   whatsappNumero: "",
-  whatsappTexto: "[PREENCHER] (31) 9 0000-0000",
+  whatsappTexto: "", // como o número aparece no rodapé, ex.: "(31) 9 9999-9999"
   whatsappGrupo: "https://chat.whatsapp.com/EZXPNb8ATfT1UnAckykyNl",
   instagram: "https://www.instagram.com/anjosdepatasmatipo/",
   instagramUsuario: "@anjosdepatasmatipo",
-  email: "[PREENCHER]@email.com",
+  email: "", // vazio = a linha de e-mail não aparece no rodapé
   horario: "Seg. a sex.: 9h às 16h · Sáb.: 9h às 12h",
-  // [PREENCHER] URL do Formspree/Getform para receber os formulários por e-mail.
-  // Vazio = o formulário monta a mensagem e abre o WhatsApp.
-  formEndpoint: "",
   // Supabase (veja supabase/LEIA-ME.md). Vazio = o site lê data/animais.json.
   // A chave anon é pública por design; a segurança vem das políticas RLS.
   // Nunca coloque aqui a chave service_role.
@@ -186,59 +183,76 @@ function montarRodape() {
   const alvo = document.getElementById("site-footer");
   if (!alvo) return;
   const ano = new Date().getFullYear();
+  const whatsTexto = ONG.whatsappNumero && ONG.whatsappTexto ? ONG.whatsappTexto : "Grupo da ONG no WhatsApp";
 
   alvo.outerHTML = `
   <footer class="rodape">
-    <div class="container rodape__grid">
-      <div class="rodape__marca">
-        <img src="assets/img/brand/logo.webp" alt="ONG Anjos de Patas" width="176" height="165" loading="lazy">
-        <p>Resgatamos, tratamos e encontramos lares cheios de amor para cães e gatos de rua em ${ONG.cidade}.</p>
-        <div class="rodape__sociais">${sociais()}</div>
+    <div class="rodape__chamada">
+      <div class="container rodape__chamada-inner">
+        <div class="rodape__chamada-texto">
+          <p class="rodape__chamada-titulo">Toda ajuda vira cuidado.</p>
+          <p>Uma doação, um lar temporário ou um compartilhamento já mudam o dia de um animal.</p>
+          <div class="grupo-botoes">
+            <a class="btn" href="doe.html">${icone("coracao")}Quero ajudar</a>
+            <a class="btn btn--contorno" href="adote.html">Ver quem espera um lar</a>
+          </div>
+        </div>
+        <div class="rodape__pets" aria-hidden="true">
+          <img class="pet-gato" src="assets/img/decor/gato-footer.webp" alt="" width="427" height="332" loading="lazy">
+          <img class="pet-casa" src="assets/img/decor/casa.webp" alt="" width="454" height="454" loading="lazy">
+          <img class="pet-cachorro" src="assets/img/decor/cachorro-footer.webp" alt="" width="353" height="310" loading="lazy">
+        </div>
       </div>
-      <nav aria-label="Links do rodapé">
-        <h2>Navegue</h2>
-        <ul class="rodape__links" role="list">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="quem-somos.html">Quem somos</a></li>
-          <li><a href="resgates.html">Resgates</a></li>
-          <li><a href="quem-somos.html#transparencia">Transparência</a></li>
-          <li><a href="index.html#contato">Contato</a></li>
-        </ul>
-      </nav>
-      <nav aria-label="Como ajudar">
-        <h2>Como ajudar</h2>
-        <ul class="rodape__links" role="list">
-          <li><a href="doe.html">Faça uma doação</a></li>
-          <li><a href="adote.html">Adote</a></li>
-          <li><a href="apadrinhe.html">Apadrinhe</a></li>
-          <li><a href="index.html#contato">Seja voluntário</a></li>
-        </ul>
-      </nav>
-      <div>
-        <h2>Fale com a gente</h2>
-        <ul class="rodape__contato" role="list">
-          <li>${icone("local")}<span>${ONG.endereco}<br>${ONG.cidade}</span></li>
-          <li>${icone("whatsapp")}<a href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" data-conteudo="whatsapp_texto">${ONG.whatsappTexto}</a></li>
-          <li>${icone("email")}<a href="mailto:${ONG.email}" data-email data-conteudo="email">${ONG.email}</a></li>
-          <li>${icone("relogio")}<span>${ONG.horario}</span></li>
-          <li>${icone("alerta")}<span>Denúncia anônima de maus-tratos: ligue <strong>181</strong></span></li>
-        </ul>
+      <svg class="rodape__ondas" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path fill="#9C3573" d="M0 58C220 8 470 0 720 34s500 48 720-6v92H0Z"/>
+        <path fill="#78114F" d="M0 92C260 44 520 40 760 70s460 34 680-6v56H0Z"/>
+      </svg>
+    </div>
+
+    <div class="rodape__corpo">
+      <div class="container rodape__grid">
+        <div class="rodape__marca">
+          <a class="rodape__logo" href="index.html" aria-label="Anjos de Patas, página inicial">
+            <img src="assets/img/brand/logo.webp" alt="ONG Anjos de Patas" width="176" height="165" loading="lazy">
+          </a>
+          <p>Resgatamos, tratamos e encontramos lares para cães e gatos de rua em ${ONG.cidade} desde 2019.</p>
+          <div class="rodape__sociais">${sociais()}</div>
+        </div>
+        <nav class="rodape__coluna" aria-label="Links do rodapé">
+          <h2>Navegue</h2>
+          <ul class="rodape__links" role="list">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="quem-somos.html">Quem somos</a></li>
+            <li><a href="resgates.html">Resgates</a></li>
+            <li><a href="quem-somos.html#transparencia">Transparência</a></li>
+          </ul>
+        </nav>
+        <nav class="rodape__coluna" aria-label="Como ajudar">
+          <h2>Como ajudar</h2>
+          <ul class="rodape__links" role="list">
+            <li><a href="doe.html">Faça uma doação</a></li>
+            <li><a href="adote.html">Adote</a></li>
+            <li><a href="apadrinhe.html">Apadrinhe</a></li>
+            <li><a href="#" data-whatsapp="Olá! Quero ser voluntário(a) na Anjos de Patas." target="_blank" rel="noopener">Seja voluntário</a></li>
+          </ul>
+        </nav>
+        <div class="rodape__coluna">
+          <h2>Fale com a gente</h2>
+          <ul class="rodape__contato" role="list">
+            <li>${icone("whatsapp")}<a href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" data-conteudo="whatsapp_texto">${whatsTexto}</a></li>
+            <li data-requer="email"${ONG.email ? "" : " hidden"}>${icone("email")}<a href="mailto:${ONG.email}" data-email data-conteudo="email">${ONG.email}</a></li>
+            <li>${icone("local")}<span>${ONG.endereco}, ${ONG.cidade}</span></li>
+            <li>${icone("relogio")}<span>${ONG.horario}</span></li>
+          </ul>
+          <p class="rodape__denuncia">${icone("alerta")}<span>Maus-tratos? Denuncie anonimamente: <strong>181</strong></span></p>
+        </div>
       </div>
     </div>
 
     <div class="rodape__base">
-      <div class="rodape__pets" aria-hidden="true">
-        <img class="pet-gato" src="assets/img/decor/gato-footer.webp" alt="" width="427" height="332" loading="lazy">
-        <img class="pet-casa" src="assets/img/decor/casa.webp" alt="" width="454" height="454" loading="lazy">
-        <img class="pet-cachorro" src="assets/img/decor/cachorro-footer.webp" alt="" width="353" height="310" loading="lazy">
-      </div>
-      <svg class="rodape__ondas" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path fill="#9C3573" d="M0 120C240 40 480 18 720 70s480 50 720-40v190H0Z"/>
-        <path fill="#78114F" d="M0 175C200 95 420 82 640 132s480 48 800-42v130H0Z"/>
-      </svg>
-      <div class="rodape__creditos">
-        <p>© ${ano} ${ONG.razaoSocial} · CNPJ ${ONG.cnpj} · ${ONG.cidade}</p>
-        <p><a href="quem-somos.html#projeto">Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix</a></p>
+      <div class="container rodape__base-inner">
+        <p>© ${ano} ${ONG.razaoSocial} · CNPJ ${ONG.cnpj}</p>
+        <p><a href="quem-somos.html#projeto">Feito por alunos de Ciência da Computação da Univértix</a></p>
       </div>
     </div>
   </footer>

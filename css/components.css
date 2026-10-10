@@ -851,85 +851,218 @@ fieldset.campo {
 
 /* ---------- Rodapé ---------- */
 .rodape {
-  position: relative;
   margin-top: auto;
+}
+
+/* Faixa de chamada com os pets sentados sobre a onda */
+.rodape__chamada {
+  position: relative;
   background: var(--cor-fundo-suave);
   padding-top: var(--e-6);
 }
 
-.rodape__grid {
+.rodape__chamada-inner {
   display: grid;
   gap: var(--e-4);
+  align-items: end;
+}
+
+.rodape__chamada-texto {
   padding-bottom: var(--e-4);
 }
 
-@media (min-width: 640px) {
-  .rodape__grid {
-    grid-template-columns: 1fr 1fr;
+.rodape__chamada-titulo {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--cor-titulo);
+  text-wrap: balance;
+}
+
+.rodape__chamada-texto > p:not(.rodape__chamada-titulo) {
+  color: var(--cor-texto-suave);
+  max-width: 46ch;
+  margin: var(--e-1) 0 var(--e-3);
+}
+
+/* Os pets ficam no fluxo (não usam position absolute), então nunca cobrem o texto */
+.rodape__pets {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .rodape__pets {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: min(100%, 460px);
+    justify-self: center;
+    margin-bottom: -46px; /* senta os pets na crista da onda */
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
   }
+
+  .rodape__pets img {
+    height: auto;
+  }
+
+  .rodape__pets .pet-gato {
+    width: 38%;
+    margin-right: -4%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .rodape__pets .pet-casa {
+    width: 40%;
+  }
+
+  .rodape__pets .pet-cachorro {
+    width: 32%;
+    margin-left: -6%;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@media (min-width: 900px) {
+  .rodape__chamada-inner {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .rodape__pets {
+    justify-self: end;
+  }
+}
+
+.rodape__ondas {
+  display: block;
+  width: 100%;
+  height: clamp(48px, 7vw, 96px);
+  margin-bottom: -1px;
+}
+
+/* Corpo em vinho com texto claro */
+.rodape__corpo {
+  background: var(--cor-principal);
+  color: rgba(255, 255, 255, 0.88);
+  padding: var(--e-4) 0 var(--e-5);
+}
+
+.rodape__grid {
+  display: grid;
+  gap: var(--e-4) var(--e-3);
+  grid-template-columns: 1fr 1fr;
+}
+
+.rodape__marca {
+  grid-column: 1 / -1;
+}
+
+.rodape__coluna:last-child {
+  grid-column: 1 / -1;
 }
 
 @media (min-width: 1024px) {
   .rodape__grid {
-    grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    gap: var(--e-5);
+  }
+
+  .rodape__marca,
+  .rodape__coluna:last-child {
+    grid-column: auto;
   }
 }
 
-.rodape__marca img {
-  width: 96px;
+.rodape__logo {
+  display: inline-flex;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--raio-card);
+  background: #fff;
   margin-bottom: var(--e-2);
+}
+
+.rodape__logo img {
+  width: 76px;
 }
 
 .rodape__marca p {
-  color: var(--cor-texto-suave);
-  max-width: 34ch;
+  max-width: 36ch;
   margin-bottom: var(--e-2);
+  font-size: 0.95rem;
 }
 
 .rodape h2 {
-  font-size: 1.05rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   margin-bottom: var(--e-2);
+}
+
+.rodape a {
+  color: inherit;
+}
+
+.rodape a:hover {
+  color: #fff;
 }
 
 .rodape__links {
   list-style: none;
   display: grid;
-  gap: 0.15rem;
 }
 
 .rodape__links a {
   display: inline-flex;
   align-items: center;
-  min-height: 36px;
-  color: var(--cor-texto);
+  min-height: 40px;
   text-decoration: none;
+  transition: color var(--t-rapido), transform var(--t-rapido);
 }
 
 .rodape__links a:hover {
-  color: var(--cor-menu-hover);
   text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .rodape__contato {
   list-style: none;
   display: grid;
-  gap: 0.75rem;
+  gap: 0.6rem;
   font-size: 0.95rem;
 }
 
-.rodape__contato li {
+.rodape__contato li,
+.rodape__denuncia {
   display: flex;
   gap: 0.6rem;
   align-items: flex-start;
 }
 
-.rodape__contato .icone {
-  color: var(--cor-secundaria);
+.rodape__contato .icone,
+.rodape__denuncia .icone {
+  color: var(--cor-secundaria-clara);
   margin-top: 0.2rem;
 }
 
 .rodape__contato a {
-  color: var(--cor-texto);
+  text-underline-offset: 3px;
+}
+
+.rodape__denuncia {
+  margin-top: var(--e-2);
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+.rodape__denuncia strong {
+  color: #fff;
 }
 
 .rodape__sociais {
@@ -938,82 +1071,36 @@ fieldset.campo {
 }
 
 .rodape__sociais .icone-social {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.rodape__sociais .icone-social:hover {
   background: #fff;
+  color: var(--cor-principal);
 }
 
-/* Ondas roxas subindo + gato, casinha e cachorro */
+.rodape :focus-visible {
+  outline-color: #fff;
+}
+
 .rodape__base {
-  position: relative;
+  background: var(--cor-principal-escura);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  padding: var(--e-2) 0 calc(var(--e-2) + 76px); /* espaço do WhatsApp flutuante */
 }
 
-.rodape__ondas,
-.rodape__pets {
-  display: none;
-}
-
-.rodape__creditos {
-  background: var(--cor-principal);
-  color: #fff;
-  text-align: center;
-  font-size: 0.9rem;
-  padding: var(--e-3) var(--gutter) calc(var(--e-3) + 70px);
-}
-
-.rodape__creditos p + p {
-  margin-top: 0.35rem;
-  opacity: 0.92;
-}
-
-.rodape__creditos a {
-  color: #fff;
-}
-
-.rodape__creditos a:hover {
-  color: var(--cor-secundaria-clara);
+.rodape__base-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem var(--e-3);
 }
 
 @media (min-width: 768px) {
-  .rodape__ondas {
-    display: block;
-    width: 100%;
-    height: clamp(120px, 14vw, 210px);
-    margin-bottom: -2px;
-  }
-
-  .rodape__pets {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% - clamp(120px, 14vw, 210px) * 0.62);
-    transform: translateX(-50%);
-    width: clamp(380px, 40vw, 520px);
-    pointer-events: none;
-  }
-
-  .rodape__pets img {
-    position: relative;
-    z-index: 2;
-  }
-
-  .rodape__pets .pet-gato {
-    width: 40%;
-    margin-right: -6%;
-  }
-
-  .rodape__pets .pet-casa {
-    width: 38%;
-    z-index: 1;
-  }
-
-  .rodape__pets .pet-cachorro {
-    width: 30%;
-    margin-left: -8%;
-  }
-
-  .rodape__creditos {
-    padding-bottom: var(--e-3);
+  .rodape__base {
+    padding-bottom: var(--e-2);
   }
 }
 

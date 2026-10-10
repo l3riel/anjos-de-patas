@@ -30,16 +30,20 @@ function artigo(a) {
   return a.sexo === "femea" ? "a" : "o";
 }
 
-function seloExemplo(item) {
-  return item.exemplo ? '<span class="selo selo--exemplo">Exemplo [PREENCHER]</span>' : "";
+/* Mostra o aviso de "perfis ilustrativos" da seção se algum item for exemplo */
+function mostrarNotaExemplo(itens, el) {
+  if (!itens.some((i) => i.exemplo)) return;
+  el.closest("section")?.querySelector("[data-nota-exemplo]")?.removeAttribute("hidden");
 }
+
+const msgAdocao = (a) => `Olá! Tenho interesse em adotar ${artigo(a)} ${a.nome}. Vi no site da Anjos de Patas.`;
+const msgPadrinho = (a) => `Olá! Quero apadrinhar ${artigo(a)} ${a.nome}. Vi no site da Anjos de Patas.`;
 
 function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
   const href = `animal.html?id=${encodeURIComponent(a.id)}`;
   const selos = [
     modo !== "padrinho" && a.precisaPadrinho ? `<span class="selo">${icone("coracao")}Precisa de padrinho</span>` : "",
     modo === "padrinho" && !a.disponivelAdocao ? '<span class="selo">Em tratamento</span>' : "",
-    seloExemplo(a),
   ].join("");
   const cta =
     modo === "padrinho"
@@ -53,7 +57,11 @@ function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
       <div class="animal-card__selos">${selos}</div>
     </div>
     <div class="animal-card__corpo">
-      <h3 class="animal-card__nome"><a href="${modo === "padrinho" ? `apadrinhe.html?animal=${encodeURIComponent(a.id)}#formulario` : href}">${esc(a.nome)}</a></h3>
+      <h3 class="animal-card__nome">${
+        modo === "padrinho"
+          ? `<a href="${esc(linkWhatsApp(msgPadrinho(a)))}" target="_blank" rel="noopener">${esc(a.nome)}<span class="visualmente-oculto"> (abre o WhatsApp)</span></a>`
+          : `<a href="${href}">${esc(a.nome)}</a>`
+      }</h3>
       <ul class="tags" role="list" aria-label="Características">
         <li>${esc(a.idadeTexto || ROTULOS.idade[a.idade])}</li>
         <li>${ROTULOS.porte[a.porte]}</li>
@@ -80,6 +88,7 @@ async function montarAnimaisHome() {
   try {
     const animais = (await carregarAnimais()).filter((a) => a.disponivelAdocao).slice(0, 6);
     alvo.innerHTML = animais.map((a, i) => cardAnimal(a, { atraso: (i % 3) * 60 })).join("");
+    mostrarNotaExemplo(animais, alvo);
     observarRevelar(alvo);
   } catch (e) {
     console.error(e);
@@ -102,7 +111,6 @@ async function montarHistorias() {
             <img src="${esc(h.foto)}" alt="${esc(h.alt)}" width="600" height="450" loading="lazy" decoding="async">
           </div>
           <div class="historia-card__corpo">
-            ${seloExemplo(h)}
             <h3>${esc(h.titulo)}</h3>
             <p>${esc(h.texto)}</p>
             <a class="btn btn--pequeno" href="doe.html">${icone("coracao")}Doar agora</a>
@@ -111,6 +119,7 @@ async function montarHistorias() {
       </li>`
       )
       .join("");
+    mostrarNotaExemplo(superacao, alvo);
     iniciarCarrossel(alvo.closest("[data-carrossel]"));
   } catch (e) {
     console.error(e);
@@ -132,6 +141,7 @@ async function montarAdote() {
   let animais = [];
   try {
     animais = (await carregarAnimais()).filter((a) => a.disponivelAdocao);
+    mostrarNotaExemplo(animais, alvo);
   } catch (e) {
     console.error(e);
     contagem.textContent = "";
@@ -222,7 +232,6 @@ async function montarDetalhe() {
         <div class="detalhe__selos">
           ${a.precisaPadrinho ? `<span class="selo">${icone("coracao")}Precisa de padrinho</span>` : ""}
           ${!a.disponivelAdocao ? '<span class="selo">Em tratamento</span>' : ""}
-          ${seloExemplo(a)}
         </div>
         <h1>Oi, eu sou ${o} ${esc(a.nome)}!</h1>
         <ul class="tags tags--grandes" role="list" aria-label="Características">
@@ -232,13 +241,14 @@ async function montarDetalhe() {
           <li>${ROTULOS.sexo[a.sexo]}</li>
         </ul>
         <p class="detalhe__historia">${esc(a.historia)}</p>
+        ${a.exemplo ? '<p class="nota-exemplo">Perfil ilustrativo enquanto cadastramos os animais da ONG.</p>' : ""}
         ${a.temperamento?.length ? `<p class="detalhe__temperamento"><strong>Meu jeitinho:</strong> ${a.temperamento.map(esc).join(", ")}</p>` : ""}
         <ul class="detalhe__saude" role="list">
           ${saude.map(([t, ok]) => `<li class="${ok ? "ok" : ""}">${icone(ok ? "check" : "relogio")}${ok ? t : t.replace(/^./, (c) => "Ainda não " + c.toLowerCase())}</li>`).join("")}
         </ul>
         <div class="grupo-botoes">
           ${a.disponivelAdocao ? `<a class="btn" href="#interesse">${icone("coracao")}Quero adotar ${o} ${esc(a.nome)}</a>` : ""}
-          ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="apadrinhe.html?animal=${encodeURIComponent(a.id)}#formulario">Quero apadrinhar</a>` : ""}
+          ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="${esc(linkWhatsApp(msgPadrinho(a)))}" target="_blank" rel="noopener">Quero apadrinhar</a>` : ""}
         </div>
         ${!a.disponivelAdocao ? `<p class="detalhe__aviso">${o === "a" ? "Ela" : "Ele"} ainda está em tratamento e logo fica disponível para adoção. Enquanto isso, você pode apadrinhar.</p>` : ""}
       </div>
@@ -247,8 +257,9 @@ async function montarDetalhe() {
   if (a.disponivelAdocao) {
     document.querySelector("[data-bloco-interesse]").hidden = false;
     document.querySelector("[data-nome-animal]").textContent = `${o} ${a.nome}`;
-    // setAttribute para o valor sobreviver ao form.reset()
-    document.querySelector("[data-campo-animal]").setAttribute("value", `${a.nome} (${a.id})`);
+    const botao = document.querySelector("[data-whats-adocao]");
+    botao.href = linkWhatsApp(msgAdocao(a));
+    botao.querySelector("[data-nome-botao]").textContent = `${o} ${a.nome}`;
   }
 
   const outros = animais.filter((x) => x.disponivelAdocao && x.id !== a.id && x.especie === a.especie).slice(0, 3);
@@ -260,11 +271,10 @@ async function montarDetalhe() {
   }
 }
 
-/* /apadrinhe: animais que precisam de padrinho + select do formulário */
+/* /apadrinhe: animais que precisam de padrinho (cada card abre o WhatsApp) */
 async function montarApadrinhe() {
   const alvo = document.querySelector("[data-animais-padrinho]");
   if (!alvo) return;
-  const select = document.querySelector("[data-select-animal]");
   let animais;
   try {
     animais = (await carregarAnimais()).filter((a) => a.precisaPadrinho);
@@ -273,30 +283,8 @@ async function montarApadrinhe() {
     return erroCarregamento(alvo);
   }
   alvo.innerHTML = animais.map((a, i) => cardAnimal(a, { modo: "padrinho", atraso: (i % 3) * 60 })).join("");
+  mostrarNotaExemplo(animais, alvo);
   observarRevelar(alvo);
-
-  select.insertAdjacentHTML(
-    "beforeend",
-    animais.map((a) => `<option value="${esc(a.nome)}">${esc(a.nome)} (${ROTULOS.especie[a.especie].toLowerCase()})</option>`).join("")
-  );
-  const escolhido = animais.find((a) => a.id === new URLSearchParams(location.search).get("animal"));
-  if (escolhido) {
-    select.value = escolhido.nome;
-    if (location.hash === "#formulario") document.getElementById("formulario").scrollIntoView();
-  }
-
-  // Clicar num card já escolhe o animal no formulário, sem recarregar a página
-  alvo.addEventListener("click", (e) => {
-    const link = e.target.closest(".animal-card__nome a");
-    if (!link) return;
-    e.preventDefault();
-    const id = new URL(link.href).searchParams.get("animal");
-    const animal = animais.find((a) => a.id === id);
-    select.value = animal.nome;
-    history.replaceState(null, "", link.href);
-    document.getElementById("formulario").scrollIntoView({ behavior: reduzirMovimento.matches ? "auto" : "smooth" });
-    select.focus({ preventScroll: true });
-  });
 }
 
 /* /resgates: histórias com fotos de antes e depois */
@@ -320,8 +308,7 @@ async function montarResgates() {
           </figure>
         </div>
         <div class="resgate__texto">
-          ${seloExemplo(r)}
-          <p class="resgate__data">${icone("relogio")}${esc(r.data)}</p>
+          ${r.data && !r.data.includes("PREENCHER") ? `<p class="resgate__data">${icone("relogio")}${esc(r.data)}</p>` : ""}
           <h2>${esc(r.titulo)}</h2>
           <p>${esc(r.resumo)}</p>
           <a class="btn btn--pequeno" href="doe.html">${icone("coracao")}Ajude o próximo resgate</a>
@@ -329,6 +316,7 @@ async function montarResgates() {
       </article>`
       )
       .join("");
+    mostrarNotaExemplo(resgates, alvo);
     observarRevelar(alvo);
   } catch (e) {
     console.error(e);

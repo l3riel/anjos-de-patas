@@ -26,7 +26,6 @@
   <script src="js/dados.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/animais.js" defer></script>
-  <script src="js/form.js" defer></script>
 </head>
 <body>
   <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
@@ -53,74 +52,20 @@
         <div class="interesse__texto">
           <p class="sobretitulo"><svg data-icone="coracao"></svg>Adoção responsável</p>
           <h2 id="interesse-titulo">Quero adotar <span data-nome-animal>este animal</span></h2>
-          <p class="lead">Conte um pouco sobre você e sua casa. Uma voluntária entra em contato em até 3 dias úteis.</p>
-          <ul class="lista-check" role="list">
-            <li><svg data-icone="check"></svg>Ter 18 anos ou mais</li>
-            <li><svg data-icone="check"></svg>Ambiente seguro, telado ou murado</li>
-            <li><svg data-icone="check"></svg>Concordar com o termo e com visitas de acompanhamento</li>
-            <li><svg data-icone="check"></svg>Manter vacinas e cuidados veterinários em dia</li>
-          </ul>
+          <p class="lead">A conversa começa pelo WhatsApp. A equipe conhece você, tira suas dúvidas e combina a visita.</p>
         </div>
 
-        <form class="card form interesse__form" data-form data-titulo="Interesse em adoção" novalidate>
-          <input type="hidden" name="animal" data-campo-animal>
-          <div class="campo">
-            <label for="a-nome">Nome completo <span class="obrigatorio" aria-hidden="true">*</span></label>
-            <input id="a-nome" name="nome" type="text" autocomplete="name" required aria-describedby="a-nome-erro">
-            <p class="campo__erro" id="a-nome-erro" aria-live="polite"></p>
-          </div>
-          <div class="form__linha">
-            <div class="campo">
-              <label for="a-email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <input id="a-email" name="email" type="email" autocomplete="email" required aria-describedby="a-email-erro">
-              <p class="campo__erro" id="a-email-erro" aria-live="polite"></p>
-            </div>
-            <div class="campo">
-              <label for="a-tel">WhatsApp <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <input id="a-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-describedby="a-tel-erro">
-              <p class="campo__erro" id="a-tel-erro" aria-live="polite"></p>
-            </div>
-          </div>
-          <div class="form__linha">
-            <div class="campo">
-              <label for="a-cidade">Cidade e bairro <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <input id="a-cidade" name="cidade" type="text" autocomplete="address-level2" required aria-describedby="a-cidade-erro">
-              <p class="campo__erro" id="a-cidade-erro" aria-live="polite"></p>
-            </div>
-            <div class="campo">
-              <label for="a-moradia">Tipo de moradia <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <select id="a-moradia" name="moradia" required aria-describedby="a-moradia-erro">
-                <option value="">Escolha</option>
-                <option>Casa com quintal murado/telado</option>
-                <option>Casa sem quintal fechado</option>
-                <option>Apartamento telado</option>
-                <option>Apartamento sem tela</option>
-                <option>Sítio / zona rural</option>
-              </select>
-              <p class="campo__erro" id="a-moradia-erro" aria-live="polite"></p>
-            </div>
-          </div>
-          <fieldset class="campo">
-            <legend>Já tem outros animais? <span class="obrigatorio" aria-hidden="true">*</span></legend>
-            <div class="opcoes">
-              <label class="opcao"><input type="radio" name="outros_animais" value="Sim" required aria-describedby="a-outros-erro">Sim</label>
-              <label class="opcao"><input type="radio" name="outros_animais" value="Não" aria-describedby="a-outros-erro">Não</label>
-            </div>
-            <p class="campo__erro" id="a-outros-erro" aria-live="polite"></p>
-          </fieldset>
-          <div class="campo">
-            <label for="a-motivo">Por que você quer adotar? <span class="obrigatorio" aria-hidden="true">*</span></label>
-            <textarea id="a-motivo" name="motivo" required minlength="20" aria-describedby="a-motivo-ajuda a-motivo-erro"></textarea>
-            <p class="campo__ajuda" id="a-motivo-ajuda">Conte sua rotina, quem mora com você e quem vai cuidar do animal.</p>
-            <p class="campo__erro" id="a-motivo-erro" aria-live="polite"></p>
-          </div>
-          <div class="campo">
-            <label class="opcao opcao--termo"><input type="checkbox" name="termo" value="Concordo" required aria-describedby="a-termo-erro">Concordo em assinar o termo de adoção responsável e receber visitas de acompanhamento.</label>
-            <p class="campo__erro" id="a-termo-erro" aria-live="polite"></p>
-          </div>
-          <button class="btn" type="submit">Enviar interesse<svg data-icone="seta-dir"></svg></button>
-          <p class="form__status" role="status" aria-live="polite"></p>
-        </form>
+        <div class="card interesse__card">
+          <h3>Antes de chamar, confira se você pode:</h3>
+          <ul class="lista-check" role="list">
+            <li><svg data-icone="check"></svg>Ter 18 anos ou mais</li>
+            <li><svg data-icone="check"></svg>Oferecer um ambiente seguro, telado ou murado</li>
+            <li><svg data-icone="check"></svg>Assinar o termo de adoção e receber visitas de acompanhamento</li>
+            <li><svg data-icone="check"></svg>Manter vacinas e cuidados veterinários em dia</li>
+          </ul>
+          <a class="btn interesse__botao" href="#" data-whats-adocao target="_blank" rel="noopener"><svg data-icone="whatsapp"></svg>Conversar sobre adotar <span data-nome-botao>este animal</span></a>
+          <p class="interesse__nota">Abre o WhatsApp com a mensagem pronta.</p>
+        </div>
       </div>
     </section>
 

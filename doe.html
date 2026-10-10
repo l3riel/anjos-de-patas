@@ -53,33 +53,33 @@
           <h2 id="pix-titulo">Doe por Pix</h2>
           <p>Abra o app do seu banco, escolha <strong>Pix</strong> e use a chave ou o QR Code. Qualquer valor faz diferença.</p>
 
-          <div class="doe-pix__conteudo">
-            <!-- TROCAR: substitua o bloco abaixo por <img src="assets/img/brand/qrcode-pix.png" alt="QR Code Pix da ONG Anjos de Patas"> -->
-            <div class="qr-placeholder" role="img" aria-label="Espaço para o QR Code do Pix">
-              <span>QR Code<br><span class="preencher">[PREENCHER]</span></span>
-            </div>
-            <div class="doe-pix__chave">
-              <p class="doe-pix__rotulo">Chave Pix</p>
-              <!-- Chave Pix editável no painel (admin.html) -->
-              <p class="doe-pix__valor" id="chave-pix" data-conteudo="pix_chave">[PREENCHER] 00.000.000/0001-00</p>
-              <button class="btn btn--pequeno" type="button" data-copiar="#chave-pix"><svg data-icone="copiar"></svg>Copiar chave</button>
-              <p class="doe-pix__favorecido">Favorecido: <strong data-conteudo="pix_favorecido">Anjos de Patas Matipó - APM</strong></p>
-              <p class="form__status" role="status" aria-live="polite"></p>
-            </div>
+          <!-- A chave e o QR Code aparecem quando a chave for cadastrada no painel (admin.html).
+               TROCAR quando houver: <img src="assets/img/brand/qrcode-pix.png" alt="QR Code Pix da ONG Anjos de Patas"> -->
+          <div class="doe-pix__chave" data-requer="pix_chave" hidden>
+            <p class="doe-pix__rotulo">Chave Pix</p>
+            <p class="doe-pix__valor" id="chave-pix" data-conteudo="pix_chave"></p>
+            <button class="btn btn--pequeno" type="button" data-copiar="#chave-pix"><svg data-icone="copiar"></svg>Copiar chave</button>
+            <p class="form__status" role="status" aria-live="polite"></p>
           </div>
+          <div class="doe-pix__pedir" data-sem="pix_chave">
+            <p>Peça a chave Pix pelo WhatsApp e a equipe envia na hora, junto com o comprovante de recebimento.</p>
+            <a class="btn" href="#" data-whatsapp="Olá! Quero fazer uma doação por Pix para a Anjos de Patas. Pode me passar a chave?" target="_blank" rel="noopener"><svg data-icone="whatsapp"></svg>Pedir a chave Pix</a>
+          </div>
+          <p class="doe-pix__favorecido">Favorecido: <strong data-conteudo="pix_favorecido">Anjos de Patas Matipó - APM</strong> · CNPJ 35.761.357/0001-77</p>
         </article>
 
         <article class="card doe-banco revelar" style="--atraso:100ms">
           <span class="doe-banco__icone"><svg data-icone="banco"></svg></span>
           <h2>Transferência ou depósito</h2>
           <dl class="dados-lista">
-            <div><dt>Banco</dt><dd><span class="preencher" data-conteudo="banco">[PREENCHER]</span></dd></div>
-            <div><dt>Agência</dt><dd><span class="preencher" data-conteudo="agencia">[PREENCHER]</span></dd></div>
-            <div><dt>Conta corrente</dt><dd><span class="preencher" data-conteudo="conta">[PREENCHER]</span></dd></div>
+            <div data-requer="banco" hidden><dt>Banco</dt><dd data-conteudo="banco"></dd></div>
+            <div data-requer="agencia" hidden><dt>Agência</dt><dd data-conteudo="agencia"></dd></div>
+            <div data-requer="conta" hidden><dt>Conta corrente</dt><dd data-conteudo="conta"></dd></div>
             <div><dt>CNPJ</dt><dd><span data-conteudo="cnpj">35.761.357/0001-77</span></dd></div>
             <div><dt>Titular</dt><dd>Anjos de Patas Matipó - APM</dd></div>
           </dl>
-          <p class="doe-banco__nota">Quer recibo? Mande o comprovante pelo <a href="index.html#contato">formulário de contato</a> ou pelo WhatsApp.</p>
+          <p class="doe-banco__nota" data-sem="banco">Para depósito ou transferência, peça os dados da conta pelo <a href="#" data-whatsapp="Olá! Quero fazer uma doação por transferência para a Anjos de Patas. Pode me passar os dados da conta?" target="_blank" rel="noopener">WhatsApp</a>.</p>
+          <p class="doe-banco__nota">Quer recibo? Mande o comprovante pelo <a href="#" data-whatsapp="Olá! Fiz uma doação para a Anjos de Patas e gostaria do recibo." target="_blank" rel="noopener">WhatsApp</a>.</p>
         </article>
       </div>
     </section>
@@ -90,7 +90,7 @@
         <div class="secao__topo revelar">
           <p class="sobretitulo"><svg data-icone="pata"></svg>Para onde vai sua doação</p>
           <h2 id="impacto-titulo">Veja o que cada valor faz</h2>
-          <p>Valores aproximados para você ter uma ideia. <span class="preencher">[PREENCHER] confirmar com os custos reais</span></p>
+          <p>Valores aproximados para você ter uma ideia do impacto.</p>
         </div>
         <ul class="impacto" role="list">
           <li class="card impacto__item revelar">
@@ -141,24 +141,17 @@
                 <p class="ponto__hora">Seg. a sex.: 9h às 16h · Sáb.: 9h às 12h</p>
               </div>
             </li>
-            <li class="card ponto">
-              <span class="ponto__icone"><svg data-icone="local"></svg></span>
+            <!-- Para incluir um parceiro, copie o <li> da sede acima e troque nome, endereço e horário -->
+            <li class="card ponto ponto--convite">
+              <span class="ponto__icone"><svg data-icone="maos"></svg></span>
               <div>
-                <h4><span class="preencher">[PREENCHER] Nome do parceiro</span></h4>
-                <p><span class="preencher">[PREENCHER] Endereço</span></p>
-                <p class="ponto__hora"><span class="preencher">[PREENCHER] Horário</span></p>
-              </div>
-            </li>
-            <li class="card ponto">
-              <span class="ponto__icone"><svg data-icone="local"></svg></span>
-              <div>
-                <h4><span class="preencher">[PREENCHER] Nome do parceiro</span></h4>
-                <p><span class="preencher">[PREENCHER] Endereço</span></p>
-                <p class="ponto__hora"><span class="preencher">[PREENCHER] Horário</span></p>
+                <h4>Sua empresa pode ser um ponto de coleta</h4>
+                <p>Lojas, clínicas e escolas de Matipó podem receber doações de ração e itens.</p>
+                <a class="ponto__link" href="#" data-whatsapp="Olá! Quero que minha empresa seja um ponto de coleta da Anjos de Patas." target="_blank" rel="noopener">Quero ser ponto de coleta</a>
               </div>
             </li>
           </ul>
-          <p class="pontos__nota">Não consegue levar? <a href="index.html#contato">Fale com a gente</a> que combinamos a retirada.</p>
+          <p class="pontos__nota">Não consegue levar? <a href="#" data-whatsapp="Olá! Tenho doações para a Anjos de Patas e não consigo levar. Vocês buscam?" target="_blank" rel="noopener">Fale com a gente</a> que combinamos a retirada.</p>
         </div>
       </div>
     </section>
@@ -194,8 +187,8 @@
             <div><p>Publicamos a prestação de contas na seção <a href="quem-somos.html#transparencia">Transparência</a> e mostramos os resgates no Instagram.</p></div>
           </details>
           <details>
-            <summary>A ONG emite recibo?<svg data-icone="chevron-baixo"></svg></summary>
-            <div><p>Sim. Envie o comprovante com seu nome e CPF/CNPJ pelo contato. <span class="preencher">[PREENCHER] confirmar</span></p></div>
+            <summary>Recebo confirmação da minha doação?<svg data-icone="chevron-baixo"></svg></summary>
+            <div><p>Envie o comprovante com seu nome pelo WhatsApp e a equipe confirma o recebimento da sua doação.</p></div>
           </details>
           <details>
             <summary>Posso doar todo mês?<svg data-icone="chevron-baixo"></svg></summary>

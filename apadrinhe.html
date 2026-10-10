@@ -28,7 +28,6 @@
   <script src="js/dados.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/animais.js" defer></script>
-  <script src="js/form.js" defer></script>
 </head>
 <body>
   <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
@@ -78,73 +77,35 @@
         <div class="secao__topo revelar">
           <p class="sobretitulo"><svg data-icone="coracao"></svg>Esperando um padrinho</p>
           <h2 id="afilhados-titulo">Quem precisa de você</h2>
-          <p>Clique em um animal para escolhê-lo no formulário.</p>
+          <p>Escolha um afilhado e fale com a gente pelo WhatsApp. A mensagem já sai pronta.</p>
         </div>
+        <p class="nota-exemplo" data-nota-exemplo hidden>Perfis ilustrativos enquanto cadastramos os animais da ONG.</p>
         <div class="grade-animais" data-animais-padrinho aria-live="polite">
           <p class="carregando">Carregando animais…</p>
         </div>
       </div>
     </section>
 
-    <!-- FORMULÁRIO -->
-    <section class="secao" id="formulario" aria-labelledby="form-titulo">
+    <!-- COMO COMBINAR -->
+    <section class="secao" id="combinar" aria-labelledby="combinar-titulo">
       <div class="container interesse__grid">
         <div class="interesse__texto revelar">
           <p class="sobretitulo"><svg data-icone="pata"></svg>Quero apadrinhar</p>
-          <h2 id="form-titulo">Vamos combinar seu apadrinhamento</h2>
-          <p class="lead">Preencha os dados e a equipe envia a chave Pix e as primeiras fotos do seu afilhado.</p>
-          <div class="valores" aria-hidden="true">
+          <h2 id="combinar-titulo">Quanto contribuir?</h2>
+          <p class="lead">Você escolhe o valor. Estas são algumas referências do que cada contribuição mensal ajuda a pagar:</p>
+          <div class="valores">
             <p><strong>R$ 30</strong>/mês ajuda com a ração</p>
             <p><strong>R$ 50</strong>/mês cobre ração e vermífugo</p>
-            <p><strong>R$ 100</strong>/mês banca o tratamento contínuo</p>
+            <p><strong>R$ 100</strong>/mês banca um tratamento contínuo</p>
           </div>
-          <p class="form__nota"><span class="preencher">[PREENCHER]</span> confirmar valores sugeridos</p>
         </div>
 
-        <form class="card form interesse__form revelar" data-form data-titulo="Quero apadrinhar" style="--atraso:100ms">
-          <div class="campo">
-            <label for="p-nome">Nome completo <span class="obrigatorio" aria-hidden="true">*</span></label>
-            <input id="p-nome" name="nome" type="text" autocomplete="name" required aria-describedby="p-nome-erro">
-            <p class="campo__erro" id="p-nome-erro" aria-live="polite"></p>
-          </div>
-          <div class="form__linha">
-            <div class="campo">
-              <label for="p-email">E-mail <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <input id="p-email" name="email" type="email" autocomplete="email" required aria-describedby="p-email-erro">
-              <p class="campo__erro" id="p-email-erro" aria-live="polite"></p>
-            </div>
-            <div class="campo">
-              <label for="p-tel">WhatsApp <span class="obrigatorio" aria-hidden="true">*</span></label>
-              <input id="p-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-describedby="p-tel-erro">
-              <p class="campo__erro" id="p-tel-erro" aria-live="polite"></p>
-            </div>
-          </div>
-          <div class="campo">
-            <label for="p-animal">Afilhado <span class="obrigatorio" aria-hidden="true">*</span></label>
-            <select id="p-animal" name="afilhado" required data-select-animal aria-describedby="p-animal-erro">
-              <option value="">Escolha um animal</option>
-              <option value="Quem mais precisar">A ONG escolhe quem mais precisa</option>
-            </select>
-            <p class="campo__erro" id="p-animal-erro" aria-live="polite"></p>
-          </div>
-          <fieldset class="campo">
-            <legend>Valor mensal <span class="obrigatorio" aria-hidden="true">*</span></legend>
-            <div class="opcoes opcoes--pilula">
-              <label class="opcao"><input type="radio" name="valor" value="R$ 30" required aria-describedby="p-valor-erro">R$ 30</label>
-              <label class="opcao"><input type="radio" name="valor" value="R$ 50" aria-describedby="p-valor-erro">R$ 50</label>
-              <label class="opcao"><input type="radio" name="valor" value="R$ 100" aria-describedby="p-valor-erro">R$ 100</label>
-              <label class="opcao"><input type="radio" name="valor" value="Outro valor" aria-describedby="p-valor-erro">Outro valor</label>
-            </div>
-            <p class="campo__erro" id="p-valor-erro" aria-live="polite"></p>
-          </fieldset>
-          <div class="campo">
-            <label for="p-msg">Mensagem (opcional)</label>
-            <textarea id="p-msg" name="mensagem" aria-describedby="p-msg-ajuda"></textarea>
-            <p class="campo__ajuda" id="p-msg-ajuda">Se escolheu "outro valor", conte aqui quanto pode contribuir.</p>
-          </div>
-          <button class="btn" type="submit"><svg data-icone="coracao"></svg>Quero apadrinhar</button>
-          <p class="form__status" role="status" aria-live="polite"></p>
-        </form>
+        <div class="card interesse__card revelar" style="--atraso:100ms">
+          <h3>Não sabe quem escolher?</h3>
+          <p>A equipe indica quem mais precisa no momento e manda fotos e notícias do seu afilhado.</p>
+          <a class="btn interesse__botao" href="#" data-whatsapp="Olá! Quero apadrinhar um animal da Anjos de Patas. Quem está precisando mais?" target="_blank" rel="noopener"><svg data-icone="whatsapp"></svg>Quero apadrinhar</a>
+          <p class="interesse__nota">Abre o WhatsApp com a mensagem pronta.</p>
+        </div>
       </div>
     </section>
   </main>

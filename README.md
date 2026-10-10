@@ -81,7 +81,9 @@ Abra http://localhost:4173. Use um servidor (e não abrir o arquivo direto) porq
 | Menu, rodapé, WhatsApp, Instagram, e-mail, chaves do Supabase | `js/layout.js` (objeto `ONG` no topo) |
 | Cores, fontes, sombras | `css/base.css` (`:root`) |
 
-Textos marcados com **[PREENCHER]** dependem de informação real da ONG. Imagens com o comentário `TROCAR` são placeholders (Unsplash) e devem ser substituídas por fotos reais em `assets/img/`.
+**Sem formulários:** todo contato (adoção, apadrinhamento, doação, voluntariado, denúncia) abre o WhatsApp com a mensagem pronta (`data-whatsapp="mensagem"` no link). Com `ONG.whatsappNumero` vazio, os links abrem o grupo da ONG.
+
+**Dados que faltam não aparecem para o visitante:** blocos com `data-requer="chave"` ficam ocultos até o dado ser cadastrado no painel; `data-sem="chave"` mostra uma alternativa (ex.: "Peça a chave Pix pelo WhatsApp") enquanto isso. Pendências ficam marcadas em comentários no HTML. Imagens com o comentário `TROCAR` são placeholders (Unsplash) e devem ser substituídas por fotos reais em `assets/img/`.
 
 ### Campos de um animal (`data/animais.json`)
 

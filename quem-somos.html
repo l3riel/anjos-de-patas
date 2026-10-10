@@ -119,20 +119,10 @@
             <h3>Dr. Salvador Sabino</h3>
             <p>Apoiador do projeto</p>
           </li>
-          <li class="pessoa revelar" style="--atraso:120ms">
-            <span class="pessoa__foto pessoa__iniciais" aria-hidden="true">?</span>
-            <h3><span class="preencher">[PREENCHER] Nome</span></h3>
-            <p>Voluntária de resgates</p>
-          </li>
-          <li class="pessoa revelar" style="--atraso:180ms">
-            <span class="pessoa__foto pessoa__iniciais" aria-hidden="true">?</span>
-            <h3><span class="preencher">[PREENCHER] Nome</span></h3>
-            <p>Lar temporário</p>
-          </li>
         </ul>
         <div class="secao__rodape">
           <p>Quer fazer parte? Precisamos de ajuda com resgates, eventos, transporte, fotos e divulgação.</p>
-          <a class="btn" href="index.html#contato">Quero ser voluntário</a>
+          <a class="btn" href="#" data-whatsapp="Olá! Quero ser voluntário(a) na Anjos de Patas." target="_blank" rel="noopener"><svg data-icone="whatsapp"></svg>Quero ser voluntário</a>
         </div>
       </div>
     </section>
@@ -147,25 +137,23 @@
         </div>
 
         <div class="transparencia">
-          <div class="card transparencia__gastos revelar">
-            <h3>Para onde vão as doações</h3>
-            <p class="form__nota"><span class="preencher">[PREENCHER]</span> percentuais ilustrativos, substituir pelos reais</p>
-            <!-- [PREENCHER] ajuste os percentuais em style="--p:..%" e no texto -->
-            <ul class="barras" role="list">
-              <li style="--p:40%"><span class="barras__rotulo">Atendimento veterinário e remédios</span><span class="barras__valor">40%</span><span class="barras__trilho" aria-hidden="true"><span></span></span></li>
-              <li style="--p:25%"><span class="barras__rotulo">Castrações</span><span class="barras__valor">25%</span><span class="barras__trilho" aria-hidden="true"><span></span></span></li>
-              <li style="--p:20%"><span class="barras__rotulo">Ração e comedouros</span><span class="barras__valor">20%</span><span class="barras__trilho" aria-hidden="true"><span></span></span></li>
-              <li style="--p:10%"><span class="barras__rotulo">Transporte e resgates</span><span class="barras__valor">10%</span><span class="barras__trilho" aria-hidden="true"><span></span></span></li>
-              <li style="--p:5%"><span class="barras__rotulo">Materiais e limpeza</span><span class="barras__valor">5%</span><span class="barras__trilho" aria-hidden="true"><span></span></span></li>
-            </ul>
+          <div class="card transparencia__oficial revelar">
+            <h3>Dados oficiais</h3>
+            <dl class="dados-oficiais">
+              <div><dt>Razão social</dt><dd>Anjos de Patas Matipó - APM</dd></div>
+              <div><dt>CNPJ</dt><dd>35.761.357/0001-77</dd></div>
+              <div><dt>Situação na Receita Federal</dt><dd>Ativa</dd></div>
+              <div><dt>Fundação</dt><dd>11 de dezembro de 2019</dd></div>
+              <div><dt>Natureza</dt><dd>Associação sem fins lucrativos</dd></div>
+            </dl>
+            <!-- Quando a ONG tiver a divisão dos gastos, dá para voltar com um gráfico de barras aqui -->
           </div>
 
           <div class="revelar" style="--atraso:100ms">
             <h3 class="documentos__titulo">Documentos</h3>
-            <!-- [PREENCHER] coloque os PDFs em /assets/docs/ e troque cada <span class="card documento documento--pendente"> por <a class="card documento" href="assets/docs/arquivo.pdf"> -->
+            <!-- Quando houver: coloque os PDFs em /assets/docs/ e troque cada <span class="card documento documento--pendente"> por <a class="card documento" href="assets/docs/arquivo.pdf"> -->
             <ul class="documentos" role="list">
-              <li><span class="card documento documento--pendente"><svg data-icone="documento"></svg><span><strong>Prestação de contas <span class="preencher">[ano]</span></strong><small>PDF · em breve</small></span></span></li>
-              <li><span class="card documento documento--pendente"><svg data-icone="documento"></svg><span><strong>Prestação de contas <span class="preencher">[ano]</span></strong><small>PDF · em breve</small></span></span></li>
+              <li><span class="card documento documento--pendente"><svg data-icone="documento"></svg><span><strong>Prestação de contas anual</strong><small>PDF · em breve</small></span></span></li>
               <li><span class="card documento documento--pendente"><svg data-icone="documento"></svg><span><strong>Estatuto social</strong><small>PDF · em breve</small></span></span></li>
               <li><span class="card documento documento--pendente"><svg data-icone="documento"></svg><span><strong>Ata de fundação e CNPJ</strong><small>PDF · em breve</small></span></span></li>
             </ul>

@@ -85,9 +85,13 @@ async function aplicarConteudo() {
     el.classList.remove("preencher");
   });
 
-  // Avisos de "números ilustrativos" somem quando o número real é cadastrado
-  document.querySelectorAll("[data-some-com]").forEach((el) => {
-    if (valores[el.dataset.someCom]) el.hidden = true;
+  // data-requer="chave": só aparece quando o dado existe
+  // data-sem="chave": alternativa mostrada enquanto o dado não existe
+  document.querySelectorAll("[data-requer]").forEach((el) => {
+    if (valores[el.dataset.requer]) el.hidden = false;
+  });
+  document.querySelectorAll("[data-sem]").forEach((el) => {
+    if (valores[el.dataset.sem]) el.hidden = true;
   });
 
   if (valores.whatsapp_numero) {

@@ -238,7 +238,7 @@
   height: 22px;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1240px) {
   .menu-btn {
     display: none;
   }

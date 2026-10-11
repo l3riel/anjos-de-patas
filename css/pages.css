@@ -2182,3 +2182,220 @@ a.documento:hover {
   font-weight: 600;
   color: var(--cor-titulo);
 }
+
+/* =========================================================
+   AJUDA ("Achei um animal")
+   ========================================================= */
+.ajuda-urgente {
+  display: flex;
+  gap: var(--e-2);
+  align-items: flex-start;
+  padding: var(--e-2) var(--e-3);
+  margin-bottom: var(--e-4);
+  border-radius: var(--raio-card);
+  background: var(--cor-secundaria-clara);
+  color: var(--cor-principal-escura);
+}
+
+.ajuda-urgente .icone {
+  width: 28px;
+  height: 28px;
+  color: var(--cor-principal);
+  flex-shrink: 0;
+}
+
+.ajuda-urgente a {
+  color: var(--cor-principal);
+  font-weight: 700;
+}
+
+.situacoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--e-2);
+  list-style: none;
+}
+
+.situacao {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  height: 100%;
+  min-height: 76px;
+  padding: var(--e-2);
+  color: var(--cor-titulo);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--cor-borda);
+  transition: transform var(--t-medio) var(--ease-saida), border-color var(--t-medio),
+    box-shadow var(--t-medio);
+}
+
+.situacao:hover {
+  color: var(--cor-titulo);
+  border-color: var(--cor-destaque);
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-card-hover);
+}
+
+@media (min-width: 900px) {
+  .situacoes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .situacao {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+  }
+}
+
+.situacao__icone,
+.guia__icone {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--cor-fundo-suave);
+  color: var(--cor-secundaria);
+}
+
+.guias {
+  display: grid;
+  gap: var(--e-3);
+}
+
+@media (min-width: 900px) {
+  .guias {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.guia {
+  display: grid;
+  gap: var(--e-2);
+  align-content: start;
+  justify-items: start;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  scroll-margin-top: calc(var(--altura-header) + 1rem);
+}
+
+.guia h2 {
+  font-size: var(--fs-h3);
+}
+
+.guia__passos {
+  display: grid;
+  gap: 0.6rem;
+  padding-left: 1.25rem;
+  color: var(--cor-texto-suave);
+}
+
+.guia__passos li::marker {
+  color: var(--cor-secundaria);
+  font-weight: 700;
+}
+
+.guia__passos strong {
+  color: var(--cor-texto);
+}
+
+.guia__lei {
+  font-size: 0.9rem;
+  opacity: 0.92;
+}
+
+.guia--destaque {
+  background: var(--cor-principal);
+  color: #fff;
+}
+
+.guia--destaque h2,
+.guia--destaque .guia__passos,
+.guia--destaque .guia__passos strong {
+  color: #fff;
+}
+
+.guia--destaque .guia__passos li::marker {
+  color: var(--cor-secundaria-clara);
+}
+
+.guia--destaque .guia__icone {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* Destaque ao chegar pelo link da situação */
+.guia:target {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 4px;
+}
+
+/* ---------- Home: faixa de ajuda rápida ---------- */
+.ajuda-rapida {
+  padding-top: var(--e-4);
+}
+
+.ajuda-rapida__inner {
+  display: grid;
+  gap: var(--e-2);
+  padding: var(--e-3);
+  border-radius: var(--raio-card);
+  background: var(--cor-fundo-suave);
+}
+
+.ajuda-rapida h2 {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ajuda-rapida h2 .icone {
+  color: var(--cor-secundaria);
+}
+
+.ajuda-rapida__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.ajuda-rapida__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.45rem 1rem;
+  border-radius: var(--raio-pilula);
+  border: 2px solid var(--cor-destaque);
+  background: #fff;
+  color: var(--cor-botao);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color var(--t-rapido), color var(--t-rapido);
+}
+
+.ajuda-rapida__links a:hover {
+  background: var(--cor-botao);
+  border-color: var(--cor-botao);
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  .ajuda-rapida__inner {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--e-3);
+  }
+
+  .ajuda-rapida__links {
+    justify-content: flex-end;
+  }
+}

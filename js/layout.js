@@ -102,6 +102,7 @@ const MENU = [
   { href: "adote.html", texto: "Adote" },
   { href: "apadrinhe.html", texto: "Apadrinhe" },
   { href: "resgates.html", texto: "Resgates" },
+  { href: "ajuda.html", texto: "Achei um animal" },
   { href: "quem-somos.html", texto: "Quem somos" },
   { href: "index.html#contato", texto: "Contato" },
 ];
@@ -176,7 +177,7 @@ function montarHeader() {
     if (e.key === "Escape" && corpo.classList.contains("menu-aberto")) fechar(true);
   });
 
-  matchMedia("(min-width: 1100px)").addEventListener("change", () => fechar());
+  matchMedia("(min-width: 1240px)").addEventListener("change", () => fechar());
 }
 
 function montarRodape() {
@@ -224,6 +225,7 @@ function montarRodape() {
             <li><a href="index.html">Início</a></li>
             <li><a href="quem-somos.html">Quem somos</a></li>
             <li><a href="resgates.html">Resgates</a></li>
+            <li><a href="ajuda.html">Achei um animal</a></li>
             <li><a href="quem-somos.html#transparencia">Transparência</a></li>
           </ul>
         </nav>
@@ -234,6 +236,7 @@ function montarRodape() {
             <li><a href="adote.html">Adote</a></li>
             <li><a href="apadrinhe.html">Apadrinhe</a></li>
             <li><a href="#" data-whatsapp="Olá! Quero ser voluntário(a) na Anjos de Patas." target="_blank" rel="noopener">Seja voluntário</a></li>
+            <li><a href="#" data-whatsapp="Olá! Posso ser lar temporário para um animal da Anjos de Patas." target="_blank" rel="noopener">Seja lar temporário</a></li>
           </ul>
         </nav>
         <div class="rodape__coluna">

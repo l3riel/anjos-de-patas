@@ -112,6 +112,8 @@ async function aplicarConteudo() {
     if (valores[el.dataset.sem]) el.hidden = true;
   });
 
+  aplicarCampanha(valores);
+
   if (valores.whatsapp_numero) {
     ONG.whatsappNumero = valores.whatsapp_numero.replace(/\D/g, "");
     aplicarLinksWhatsApp();
@@ -120,6 +122,24 @@ async function aplicarConteudo() {
     document.querySelectorAll("a[data-email]").forEach((a) => (a.href = `mailto:${valores.email}`));
     ONG.email = valores.email;
   }
+}
+
+function aplicarCampanha(valores) {
+  const meta = Number(String(valores.campanha_meta || "").replace(/\D/g, ""));
+  const arrecadado = Number(String(valores.campanha_arrecadado || "").replace(/\D/g, ""));
+  if (!meta) return;
+  const pct = Math.min(100, Math.round((arrecadado / meta) * 100));
+  const real = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+  document.querySelectorAll("[data-campanha]").forEach((el) => {
+    el.hidden = false;
+    const barra = el.querySelector("[role=progressbar]");
+    barra.setAttribute("aria-valuenow", pct);
+    barra.setAttribute("aria-valuetext", `${real(arrecadado)} de ${real(meta)}, ${pct}%`);
+    barra.style.setProperty("--pct", `${pct}%`);
+    el.querySelector("[data-campanha-arrecadado]").textContent = real(arrecadado);
+    el.querySelector("[data-campanha-meta]").textContent = real(meta);
+    el.querySelector("[data-campanha-pct]").textContent = `(${pct}%)`;
+  });
 }
 
 document.addEventListener("DOMContentLoaded", aplicarConteudo);

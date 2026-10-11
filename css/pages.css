@@ -2596,3 +2596,62 @@ a.documento:hover {
   outline: 3px solid var(--cor-destaque);
   outline-offset: 3px;
 }
+
+/* ---------- Campanha com meta (home e doe) ---------- */
+.campanha {
+  padding-top: var(--e-4);
+}
+
+.campanha__card {
+  display: grid;
+  gap: var(--e-3);
+  align-items: center;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  border-left: 6px solid var(--cor-principal);
+}
+
+.campanha__texto > * + * {
+  margin-top: var(--e-1);
+}
+
+.campanha__texto p:last-child {
+  color: var(--cor-texto-suave);
+}
+
+.campanha__card .btn {
+  justify-self: start;
+}
+
+.campanha__barra {
+  height: 14px;
+  border-radius: 14px;
+  background: var(--cor-secundaria-clara);
+  overflow: hidden;
+}
+
+.campanha__barra > span {
+  display: block;
+  height: 100%;
+  width: var(--pct, 0%);
+  border-radius: 14px;
+  background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-principal));
+  transition: width 1s var(--ease-saida);
+}
+
+.campanha__numeros {
+  margin-top: 0.5rem;
+  color: var(--cor-texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.campanha__numeros strong {
+  color: var(--cor-principal);
+  font-size: 1.15rem;
+}
+
+@media (min-width: 900px) {
+  .campanha__card {
+    grid-template-columns: 1.3fr 1fr auto;
+    gap: var(--e-4);
+  }
+}

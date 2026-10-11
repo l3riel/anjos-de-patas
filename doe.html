@@ -46,6 +46,24 @@
       </div>
     </section>
 
+    <!-- CAMPANHA (aparece quando campanha_titulo estiver preenchido no painel ou em data/conteudo.json) -->
+    <section class="campanha" aria-labelledby="campanha-titulo" data-requer="campanha_titulo" hidden>
+      <div class="container">
+        <div class="card campanha__card">
+          <div class="campanha__texto">
+            <p class="sobretitulo"><svg data-icone="alerta"></svg>Campanha do momento</p>
+            <h2 id="campanha-titulo" data-conteudo="campanha_titulo"></h2>
+            <p data-conteudo="campanha_texto"></p>
+          </div>
+          <div class="campanha__meta" data-campanha hidden>
+            <div class="campanha__barra" role="progressbar" aria-labelledby="campanha-titulo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+            <p class="campanha__numeros"><strong data-campanha-arrecadado></strong> de <span data-campanha-meta></span> <span class="campanha__pct" data-campanha-pct></span></p>
+          </div>
+          <a class="btn" href="#lojinha"><svg data-icone="coracao"></svg>Ajudar nesta campanha</a>
+        </div>
+      </div>
+    </section>
+
     <!-- PIX + DADOS BANCÁRIOS -->
     <section class="secao" aria-labelledby="pix-titulo">
       <div class="container doe__grid">

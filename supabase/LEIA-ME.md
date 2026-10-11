@@ -13,8 +13,11 @@ Tudo cabe no plano gratuito: banco PostgreSQL, login e 1 GB de fotos.
 
 No menu **SQL Editor**, rode nesta ordem:
 
-1. Todo o conteúdo de `supabase/migrations/20261008000000_inicial.sql`: cria as tabelas `animais`, `conteudo` e `admins`, as regras de acesso (RLS) e o bucket de fotos.
-2. Todo o conteúdo de `supabase/seed.sql`: copia os animais de exemplo e cria os campos de texto editáveis.
+1. Os arquivos de `supabase/migrations/`, **em ordem de nome**:
+   - `20261008000000_inicial.sql`: tabelas `animais`, `conteudo` e `admins`, regras de acesso (RLS) e bucket de fotos;
+   - `20261010000000_adocao_em_andamento.sql`: status "adoção em andamento";
+   - `20261010000100_campanha.sql`: campos da campanha com meta.
+2. Todo o conteúdo de `supabase/seed.sql`: copia os animais de exemplo e preenche os campos de texto editáveis.
 
 > Quem usa a CLI pode trocar os dois passos por `npx supabase link` e `npx supabase db push`, rodando o seed em seguida.
 
@@ -57,7 +60,8 @@ No plano gratuito, o Supabase pausa o projeto depois de cerca de 7 dias sem nenh
 - `admin.html` não aparece no menu. Acesse direto: `https://l3riel.github.io/anjos-de-patas/admin.html`.
 - **Animais**: cadastrar, editar, trocar a foto, marcar como adotado (sai do site, mas fica no histórico) e remover.
 - **Fotos**: o painel reduz para no máximo 1200px e converte para WebP antes de enviar (cerca de 100 a 200 KB por foto), para não estourar o 1 GB grátis.
-- **Textos e números**: chave Pix, dados bancários, contadores da home, ano de fundação, WhatsApp e e-mail. Campo vazio = o site mantém o texto padrão.
+- **Status "adoção em andamento"**: o animal continua no site com um selo, sem o botão de adotar, até a equipe concluir.
+- **Textos e números**: chave Pix (ativa o Pix com QR Code da lojinha), dados bancários, contadores da home, ano de fundação, WhatsApp, e-mail e a **campanha do momento** (título, texto, meta e arrecadado). Campo vazio = o bloco fica escondido ou mantém o texto padrão.
 
 ## Tabelas
 

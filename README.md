@@ -23,6 +23,20 @@ Navegador ──► GitHub Pages (HTML, CSS, JS estáticos)
 
 O estudo de custos ([`docs/custos-e-arquitetura.md`](docs/custos-e-arquitetura.md)) recomenda Next.js + Supabase. Mantivemos o HTML puro com o mesmo Supabase porque: o site já está publicado no GitHub Pages (que não roda Next.js com servidor), o painel e as atualizações em tempo real funcionam igual, e quem mantém o site não precisa aprender React nem um processo de build. Se um dia o site precisar de renderização no servidor (por exemplo, SEO por animal), a migração reaproveita o mesmo banco.
 
+## Funcionalidades (todas sem custo)
+
+| Funcionalidade | Onde | Inspiração |
+| --- | --- | --- |
+| Guia "Achei um animal" (ferido, filhotes, perdido, maus-tratos, castração, devolução) | `ajuda.html` + atalhos na home | PAWS |
+| Lojinha de donativos: escolhe o item e paga por Pix com valor, QR Code gerado no navegador | `doe.html#lojinha`, `js/pix.js` | Instituto AdoteDog, Laticão |
+| Comparador antes/depois arrastável | `resgates.html` | Laticão, AdoteDog |
+| Selo "Adoção em andamento" | cards e página do animal | PAWS |
+| Campanha com meta e barra de progresso | home e `doe.html` | Projeto Maya |
+| Contato, adoção e apadrinhamento pelo WhatsApp com mensagem pronta | todo o site | — |
+| Filtros de adoção salvos na URL, carrossel com pausa, acessibilidade (teclado, leitor de tela, movimento reduzido) | todo o site | — |
+
+O Pix usa o padrão BR Code do Banco Central (o mesmo do "copia e cola"), montado em `js/pix.js` com CRC16. Não passa por gateway, então não há taxa. Só funciona depois que a chave Pix for cadastrada (painel ou `data/conteudo.json`); antes disso, os botões pedem a chave pelo WhatsApp. Os valores dos itens ficam nos atributos `data-valor` em `doe.html`.
+
 ## Painel da ONG
 
 `admin.html` (fora do menu, com `noindex`). Depois de entrar com e-mail e senha, a equipe pode:
@@ -77,6 +91,8 @@ Abra http://localhost:4173. Use um servidor (e não abrir o arquivo direto) porq
 |---|---|
 | Animais, textos e números (com Supabase) | Painel `admin.html` |
 | Animais para adoção e apadrinhamento (sem Supabase) | `data/animais.json` |
+| Chave Pix, contadores, campanha e outros textos (sem Supabase) | `data/conteudo.json` |
+| Itens e valores da lojinha de donativos | `doe.html` (`data-item` e `data-valor`) |
 | Histórias de superação e resgates | `data/historias.json` |
 | Menu, rodapé, WhatsApp, Instagram, e-mail, chaves do Supabase | `js/layout.js` (objeto `ONG` no topo) |
 | Cores, fontes, sombras | `css/base.css` (`:root`) |

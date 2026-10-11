@@ -287,6 +287,18 @@ async function montarApadrinhe() {
   observarRevelar(alvo);
 }
 
+/* Comparador antes/depois: o controle (mouse, toque ou setas) move a divisória */
+function ligarComparadores(raiz) {
+  raiz.querySelectorAll(".comparador").forEach((c) => {
+    const controle = c.querySelector(".comparador__controle");
+    controle.addEventListener("input", () => {
+      const v = Number(controle.value);
+      c.style.setProperty("--pos", `${v}%`);
+      controle.setAttribute("aria-valuetext", v < 15 ? "Só depois" : v > 85 ? "Só antes" : `${v}% antes, ${100 - v}% depois`);
+    });
+  });
+}
+
 /* /resgates: histórias com fotos de antes e depois */
 async function montarResgates() {
   const alvo = document.querySelector("[data-resgates]");
@@ -297,16 +309,14 @@ async function montarResgates() {
       .map(
         (r) => `
       <article class="resgate revelar" id="${esc(r.id)}">
-        <div class="resgate__fotos">
-          <figure>
-            <img src="${esc(r.antes)}" alt="Antes: ${esc(r.antesAlt)}" width="450" height="600" loading="lazy" decoding="async">
-            <figcaption>Antes</figcaption>
-          </figure>
-          <figure>
-            <img src="${esc(r.depois)}" alt="Depois: ${esc(r.depoisAlt)}" width="450" height="600" loading="lazy" decoding="async">
-            <figcaption>Depois</figcaption>
-          </figure>
-        </div>
+        <figure class="comparador" style="--pos:50%">
+          <img src="${esc(r.antes)}" alt="Antes: ${esc(r.antesAlt)}" width="600" height="450" loading="lazy" decoding="async">
+          <img class="comparador__depois" src="${esc(r.depois)}" alt="Depois: ${esc(r.depoisAlt)}" width="600" height="450" loading="lazy" decoding="async">
+          <span class="comparador__rotulo comparador__rotulo--antes" aria-hidden="true">Antes</span>
+          <span class="comparador__rotulo comparador__rotulo--depois" aria-hidden="true">Depois</span>
+          <span class="comparador__linha" aria-hidden="true"><span>${icone("chevron-esq")}${icone("chevron-dir")}</span></span>
+          <input class="comparador__controle" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois de ${esc(r.titulo)}" aria-valuetext="Metade antes, metade depois">
+        </figure>
         <div class="resgate__texto">
           ${r.data && !r.data.includes("PREENCHER") ? `<p class="resgate__data">${icone("relogio")}${esc(r.data)}</p>` : ""}
           <h2>${esc(r.titulo)}</h2>
@@ -317,6 +327,7 @@ async function montarResgates() {
       )
       .join("");
     mostrarNotaExemplo(resgates, alvo);
+    ligarComparadores(alvo);
     observarRevelar(alvo);
   } catch (e) {
     console.error(e);

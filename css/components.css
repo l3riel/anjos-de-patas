@@ -412,6 +412,11 @@
   color: var(--cor-principal-escura);
 }
 
+.selo--andamento {
+  background: var(--cor-botao);
+  color: #fff;
+}
+
 .selo--exemplo {
   background: var(--cor-secundaria-clara);
   color: var(--cor-principal-escura);

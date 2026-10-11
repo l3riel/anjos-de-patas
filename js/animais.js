@@ -42,7 +42,8 @@ const msgPadrinho = (a) => `Olá! Quero apadrinhar ${artigo(a)} ${a.nome}. Vi no
 function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
   const href = `animal.html?id=${encodeURIComponent(a.id)}`;
   const selos = [
-    modo !== "padrinho" && a.precisaPadrinho ? `<span class="selo">${icone("coracao")}Precisa de padrinho</span>` : "",
+    a.adocaoEmAndamento ? '<span class="selo selo--andamento">Adoção em andamento</span>' : "",
+    modo !== "padrinho" && a.precisaPadrinho && !a.adocaoEmAndamento ? `<span class="selo">${icone("coracao")}Precisa de padrinho</span>` : "",
     modo === "padrinho" && !a.disponivelAdocao ? '<span class="selo">Em tratamento</span>' : "",
   ].join("");
   const cta =
@@ -232,6 +233,7 @@ async function montarDetalhe() {
         <div class="detalhe__selos">
           ${a.precisaPadrinho ? `<span class="selo">${icone("coracao")}Precisa de padrinho</span>` : ""}
           ${!a.disponivelAdocao ? '<span class="selo">Em tratamento</span>' : ""}
+          ${a.adocaoEmAndamento ? '<span class="selo selo--andamento">Adoção em andamento</span>' : ""}
         </div>
         <h1>Oi, eu sou ${o} ${esc(a.nome)}!</h1>
         <ul class="tags tags--grandes" role="list" aria-label="Características">
@@ -247,14 +249,15 @@ async function montarDetalhe() {
           ${saude.map(([t, ok]) => `<li class="${ok ? "ok" : ""}">${icone(ok ? "check" : "relogio")}${ok ? t : t.replace(/^./, (c) => "Ainda não " + c.toLowerCase())}</li>`).join("")}
         </ul>
         <div class="grupo-botoes">
-          ${a.disponivelAdocao ? `<a class="btn" href="#interesse">${icone("coracao")}Quero adotar ${o} ${esc(a.nome)}</a>` : ""}
+          ${a.disponivelAdocao && !a.adocaoEmAndamento ? `<a class="btn" href="#interesse">${icone("coracao")}Quero adotar ${o} ${esc(a.nome)}</a>` : ""}
           ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="${esc(linkWhatsApp(msgPadrinho(a)))}" target="_blank" rel="noopener">Quero apadrinhar</a>` : ""}
         </div>
+        ${a.adocaoEmAndamento ? `<p class="detalhe__aviso">${o === "a" ? "Ela" : "Ele"} já está conhecendo uma família. Se a adoção não der certo, ${o === "a" ? "ela" : "ele"} volta para a lista. Enquanto isso, conheça outros animais abaixo.</p>` : ""}
         ${!a.disponivelAdocao ? `<p class="detalhe__aviso">${o === "a" ? "Ela" : "Ele"} ainda está em tratamento e logo fica disponível para adoção. Enquanto isso, você pode apadrinhar.</p>` : ""}
       </div>
     </article>`;
 
-  if (a.disponivelAdocao) {
+  if (a.disponivelAdocao && !a.adocaoEmAndamento) {
     document.querySelector("[data-bloco-interesse]").hidden = false;
     document.querySelector("[data-nome-animal]").textContent = `${o} ${a.nome}`;
     const botao = document.querySelector("[data-whats-adocao]");

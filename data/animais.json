@@ -17,7 +17,11 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": true,
-      "temperamento": ["dócil", "calma", "carinhosa"],
+      "temperamento": [
+        "dócil",
+        "calma",
+        "carinhosa"
+      ],
       "historia": "Fui encontrada com frio e muito magrinha. Hoje estou forte, uso minha roupinha amarela com orgulho e espero uma família que goste de cochilos ao sol.",
       "exemplo": true
     },
@@ -36,9 +40,13 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": false,
-      "temperamento": ["brincalhão", "sociável com cães"],
+      "temperamento": [
+        "brincalhão",
+        "sociável com cães"
+      ],
       "historia": "Vivia perto da rodoviária pedindo carinho a quem passava. Adoro correr, buscar bolinha e receber visitas.",
-      "exemplo": true
+      "exemplo": true,
+      "adocaoEmAndamento": true
     },
     {
       "id": "mel",
@@ -55,7 +63,11 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": false,
-      "temperamento": ["curiosa", "agitada", "amorosa"],
+      "temperamento": [
+        "curiosa",
+        "agitada",
+        "amorosa"
+      ],
       "historia": "Nasci numa ninhada abandonada numa caixa de papelão. Sou a mais bagunceira dos irmãos e prometo encher sua casa de alegria.",
       "exemplo": true
     },
@@ -74,7 +86,10 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": false,
-      "temperamento": ["independente", "tranquilo"],
+      "temperamento": [
+        "independente",
+        "tranquilo"
+      ],
       "historia": "Fui resgatado de cima de um telhado depois de uma chuva forte. Gosto de observar tudo do alto e de um colo no fim do dia.",
       "exemplo": true
     },
@@ -93,7 +108,10 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": false,
-      "temperamento": ["carinhosa", "conversadeira"],
+      "temperamento": [
+        "carinhosa",
+        "conversadeira"
+      ],
       "historia": "Cheguei à ONG desconfiada, mas descobri que carinho atrás da orelha resolve quase tudo. Me dou bem com outros gatos.",
       "exemplo": true
     },
@@ -112,7 +130,10 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": false,
-      "temperamento": ["enérgico", "leal"],
+      "temperamento": [
+        "enérgico",
+        "leal"
+      ],
       "historia": "Fui atropelado e passei semanas em tratamento. Hoje corro sem dor e preciso de um quintal e de alguém que goste de caminhadas.",
       "exemplo": true
     },
@@ -131,7 +152,10 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": false,
-      "temperamento": ["brincalhona", "curiosa"],
+      "temperamento": [
+        "brincalhona",
+        "curiosa"
+      ],
       "historia": "Fui achada sozinha num terreno baldio, chorando de fome. Agora brinco com tudo o que se mexe.",
       "exemplo": true
     },
@@ -150,7 +174,10 @@
       "vermifugado": true,
       "disponivelAdocao": true,
       "precisaPadrinho": true,
-      "temperamento": ["sereno", "companheiro"],
+      "temperamento": [
+        "sereno",
+        "companheiro"
+      ],
       "historia": "Fui deixado amarrado num poste depois de anos com uma família. Tomo remédio para o coração todos os dias e ainda tenho muito amor para dar.",
       "exemplo": true
     },
@@ -169,7 +196,10 @@
       "vermifugado": true,
       "disponivelAdocao": false,
       "precisaPadrinho": true,
-      "temperamento": ["dorminhoco", "manso"],
+      "temperamento": [
+        "dorminhoco",
+        "manso"
+      ],
       "historia": "Estou em tratamento para os rins e preciso de ração especial. Enquanto isso, um padrinho ou madrinha faz toda a diferença.",
       "exemplo": true
     },
@@ -188,7 +218,10 @@
       "vermifugado": true,
       "disponivelAdocao": false,
       "precisaPadrinho": true,
-      "temperamento": ["alegre", "sociável"],
+      "temperamento": [
+        "alegre",
+        "sociável"
+      ],
       "historia": "Perdi parte da visão de um olho por uma infecção não tratada. Estou terminando o tratamento e logo fico disponível para adoção.",
       "exemplo": true
     }

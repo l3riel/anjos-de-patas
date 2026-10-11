@@ -144,6 +144,7 @@ function renderLista() {
     if (busca && !a.nome.toLowerCase().includes(busca)) return false;
     if (filtro === "adocao") return !a.adotado && a.disponivel_adocao;
     if (filtro === "padrinho") return !a.adotado && a.precisa_padrinho;
+    if (filtro === "andamento") return !a.adotado && a.adocao_em_andamento;
     if (filtro === "adotados") return a.adotado;
     return true;
   });
@@ -164,6 +165,7 @@ function renderLista() {
             ${a.adotado ? '<span class="selo">Adotado</span>' : ""}
             ${!a.adotado && a.disponivel_adocao ? '<span class="selo selo--claro">Para adoção</span>' : ""}
             ${!a.adotado && a.precisa_padrinho ? '<span class="selo selo--claro">Precisa de padrinho</span>' : ""}
+            ${!a.adotado && a.adocao_em_andamento ? '<span class="selo selo--andamento">Adoção em andamento</span>' : ""}
             ${a.exemplo ? '<span class="selo selo--exemplo">Exemplo</span>' : ""}
           </div>
         </div>
@@ -191,7 +193,7 @@ async function acaoNaLista(e) {
     botao.disabled = true;
     const { error } = await sb
       .from("animais")
-      .update({ adotado, adotado_em: adotado ? new Date().toISOString().slice(0, 10) : null })
+      .update({ adotado, adocao_em_andamento: false, adotado_em: adotado ? new Date().toISOString().slice(0, 10) : null })
       .eq("id", id);
     if (error) return avisar("Não foi possível salvar: " + error.message);
     avisar(adotado ? `${a.nome} marcado como adotado. Que alegria!` : `${a.nome} voltou para a lista de adoção.`);
@@ -224,7 +226,7 @@ function abrirEditor(a) {
     if (dados[c] != null) form.elements[c].value = dados[c];
   });
   form.elements.temperamento.value = (dados.temperamento || []).join(", ");
-  ["castrado", "vacinado", "vermifugado", "disponivel_adocao", "precisa_padrinho"].forEach((c) => {
+  ["castrado", "vacinado", "vermifugado", "disponivel_adocao", "precisa_padrinho", "adocao_em_andamento"].forEach((c) => {
     form.elements[c].checked = Boolean(dados[c]);
   });
 
@@ -314,6 +316,7 @@ async function salvarAnimal(e) {
       vermifugado: form.elements.vermifugado.checked,
       disponivel_adocao: form.elements.disponivel_adocao.checked,
       precisa_padrinho: form.elements.precisa_padrinho.checked,
+      adocao_em_andamento: form.elements.adocao_em_andamento.checked,
       exemplo: false,
     };
 

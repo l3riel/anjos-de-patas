@@ -34,6 +34,7 @@ function animalDoBanco(l) {
     disponivelAdocao: l.disponivel_adocao,
     precisaPadrinho: l.precisa_padrinho,
     adotado: l.adotado,
+    adocaoEmAndamento: l.adocao_em_andamento,
     temperamento: l.temperamento || [],
     historia: l.historia,
     exemplo: l.exemplo,

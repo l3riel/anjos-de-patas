@@ -58,17 +58,34 @@ function carregarAnimais() {
   return promessaAnimais;
 }
 
-/* ---------- Textos e números editáveis pelo painel ---------- */
+/* ---------- Textos e números editáveis ----------
+   Vêm da tabela "conteudo" do Supabase ou, sem ele, de data/conteudo.json.
+   Retorna só as chaves preenchidas: { chave: "valor" }. */
+let promessaConteudo;
+function carregarConteudo() {
+  promessaConteudo ??= (async () => {
+    let pares = [];
+    try {
+      if (supabaseAtivo()) {
+        const linhas = await apiSupabase("conteudo?select=chave,valor");
+        pares = linhas.map((l) => [l.chave, l.valor]);
+      } else {
+        const r = await fetch("data/conteudo.json");
+        if (r.ok) pares = Object.entries((await r.json()).valores || {});
+      }
+    } catch (e) {
+      console.warn("Textos editáveis indisponíveis, mantendo os do HTML:", e);
+    }
+    return Object.fromEntries(
+      pares.filter(([, v]) => String(v ?? "").trim()).map(([k, v]) => [k, String(v).trim()])
+    );
+  })();
+  return promessaConteudo;
+}
+
 async function aplicarConteudo() {
-  if (!supabaseAtivo()) return;
-  let linhas;
-  try {
-    linhas = await apiSupabase("conteudo?select=chave,valor");
-  } catch (e) {
-    console.warn("Textos do Supabase indisponíveis, mantendo os do HTML:", e);
-    return;
-  }
-  const valores = Object.fromEntries(linhas.filter((l) => l.valor.trim()).map((l) => [l.chave, l.valor.trim()]));
+  const valores = await carregarConteudo();
+  if (!Object.keys(valores).length) return;
 
   document.querySelectorAll("[data-conteudo]").forEach((el) => {
     const valor = valores[el.dataset.conteudo];

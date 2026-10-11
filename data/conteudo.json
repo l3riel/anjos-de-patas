@@ -1,0 +1,24 @@
+{
+  "_leia-me": "Textos e números do site quando o Supabase NÃO está configurado (com ele, use o painel admin.html). Campo vazio = o bloco fica escondido ou mantém o texto padrão. pix_chave: CNPJ, e-mail, telefone (+5531...) ou chave aleatória. campanha_*: preencha os quatro para mostrar a campanha com barra de progresso na home e na página de doação (valores só com números, ex.: 2000).",
+  "valores": {
+    "contador_resgatados": "",
+    "contador_adotados": "",
+    "contador_castrados": "",
+    "ano_fundacao": "2019",
+    "voluntarios": "",
+    "comedouros": "",
+    "pix_chave": "",
+    "pix_favorecido": "Anjos de Patas Matipó - APM",
+    "banco": "",
+    "agencia": "",
+    "conta": "",
+    "cnpj": "35.761.357/0001-77",
+    "whatsapp_numero": "",
+    "whatsapp_texto": "",
+    "email": "",
+    "campanha_titulo": "",
+    "campanha_texto": "",
+    "campanha_meta": "",
+    "campanha_arrecadado": ""
+  }
+}

@@ -27,6 +27,7 @@
   <script src="js/layout.js" defer></script>
   <script src="js/dados.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/pix.js" defer></script>
 </head>
 <body>
   <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
@@ -84,32 +85,54 @@
       </div>
     </section>
 
-    <!-- PARA ONDE VAI -->
-    <section class="secao secao--suave" aria-labelledby="impacto-titulo">
-      <div class="container">
+    <!-- LOJINHA DE DONATIVOS (gera Pix com valor no navegador: js/pix.js) -->
+    <section class="secao secao--suave" id="lojinha" aria-labelledby="lojinha-titulo">
+      <div class="container" data-lojinha>
         <div class="secao__topo revelar">
-          <p class="sobretitulo"><svg data-icone="pata"></svg>Para onde vai sua doação</p>
-          <h2 id="impacto-titulo">Veja o que cada valor faz</h2>
-          <p>Valores aproximados para você ter uma ideia do impacto.</p>
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Lojinha de donativos</p>
+          <h2 id="lojinha-titulo">Escolha o que você quer doar</h2>
+          <p>Toque em um item e pague por Pix. Valores aproximados do que cada cuidado custa para a ONG.</p>
         </div>
-        <ul class="impacto" role="list">
-          <li class="card impacto__item revelar">
-            <p class="impacto__valor">R$ 20</p>
-            <p>compram vermífugo e antipulgas para um animal recém-resgatado.</p>
-          </li>
-          <li class="card impacto__item revelar" style="--atraso:60ms">
-            <p class="impacto__valor">R$ 50</p>
-            <p>garantem um saco de ração para alimentar os comedouros comunitários.</p>
-          </li>
-          <li class="card impacto__item impacto__item--destaque revelar" style="--atraso:120ms">
-            <p class="impacto__valor">R$ 100</p>
-            <p>ajudam a pagar a vacinação completa de um filhote.</p>
-          </li>
-          <li class="card impacto__item revelar" style="--atraso:180ms">
-            <p class="impacto__valor">R$ 200</p>
-            <p>cobrem boa parte de uma castração, que evita dezenas de abandonos.</p>
-          </li>
+        <ul class="lojinha" role="list">
+            <li><button class="card lojinha__item" type="button" data-item="Vermífugo e antipulgas" data-valor="20" aria-pressed="false">
+              <svg data-icone="estetoscopio"></svg>
+              <span class="lojinha__valor">R$ 20</span>
+              <span class="lojinha__nome">Vermífugo e antipulgas</span>
+              <span class="lojinha__desc">para um animal recém-resgatado</span>
+            </button></li>
+            <li><button class="card lojinha__item" type="button" data-item="Um saco de ração" data-valor="50" aria-pressed="false">
+              <svg data-icone="pacote"></svg>
+              <span class="lojinha__valor">R$ 50</span>
+              <span class="lojinha__nome">Um saco de ração</span>
+              <span class="lojinha__desc">abastece os comedouros comunitários</span>
+            </button></li>
+            <li><button class="card lojinha__item" type="button" data-item="Vacinação de um filhote" data-valor="100" aria-pressed="false">
+              <svg data-icone="seringa"></svg>
+              <span class="lojinha__valor">R$ 100</span>
+              <span class="lojinha__nome">Vacinação de um filhote</span>
+              <span class="lojinha__desc">todas as doses do primeiro ano</span>
+            </button></li>
+            <li><button class="card lojinha__item" type="button" data-item="Uma castração" data-valor="200" aria-pressed="false">
+              <svg data-icone="coracao"></svg>
+              <span class="lojinha__valor">R$ 200</span>
+              <span class="lojinha__nome">Uma castração</span>
+              <span class="lojinha__desc">evita dezenas de abandonos</span>
+            </button></li>
+            <li><button class="card lojinha__item lojinha__item--outro" type="button" data-item="Outro valor" data-valor="outro" aria-pressed="false">
+              <svg data-icone="maos"></svg>
+              <span class="lojinha__valor">Outro valor</span>
+              <span class="lojinha__nome">Você escolhe quanto</span>
+              <span class="lojinha__desc">qualquer valor ajuda</span>
+            </button></li>
         </ul>
+        <form class="lojinha__outro" data-outro-valor hidden>
+          <label for="valor-livre">Quanto você quer doar? (R$)</label>
+          <div class="lojinha__outro-linha">
+            <input id="valor-livre" name="valor" type="text" inputmode="decimal" placeholder="Ex.: 35" autocomplete="off">
+            <button class="btn" type="submit">Gerar Pix</button>
+          </div>
+        </form>
+        <div class="card lojinha__painel" data-lojinha-painel aria-live="polite" hidden></div>
       </div>
     </section>
 

@@ -2655,3 +2655,10 @@ a.documento:hover {
     gap: var(--e-4);
   }
 }
+
+.projeto__versao h3 {
+  font-size: 1rem;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+  margin-bottom: var(--e-2);
+}

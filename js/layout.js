@@ -255,7 +255,7 @@ function montarRodape() {
     <div class="rodape__base">
       <div class="container rodape__base-inner">
         <p>© ${ano} ${ONG.razaoSocial} · CNPJ ${ONG.cnpj}</p>
-        <p><a href="quem-somos.html#projeto">Feito por alunos de Ciência da Computação da Univértix</a></p>
+        <p><a href="quem-somos.html#projeto">Feito pela turma do 4º período de Ciência da Computação da Univértix</a></p>
       </div>
     </div>
   </footer>

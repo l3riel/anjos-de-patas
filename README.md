@@ -2,7 +2,7 @@
 
 Site institucional da ONG Anjos de Patas, que resgata, trata e encaminha para adoção cães e gatos de rua em Matipó - MG.
 
-Projeto desenvolvido por alunos do 2º período de Ciência da Computação - Univértix.
+Projeto de extensão da turma do 4º período de Ciência da Computação da Univértix. A primeira versão do site (ACE - PET) foi feita no 2º período.
 
 **Site no ar:** https://l3riel.github.io/anjos-de-patas/
 

@@ -1796,6 +1796,11 @@
   margin-top: var(--e-3);
 }
 
+/* Ainda sem nome (adote) */
+.sem-nome {
+  margin-top: var(--e-6);
+}
+
 /* Nossa realidade (quem-somos) */
 .realidade__bloco + .realidade__bloco,
 .realidade__pedido {

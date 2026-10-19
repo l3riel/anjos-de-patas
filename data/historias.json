@@ -1,5 +1,5 @@
 {
-  "_leia-me": "'superacao' alimenta o carrossel da Home (texto em 1ª pessoa). 'resgates' alimenta a página /resgates (fotos de antes e depois). Itens com 'exemplo': true são textos de exemplo [PREENCHER]: troque pelas histórias reais e mude para false.",
+  "_leia-me": "'superacao' alimenta o carrossel da Home (texto em 1ª pessoa). 'resgates' alimenta a página /resgates (fotos de antes e depois); com a lista vazia, a seção não aparece.",
   "superacao": [
     {
       "nome": "Hulk",
@@ -18,39 +18,5 @@
       "exemplo": false
     }
   ],
-  "resgates": [
-    {
-      "id": "abrigo-improvisado",
-      "titulo": "Os 12 do terreno baldio",
-      "data": "[PREENCHER] mês/ano",
-      "resumo": "Doze cães viviam presos num terreno sem água nem sombra. Em um mutirão, voluntários limparam o espaço, levaram todos ao veterinário e castraram cada um deles. Hoje, oito já foram adotados.",
-      "antes": "assets/img/fotos/ong2-600.webp",
-      "antesAlt": "Cães num terreno de terra batida com cercado de madeira",
-      "depois": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=800&fit=crop&q=70&auto=format",
-      "depoisAlt": "Dois cães saudáveis correndo juntos ao ar livre",
-      "exemplo": true
-    },
-    {
-      "id": "ninhada-da-chuva",
-      "titulo": "A ninhada da enchente",
-      "data": "[PREENCHER] mês/ano",
-      "resumo": "Depois de uma noite de temporal, uma moradora encontrou seis filhotes dentro de uma valeta. Todos passaram por tratamento contra verminose e foram para lares temporários até a adoção.",
-      "antes": "assets/img/fotos/ong1-600.webp",
-      "antesAlt": "Filhotes num ambiente escuro e úmido",
-      "depois": "https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?w=600&h=800&fit=crop&q=70&auto=format",
-      "depoisAlt": "Filhote saudável deitado na grama",
-      "exemplo": true
-    },
-    {
-      "id": "quintal-abandonado",
-      "titulo": "O quintal abandonado",
-      "data": "[PREENCHER] mês/ano",
-      "resumo": "Uma denúncia anônima levou a equipe a uma casa vazia onde cães esperavam pelos donos que não voltaram. Eles receberam atendimento, vacinas e castração. Alguns ainda procuram um lar.",
-      "antes": "assets/img/fotos/ong3-600.webp",
-      "antesAlt": "Quintal de terra com cães ao fundo e uma casa simples",
-      "depois": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=800&fit=crop&q=70&auto=format",
-      "depoisAlt": "Cachorro brincando com um brinquedo dentro de casa",
-      "exemplo": true
-    }
-  ]
+  "resgates": []
 }

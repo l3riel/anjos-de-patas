@@ -308,6 +308,8 @@ async function montarResgates() {
   if (!alvo) return;
   try {
     const { resgates } = await carregarHistorias();
+    // Sem histórias cadastradas, a seção some em vez de ficar vazia
+    if (!resgates.length) return alvo.closest("section")?.setAttribute("hidden", "");
     alvo.innerHTML = resgates
       .map(
         (r) => `

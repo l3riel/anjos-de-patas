@@ -1796,6 +1796,34 @@
   margin-top: var(--e-3);
 }
 
+/* Nossa realidade (quem-somos) */
+.realidade__bloco + .realidade__bloco,
+.realidade__pedido {
+  margin-top: var(--e-5);
+}
+
+.realidade__bloco > p {
+  max-width: 70ch;
+  margin-block: var(--e-1) var(--e-3);
+}
+
+@media (min-width: 768px) {
+  .realidade__galeria--duas {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 50%;
+  }
+}
+
+.realidade__pedido {
+  padding: clamp(1.75rem, 1rem + 2vw, 2.75rem);
+  border-top: 6px solid var(--cor-secundaria);
+}
+
+.realidade__pedido > .btn,
+.realidade__pedido > p {
+  margin-top: var(--e-3);
+}
+
 .mvv {
   display: grid;
   gap: var(--e-3);

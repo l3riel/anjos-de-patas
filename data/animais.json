@@ -2,6 +2,54 @@
   "_leia-me": "Cada objeto em 'animais' é um card no site. 'exemplo': true mostra o selo [PREENCHER]; troque pelos dados reais e mude para false. Fotos do Unsplash são placeholders: TROCAR por fotos reais em assets/img/fotos/.",
   "animais": [
     {
+      "id": "hulk",
+      "nome": "Hulk",
+      "especie": "cachorro",
+      "sexo": "macho",
+      "porte": "medio",
+      "idade": "adulto",
+      "idadeTexto": "adulto",
+      "castrado": false,
+      "vacinado": false,
+      "vermifugado": false,
+      "disponivelAdocao": true,
+      "precisaPadrinho": true,
+      "exemplo": false,
+      "foto": "assets/img/fotos/hulk-600.webp",
+      "fotoGrande": "assets/img/fotos/hulk.webp",
+      "alt": "Hulk, pitbull de pelo marrom, em pé no canil da ONG olhando para a câmera",
+      "temperamento": [
+        "manso",
+        "carinhoso",
+        "um pouco medroso"
+      ],
+      "historia": "Fui encontrado atropelado na beira do asfalto. A ONG cuidou de mim e hoje sou manso e adoro carinho, mas ainda tenho um pouco de medo por causa do que passei. Preciso de alguém paciente, que me deixe confiar no meu tempo."
+    },
+    {
+      "id": "pitty",
+      "nome": "Pitty",
+      "especie": "cachorro",
+      "sexo": "macho",
+      "porte": "medio",
+      "idade": "adulto",
+      "idadeTexto": "adulto",
+      "castrado": false,
+      "vacinado": false,
+      "vermifugado": false,
+      "disponivelAdocao": true,
+      "precisaPadrinho": true,
+      "exemplo": false,
+      "foto": "assets/img/fotos/pitty-600.webp",
+      "fotoGrande": "assets/img/fotos/pitty.webp",
+      "alt": "Pitty, pitbull caramelo e branco, deitado no chão olhando para cima",
+      "temperamento": [
+        "manso",
+        "carinhoso",
+        "cego"
+      ],
+      "historia": "Fui abandonado ainda filhote, com machucados nos olhos. A ONG tratou meus ferimentos, mas acabei ficando cego. Isso não me impede de nada: sou manso e muito carinhoso com todo mundo que está por perto."
+    },
+    {
       "id": "branquinha",
       "nome": "Branquinha",
       "especie": "cachorro",

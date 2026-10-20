@@ -10,8 +10,8 @@ const ONG = {
   cidade: "Matipó - MG",
   endereco: "Rua E, Bairro Exposição, ao lado do ESF",
   // O Instagram é o único canal de contato (o link do grupo da ONG fica na bio)
-  instagram: "https://www.instagram.com/anjosdepatasmatipo/",
-  instagramUsuario: "@anjosdepatasmatipo",
+  instagram: "https://www.instagram.com/ong_anjosdepatasmatipo/",
+  instagramUsuario: "@ong_anjosdepatasmatipo",
   email: "", // vazio = a linha de e-mail não aparece no rodapé
   horario: "Seg. a sex.: 9h às 16h · Sáb.: 9h às 12h",
   // Supabase (veja supabase/LEIA-ME.md). Vazio = o site lê data/animais.json.

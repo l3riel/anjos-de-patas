@@ -49,40 +49,6 @@
       <div class="container">
         <h2 id="lista-titulo" class="visualmente-oculto">Animais disponíveis para adoção</h2>
 
-        <form class="filtros revelar" data-filtros aria-label="Filtrar animais">
-          <div class="filtros__grupo" role="group" aria-labelledby="f-especie">
-            <span class="filtros__rotulo" id="f-especie">Espécie</span>
-            <button type="button" class="filtro" data-filtro="especie" data-valor="" aria-pressed="true">Todos</button>
-            <button type="button" class="filtro" data-filtro="especie" data-valor="cachorro" aria-pressed="false">Cães</button>
-            <button type="button" class="filtro" data-filtro="especie" data-valor="gato" aria-pressed="false">Gatos</button>
-          </div>
-          <div class="filtros__grupo" role="group" aria-labelledby="f-porte">
-            <span class="filtros__rotulo" id="f-porte">Porte</span>
-            <button type="button" class="filtro" data-filtro="porte" data-valor="" aria-pressed="true">Todos</button>
-            <button type="button" class="filtro" data-filtro="porte" data-valor="pequeno" aria-pressed="false">Pequeno</button>
-            <button type="button" class="filtro" data-filtro="porte" data-valor="medio" aria-pressed="false">Médio</button>
-            <button type="button" class="filtro" data-filtro="porte" data-valor="grande" aria-pressed="false">Grande</button>
-          </div>
-          <div class="filtros__grupo" role="group" aria-labelledby="f-sexo">
-            <span class="filtros__rotulo" id="f-sexo">Sexo</span>
-            <button type="button" class="filtro" data-filtro="sexo" data-valor="" aria-pressed="true">Todos</button>
-            <button type="button" class="filtro" data-filtro="sexo" data-valor="macho" aria-pressed="false">Macho</button>
-            <button type="button" class="filtro" data-filtro="sexo" data-valor="femea" aria-pressed="false">Fêmea</button>
-          </div>
-          <div class="filtros__grupo" role="group" aria-labelledby="f-idade">
-            <span class="filtros__rotulo" id="f-idade">Idade</span>
-            <button type="button" class="filtro" data-filtro="idade" data-valor="" aria-pressed="true">Todas</button>
-            <button type="button" class="filtro" data-filtro="idade" data-valor="filhote" aria-pressed="false">Filhote</button>
-            <button type="button" class="filtro" data-filtro="idade" data-valor="adulto" aria-pressed="false">Adulto</button>
-            <button type="button" class="filtro" data-filtro="idade" data-valor="idoso" aria-pressed="false">Idoso</button>
-          </div>
-        </form>
-
-        <div class="filtros__resumo">
-          <p data-contagem role="status" aria-live="polite">Carregando animais…</p>
-          <button type="button" class="filtros__limpar" data-limpar hidden>Limpar filtros</button>
-        </div>
-
         <p class="nota-exemplo" data-nota-exemplo hidden>Perfis ilustrativos enquanto cadastramos os animais da ONG.</p>
         <div class="grade-animais" data-animais-adote></div>
       </div>

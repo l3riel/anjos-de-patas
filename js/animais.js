@@ -129,64 +129,21 @@ async function montarHistorias() {
   }
 }
 
-/* /adote: grade com filtros (estado salvo na URL para poder compartilhar) */
+/* /adote: todos os animais disponíveis */
 async function montarAdote() {
   const alvo = document.querySelector("[data-animais-adote]");
   if (!alvo) return;
-  const contagem = document.querySelector("[data-contagem]");
-  const limpar = document.querySelector("[data-limpar]");
-  const botoes = [...document.querySelectorAll("[data-filtro]")];
-  const params = new URLSearchParams(location.search);
-  const filtros = { especie: "", porte: "", sexo: "", idade: "" };
-  Object.keys(filtros).forEach((k) => (filtros[k] = params.get(k) || ""));
-
-  let animais = [];
   try {
-    animais = (await carregarAnimais()).filter((a) => a.disponivelAdocao);
+    const animais = (await carregarAnimais()).filter((a) => a.disponivelAdocao);
     mostrarNotaExemplo(animais, alvo);
+    alvo.innerHTML = animais.length
+      ? animais.map((a, i) => cardAnimal(a, { atraso: (i % 3) * 60 })).join("")
+      : '<div class="vazio"><p>Nenhum animal disponível agora. Novos resgatados chegam sempre!</p></div>';
+    observarRevelar(alvo);
   } catch (e) {
     console.error(e);
-    contagem.textContent = "";
-    return erroCarregamento(alvo);
+    erroCarregamento(alvo);
   }
-
-  const render = () => {
-    botoes.forEach((b) =>
-      b.setAttribute("aria-pressed", String(filtros[b.dataset.filtro] === b.dataset.valor))
-    );
-    const lista = animais.filter((a) => Object.entries(filtros).every(([k, v]) => !v || a[k] === v));
-    const ativos = Object.values(filtros).some(Boolean);
-    limpar.hidden = !ativos;
-
-    contagem.textContent =
-      lista.length === 1 ? "1 animal encontrado" : `${lista.length} animais encontrados`;
-    alvo.innerHTML = lista.length
-      ? lista.map((a, i) => cardAnimal(a, { atraso: (i % 3) * 60 })).join("")
-      : `<div class="vazio">
-           <p>Nenhum animal com essas características agora. Novos resgatados chegam sempre!</p>
-           <button class="btn btn--contorno btn--pequeno" type="button" data-limpar-vazio>Ver todos os animais</button>
-         </div>`;
-    alvo.querySelector("[data-limpar-vazio]")?.addEventListener("click", limparTudo);
-    alvo.querySelectorAll(".revelar").forEach((el) => el.classList.add("visivel"));
-
-    const url = new URL(location.href);
-    Object.entries(filtros).forEach(([k, v]) => (v ? url.searchParams.set(k, v) : url.searchParams.delete(k)));
-    history.replaceState(null, "", url);
-  };
-
-  const limparTudo = () => {
-    Object.keys(filtros).forEach((k) => (filtros[k] = ""));
-    render();
-  };
-
-  botoes.forEach((b) =>
-    b.addEventListener("click", () => {
-      filtros[b.dataset.filtro] = b.dataset.valor;
-      render();
-    })
-  );
-  limpar.addEventListener("click", limparTudo);
-  render();
 }
 
 /* /animal?id=...: página de detalhe */

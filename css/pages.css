@@ -2049,6 +2049,37 @@ a.documento:hover {
   flex-shrink: 0;
 }
 
+/* Autores em destaque: avatar maior, nome e papel */
+.participantes--destaque {
+  grid-template-columns: 1fr;
+}
+
+.participantes--destaque li {
+  padding: 0.85rem 1.25rem 0.85rem 0.85rem;
+}
+
+.participantes--destaque li span {
+  width: 56px;
+  height: 56px;
+  font-size: 1.4rem;
+}
+
+.participantes--destaque strong {
+  display: block;
+  font-size: 1.15rem;
+}
+
+.participantes--destaque small {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.projeto__turma {
+  margin-top: var(--e-2);
+  color: var(--cor-texto-suave);
+}
+
 /* =========================================================
    AJUSTES DA REVISÃO DE UX (sem formulários)
    ========================================================= */

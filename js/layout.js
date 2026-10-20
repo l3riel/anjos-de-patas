@@ -240,7 +240,8 @@ function montarRodape() {
         <p><a href="quem-somos.html#projeto">Feito pela turma do 4º período de Ciência da Computação da Univértix</a></p>
       </div>
     </div>
-  </footer>`;
+  </footer>
+  <a class="insta-flutuante" href="${ONG.instagram}" target="_blank" rel="noopener" aria-label="Falar com a ONG no Instagram (abre em nova aba)">${icone("instagram")}</a>`;
 }
 
 document.documentElement.classList.add("js");

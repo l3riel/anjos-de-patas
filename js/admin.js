@@ -159,8 +159,8 @@ function renderLista() {
       <li class="card admin-item${a.adotado ? " admin-item--adotado" : ""}" data-id="${escHtml(a.id)}">
         <img src="${escHtml(a.foto || "assets/img/brand/logo.webp")}" alt="" width="96" height="72" loading="lazy">
         <div class="admin-item__info">
-          <h3>${escHtml(a.nome)}</h3>
-          <p>${ROTULO.especie[a.especie]} · porte ${ROTULO.porte[a.porte]} · ${escHtml(a.idade_texto || "")}</p>
+          <h3>${escHtml(a.nome || "Ainda sem nome")}</h3>
+          <p>${ROTULO.especie[a.especie]} · porte ${ROTULO.porte[a.porte] || "não informado"} · ${escHtml(a.idade_texto || "")}</p>
           <div class="admin-item__selos">
             ${a.adotado ? '<span class="selo">Adotado</span>' : ""}
             ${!a.adotado && a.disponivel_adocao ? '<span class="selo selo--claro">Para adoção</span>' : ""}

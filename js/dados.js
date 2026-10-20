@@ -106,7 +106,7 @@ async function aplicarConteudo() {
   // data-requer="chave": só aparece quando o dado existe
   // data-sem="chave": alternativa mostrada enquanto o dado não existe
   document.querySelectorAll("[data-requer]").forEach((el) => {
-    if (valores[el.dataset.requer]) el.hidden = false;
+    if (el.dataset.requer.split("|").some((k) => valores[k])) el.hidden = false;
   });
   document.querySelectorAll("[data-sem]").forEach((el) => {
     if (valores[el.dataset.sem]) el.hidden = true;

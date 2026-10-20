@@ -1946,6 +1946,18 @@
   }
 }
 
+/* Só o cadastro oficial (sem documentos publicados ainda): um card centralizado */
+.transparencia--so-dados {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+@media (min-width: 960px) {
+  .transparencia--so-dados {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 

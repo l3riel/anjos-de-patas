@@ -64,29 +64,25 @@
     </section>
 
     <!-- PIX + DADOS BANCÁRIOS -->
-    <section class="secao" aria-labelledby="pix-titulo">
+    <section class="secao" aria-labelledby="pix-titulo" data-requer="pix_chave|banco" hidden>
       <div class="container doe__grid">
-        <article class="card doe-pix com-fitas revelar">
+        <article class="card doe-pix com-fitas revelar" data-requer="pix_chave" hidden>
           <p class="sobretitulo"><svg data-icone="coracao"></svg>Jeito mais rápido</p>
           <h2 id="pix-titulo">Doe por Pix</h2>
           <p>Abra o app do seu banco, escolha <strong>Pix</strong> e use a chave ou o QR Code. Qualquer valor faz diferença.</p>
 
           <!-- A chave e o QR Code aparecem quando a chave for cadastrada no painel (admin.html).
                TROCAR quando houver: <img src="assets/img/brand/qrcode-pix.png" alt="QR Code Pix da ONG Anjos de Patas"> -->
-          <div class="doe-pix__chave" data-requer="pix_chave" hidden>
+          <div class="doe-pix__chave">
             <p class="doe-pix__rotulo">Chave Pix</p>
             <p class="doe-pix__valor" id="chave-pix" data-conteudo="pix_chave"></p>
             <button class="btn btn--pequeno" type="button" data-copiar="#chave-pix"><svg data-icone="copiar"></svg>Copiar chave</button>
             <p class="form__status" role="status" aria-live="polite"></p>
           </div>
-          <div class="doe-pix__pedir" data-sem="pix_chave">
-            <p>Peça a chave Pix pelo WhatsApp e a equipe envia na hora, junto com o comprovante de recebimento.</p>
-            <a class="btn" href="#" data-whatsapp="Olá! Quero fazer uma doação por Pix para a Anjos de Patas. Pode me passar a chave?" target="_blank" rel="noopener"><svg data-icone="whatsapp"></svg>Pedir a chave Pix</a>
-          </div>
           <p class="doe-pix__favorecido">Favorecido: <strong data-conteudo="pix_favorecido">Anjos de Patas Matipó - APM</strong> · CNPJ 35.761.357/0001-77</p>
         </article>
 
-        <article class="card doe-banco revelar" style="--atraso:100ms">
+        <article class="card doe-banco revelar" style="--atraso:100ms" data-requer="banco" hidden>
           <span class="doe-banco__icone"><svg data-icone="banco"></svg></span>
           <h2>Transferência ou depósito</h2>
           <dl class="dados-lista">
@@ -96,14 +92,13 @@
             <div><dt>CNPJ</dt><dd><span data-conteudo="cnpj">35.761.357/0001-77</span></dd></div>
             <div><dt>Titular</dt><dd>Anjos de Patas Matipó - APM</dd></div>
           </dl>
-          <p class="doe-banco__nota" data-sem="banco">Para depósito ou transferência, peça os dados da conta pelo <a href="#" data-whatsapp="Olá! Quero fazer uma doação por transferência para a Anjos de Patas. Pode me passar os dados da conta?" target="_blank" rel="noopener">WhatsApp</a>.</p>
           <p class="doe-banco__nota">Quer recibo? Mande o comprovante pelo <a href="#" data-whatsapp="Olá! Fiz uma doação para a Anjos de Patas e gostaria do recibo." target="_blank" rel="noopener">WhatsApp</a>.</p>
         </article>
       </div>
     </section>
 
     <!-- LOJINHA DE DONATIVOS (gera Pix com valor no navegador: js/pix.js) -->
-    <section class="secao secao--suave" id="lojinha" aria-labelledby="lojinha-titulo">
+    <section class="secao secao--suave" id="lojinha" aria-labelledby="lojinha-titulo" data-requer="pix_chave" hidden>
       <div class="container" data-lojinha>
         <div class="secao__topo revelar">
           <p class="sobretitulo"><svg data-icone="pata"></svg>Lojinha de donativos</p>
@@ -224,7 +219,7 @@
         <div class="faq">
           <details>
             <summary>Como sei que minha doação chega aos animais?<svg data-icone="chevron-baixo"></svg></summary>
-            <div><p>Publicamos a prestação de contas na seção <a href="quem-somos.html#transparencia">Transparência</a> e mostramos os resgates no Instagram.</p></div>
+            <div><p>Mostramos os resgates e os cuidados com cada animal no nosso Instagram.</p></div>
           </details>
           <details>
             <summary>Recebo confirmação da minha doação?<svg data-icone="chevron-baixo"></svg></summary>
@@ -232,7 +227,7 @@
           </details>
           <details>
             <summary>Posso doar todo mês?<svg data-icone="chevron-baixo"></svg></summary>
-            <div><p>Pode, e isso ajuda muito a planejar os tratamentos. Agende um Pix recorrente no app do seu banco ou <a href="apadrinhe.html">apadrinhe um animal</a>.</p></div>
+            <div><p>Pode, e isso ajuda muito a planejar os tratamentos. O jeito mais fácil é <a href="apadrinhe.html">apadrinhar um animal</a>.</p></div>
           </details>
           <details>
             <summary>Ração aberta ou vencida serve?<svg data-icone="chevron-baixo"></svg></summary>

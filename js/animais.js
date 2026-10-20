@@ -251,9 +251,9 @@ async function montarDetalhe() {
         <p class="detalhe__historia">${esc(a.historia)}</p>
         ${a.exemplo ? '<p class="nota-exemplo">Perfil ilustrativo enquanto cadastramos os animais da ONG.</p>' : ""}
         ${a.temperamento?.length ? `<p class="detalhe__temperamento"><strong>Meu jeitinho:</strong> ${a.temperamento.map(esc).join(", ")}</p>` : ""}
-        <ul class="detalhe__saude" role="list">
-          ${saude.map(([t, ok]) => `<li class="${ok ? "ok" : ""}">${icone(ok ? "check" : "relogio")}${ok ? t : t.replace(/^./, (c) => "Ainda não " + c.toLowerCase())}</li>`).join("")}
-        </ul>
+        ${saude.some(([, ok]) => ok) ? `<ul class="detalhe__saude" role="list">
+          ${saude.filter(([, ok]) => ok).map(([t]) => `<li class="ok">${icone("check")}${t}</li>`).join("")}
+        </ul>` : ""}
         <div class="grupo-botoes">
           ${a.disponivelAdocao && !a.adocaoEmAndamento ? `<a class="btn" href="#interesse">${icone("coracao")}Quero adotar ${esc(chamar(a))}</a>` : ""}
           ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="${esc(linkWhatsApp(msgPadrinho(a)))}" target="_blank" rel="noopener">Quero apadrinhar</a>` : ""}

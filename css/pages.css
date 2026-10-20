@@ -1443,7 +1443,7 @@
 .detalhe__foto::before {
   content: "";
   position: absolute;
-  inset: 8% -4% -5% 8%;
+  inset: 8% calc(-1 * min(4%, var(--gutter) - 4px)) -5% 8%; /* não passa da borda da tela */
   border-radius: 46% 54% 42% 58% / 50% 44% 56% 50%;
   background: var(--cor-secundaria);
   z-index: -1;
@@ -2156,6 +2156,7 @@ a.documento:hover {
 .ponto__link {
   display: inline-block;
   margin-top: 0.4rem;
+  padding-block: 0.6rem;
   font-weight: 600;
 }
 

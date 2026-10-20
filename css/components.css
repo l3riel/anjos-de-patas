@@ -445,12 +445,12 @@
 
 .com-fitas::before {
   top: -38px;
-  left: -34px;
+  left: calc(-1 * min(34px, var(--gutter))); /* nunca passa da borda da tela */
 }
 
 .com-fitas::after {
   bottom: -38px;
-  right: -34px;
+  right: calc(-1 * min(34px, var(--gutter)));
   transform: rotate(180deg);
 }
 
@@ -1004,6 +1004,8 @@ fieldset.campo {
 }
 
 .rodape__contato a {
+  display: inline-block;
+  padding-block: 0.6rem; /* área de toque de 44px no celular */
   text-underline-offset: 3px;
 }
 

@@ -2407,6 +2407,7 @@ a.documento:hover {
 
 .lojinha__outro {
   display: grid;
+  grid-template-columns: minmax(0, 1fr); /* o campo encolhe em telas estreitas */
   gap: 0.4rem;
   max-width: 420px;
   margin: var(--e-3) auto 0;
@@ -2661,4 +2662,10 @@ a.documento:hover {
   color: var(--cor-texto-suave);
   font-weight: 600;
   margin-bottom: var(--e-2);
+}
+
+/* Doe: sem dados bancários cadastrados, o card do Pix fica sozinho e centralizado */
+.doe__grid:not(:has(.doe-banco:not([hidden]))) {
+  grid-template-columns: minmax(0, 640px);
+  justify-content: center;
 }

@@ -69,12 +69,12 @@
         <article class="card doe-pix com-fitas revelar" data-requer="pix_chave" hidden>
           <p class="sobretitulo"><svg data-icone="coracao"></svg>Jeito mais rápido</p>
           <h2 id="pix-titulo">Doe por Pix</h2>
-          <p>Abra o app do seu banco, escolha <strong>Pix</strong> e use a chave ou o QR Code. Qualquer valor faz diferença.</p>
+          <p>Abra o app do seu banco, escolha <strong>Pix</strong> e cole a chave abaixo. Prefere QR Code? Escolha o valor logo em seguida. Qualquer valor faz diferença.</p>
 
           <!-- A chave e o QR Code aparecem quando a chave for cadastrada no painel (admin.html).
                TROCAR quando houver: <img src="assets/img/brand/qrcode-pix.png" alt="QR Code Pix da ONG Anjos de Patas"> -->
           <div class="doe-pix__chave">
-            <p class="doe-pix__rotulo">Chave Pix</p>
+            <p class="doe-pix__rotulo">Chave Pix (CNPJ)</p>
             <p class="doe-pix__valor" id="chave-pix" data-conteudo="pix_chave"></p>
             <button class="btn btn--pequeno" type="button" data-copiar="#chave-pix"><svg data-icone="copiar"></svg>Copiar chave</button>
             <p class="form__status" role="status" aria-live="polite"></p>
@@ -101,43 +101,11 @@
     <section class="secao secao--suave" id="lojinha" aria-labelledby="lojinha-titulo" data-requer="pix_chave" hidden>
       <div class="container" data-lojinha>
         <div class="secao__topo revelar">
-          <p class="sobretitulo"><svg data-icone="pata"></svg>Lojinha de donativos</p>
-          <h2 id="lojinha-titulo">Escolha o que você quer doar</h2>
-          <p>Toque em um item e pague por Pix. Valores aproximados do que cada cuidado custa para a ONG.</p>
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Pix com valor</p>
+          <h2 id="lojinha-titulo">Escolha quanto quer doar</h2>
+          <p>Digite o valor e o site gera o QR Code e o código Pix copia e cola, prontos para o app do seu banco.</p>
         </div>
-        <ul class="lojinha" role="list">
-            <li><button class="card lojinha__item" type="button" data-item="Vermífugo e antipulgas" data-valor="20" aria-pressed="false">
-              <svg data-icone="estetoscopio"></svg>
-              <span class="lojinha__valor">R$ 20</span>
-              <span class="lojinha__nome">Vermífugo e antipulgas</span>
-              <span class="lojinha__desc">para um animal recém-resgatado</span>
-            </button></li>
-            <li><button class="card lojinha__item" type="button" data-item="Um saco de ração" data-valor="50" aria-pressed="false">
-              <svg data-icone="pacote"></svg>
-              <span class="lojinha__valor">R$ 50</span>
-              <span class="lojinha__nome">Um saco de ração</span>
-              <span class="lojinha__desc">abastece os comedouros comunitários</span>
-            </button></li>
-            <li><button class="card lojinha__item" type="button" data-item="Vacinação de um filhote" data-valor="100" aria-pressed="false">
-              <svg data-icone="seringa"></svg>
-              <span class="lojinha__valor">R$ 100</span>
-              <span class="lojinha__nome">Vacinação de um filhote</span>
-              <span class="lojinha__desc">todas as doses do primeiro ano</span>
-            </button></li>
-            <li><button class="card lojinha__item" type="button" data-item="Uma castração" data-valor="200" aria-pressed="false">
-              <svg data-icone="coracao"></svg>
-              <span class="lojinha__valor">R$ 200</span>
-              <span class="lojinha__nome">Uma castração</span>
-              <span class="lojinha__desc">evita dezenas de abandonos</span>
-            </button></li>
-            <li><button class="card lojinha__item lojinha__item--outro" type="button" data-item="Outro valor" data-valor="outro" aria-pressed="false">
-              <svg data-icone="maos"></svg>
-              <span class="lojinha__valor">Outro valor</span>
-              <span class="lojinha__nome">Você escolhe quanto</span>
-              <span class="lojinha__desc">qualquer valor ajuda</span>
-            </button></li>
-        </ul>
-        <form class="lojinha__outro" data-outro-valor hidden>
+        <form class="lojinha__outro" data-outro-valor>
           <label for="valor-livre">Quanto você quer doar? (R$)</label>
           <div class="lojinha__outro-linha">
             <input id="valor-livre" name="valor" type="text" inputmode="decimal" placeholder="Ex.: 35" autocomplete="off">

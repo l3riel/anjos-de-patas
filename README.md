@@ -28,7 +28,7 @@ O estudo de custos ([`docs/custos-e-arquitetura.md`](docs/custos-e-arquitetura.m
 | Funcionalidade | Onde | Inspiração |
 | --- | --- | --- |
 | Guia "Achei um animal" (ferido, filhotes, perdido, maus-tratos, castração, devolução) | `ajuda.html` + atalhos na home | PAWS |
-| Lojinha de donativos: escolhe o item e paga por Pix com valor, QR Code gerado no navegador | `doe.html#lojinha`, `js/pix.js` | Instituto AdoteDog, Laticão |
+| Pix com valor: a pessoa digita quanto quer doar e o site gera o QR Code e o copia e cola no navegador | `doe.html#lojinha`, `js/pix.js` | Instituto AdoteDog, Laticão |
 | Comparador antes/depois arrastável | `resgates.html` | Laticão, AdoteDog |
 | Selo "Adoção em andamento" | cards e página do animal | PAWS |
 | Campanha com meta e barra de progresso | home e `doe.html` | Projeto Maya |
@@ -92,7 +92,7 @@ Abra http://localhost:4173. Use um servidor (e não abrir o arquivo direto) porq
 | Animais, textos e números (com Supabase) | Painel `admin.html` |
 | Animais para adoção e apadrinhamento (sem Supabase) | `data/animais.json` |
 | Chave Pix, contadores, campanha e outros textos (sem Supabase) | `data/conteudo.json` |
-| Itens e valores da lojinha de donativos | `doe.html` (`data-item` e `data-valor`) |
+| Itens fixos na lojinha (opcional) | `doe.html`: botões com `data-item` e `data-valor` dentro de `[data-lojinha]` |
 | Histórias de superação e resgates | `data/historias.json` |
 | Menu, rodapé, Instagram, e-mail, chaves do Supabase | `js/layout.js` (objeto `ONG` no topo) |
 | Cores, fontes, sombras | `css/base.css` (`:root`) |

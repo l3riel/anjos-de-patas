@@ -199,9 +199,9 @@ function montarRodape() {
           </div>
         </div>
         <div class="rodape__pets" aria-hidden="true">
-          <img class="pet-gato" src="assets/img/decor/gato-footer.webp" alt="" width="427" height="332" loading="lazy">
+          <img class="pet-gato" src="assets/img/decor/cao-sentado.webp" alt="" width="491" height="600" loading="lazy">
           <img class="pet-casa" src="assets/img/decor/casa.webp" alt="" width="454" height="454" loading="lazy">
-          <img class="pet-cachorro" src="assets/img/decor/cachorro-footer.webp" alt="" width="353" height="310" loading="lazy">
+          <img class="pet-cachorro" src="assets/img/decor/cao-tigrado.webp" alt="" width="600" height="585" loading="lazy">
         </div>
       </div>
       <svg class="rodape__ondas" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">

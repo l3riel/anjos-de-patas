@@ -198,9 +198,6 @@ function montarRodape() {
             <a class="btn btn--contorno" href="adote.html">Ver quem espera um lar</a>
           </div>
         </div>
-        <div class="rodape__pets" aria-hidden="true">
-          <img class="pet-casa" src="assets/img/decor/casa.webp" alt="" width="454" height="454" loading="lazy">
-        </div>
       </div>
       <svg class="rodape__ondas" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path fill="#9C3573" d="M0 58C220 8 470 0 720 34s500 48 720-6v92H0Z"/>

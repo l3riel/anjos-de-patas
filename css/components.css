@@ -890,57 +890,6 @@ fieldset.campo {
   margin: var(--e-1) 0 var(--e-3);
 }
 
-/* Os pets ficam no fluxo (não usam position absolute), então nunca cobrem o texto */
-.rodape__pets {
-  display: none;
-}
-
-@media (min-width: 600px) {
-  .rodape__pets {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    width: min(100%, 460px);
-    justify-self: center;
-    margin-bottom: -46px; /* senta os pets na crista da onda */
-    position: relative;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .rodape__pets img {
-    height: auto;
-  }
-
-  .rodape__pets .pet-gato {
-    width: 38%;
-    margin-right: -4%;
-    position: relative;
-    z-index: 2;
-  }
-
-  .rodape__pets .pet-casa {
-    width: 40%;
-  }
-
-  .rodape__pets .pet-cachorro {
-    width: 32%;
-    margin-left: -6%;
-    position: relative;
-    z-index: 2;
-  }
-}
-
-@media (min-width: 900px) {
-  .rodape__chamada-inner {
-    grid-template-columns: 1.2fr 1fr;
-  }
-
-  .rodape__pets {
-    justify-self: end;
-  }
-}
-
 .rodape__ondas {
   display: block;
   width: 100%;

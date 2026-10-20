@@ -61,7 +61,7 @@ No plano gratuito, o Supabase pausa o projeto depois de cerca de 7 dias sem nenh
 - **Animais**: cadastrar, editar, trocar a foto, marcar como adotado (sai do site, mas fica no histórico) e remover.
 - **Fotos**: o painel reduz para no máximo 1200px e converte para WebP antes de enviar (cerca de 100 a 200 KB por foto), para não estourar o 1 GB grátis.
 - **Status "adoção em andamento"**: o animal continua no site com um selo, sem o botão de adotar, até a equipe concluir.
-- **Textos e números**: chave Pix (ativa o Pix com QR Code da lojinha), dados bancários, contadores da home, ano de fundação, WhatsApp, e-mail e a **campanha do momento** (título, texto, meta e arrecadado). Campo vazio = o bloco fica escondido ou mantém o texto padrão.
+- **Textos e números**: chave Pix (ativa o Pix com QR Code da lojinha), dados bancários, contadores da home, ano de fundação, e-mail e a **campanha do momento** (título, texto, meta e arrecadado). Campo vazio = o bloco fica escondido ou mantém o texto padrão.
 
 ## Tabelas
 

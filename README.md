@@ -32,7 +32,7 @@ O estudo de custos ([`docs/custos-e-arquitetura.md`](docs/custos-e-arquitetura.m
 | Comparador antes/depois arrastável | `resgates.html` | Laticão, AdoteDog |
 | Selo "Adoção em andamento" | cards e página do animal | PAWS |
 | Campanha com meta e barra de progresso | home e `doe.html` | Projeto Maya |
-| Contato, adoção e apadrinhamento pelo WhatsApp com mensagem pronta | todo o site | — |
+| Contato, adoção e apadrinhamento pelo Instagram da ONG | todo o site | — |
 | Filtros de adoção salvos na URL, carrossel com pausa, acessibilidade (teclado, leitor de tela, movimento reduzido) | todo o site | — |
 
 O Pix usa o padrão BR Code do Banco Central (o mesmo do "copia e cola"), montado em `js/pix.js` com CRC16. Não passa por gateway, então não há taxa. Só funciona depois que a chave Pix for cadastrada (painel ou `data/conteudo.json`); antes disso, os botões pedem a chave pelo WhatsApp. Os valores dos itens ficam nos atributos `data-valor` em `doe.html`.
@@ -43,7 +43,7 @@ O Pix usa o padrão BR Code do Banco Central (o mesmo do "copia e cola"), montad
 
 - cadastrar, editar e remover animais, com upload de foto (convertida para WebP no navegador);
 - marcar um animal como adotado (ele sai do site, mas fica no histórico);
-- editar textos e números: chave Pix, dados bancários, contadores, ano de fundação, WhatsApp e e-mail.
+- editar textos e números: chave Pix, dados bancários, contadores, ano de fundação e e-mail.
 
 As mudanças aparecem no site no próximo carregamento da página, sem deploy.
 
@@ -94,12 +94,12 @@ Abra http://localhost:4173. Use um servidor (e não abrir o arquivo direto) porq
 | Chave Pix, contadores, campanha e outros textos (sem Supabase) | `data/conteudo.json` |
 | Itens e valores da lojinha de donativos | `doe.html` (`data-item` e `data-valor`) |
 | Histórias de superação e resgates | `data/historias.json` |
-| Menu, rodapé, WhatsApp, Instagram, e-mail, chaves do Supabase | `js/layout.js` (objeto `ONG` no topo) |
+| Menu, rodapé, Instagram, e-mail, chaves do Supabase | `js/layout.js` (objeto `ONG` no topo) |
 | Cores, fontes, sombras | `css/base.css` (`:root`) |
 
-**Sem formulários:** todo contato (adoção, apadrinhamento, doação, voluntariado, denúncia) abre o WhatsApp com a mensagem pronta (`data-whatsapp="mensagem"` no link). Com `ONG.whatsappNumero` vazio, os links abrem o grupo da ONG.
+**Sem formulários:** todo contato (adoção, apadrinhamento, doação, voluntariado, denúncia) leva ao Instagram da ONG (`ONG.instagram`). A ONG não tem WhatsApp próprio; o link do grupo fica na bio do Instagram.
 
-**Dados que faltam não aparecem para o visitante:** blocos com `data-requer="chave"` ficam ocultos até o dado ser cadastrado no painel; `data-sem="chave"` mostra uma alternativa (ex.: "Peça a chave Pix pelo WhatsApp") enquanto isso. Pendências ficam marcadas em comentários no HTML. Imagens com o comentário `TROCAR` são placeholders (Unsplash) e devem ser substituídas por fotos reais em `assets/img/`.
+**Dados que faltam não aparecem para o visitante:** blocos com `data-requer="chave"` ficam ocultos até o dado ser cadastrado no painel (aceita várias chaves: `data-requer="pix_chave|banco"`); `data-sem="chave"` mostra uma alternativa enquanto isso. É assim que Pix, dados bancários, lojinha, campanha e contadores aparecem sozinhos quando forem cadastrados. Pendências ficam marcadas em comentários no HTML. Imagens com o comentário `TROCAR` são placeholders (Unsplash) e devem ser substituídas por fotos reais em `assets/img/`.
 
 ### Campos de um animal (`data/animais.json`)
 

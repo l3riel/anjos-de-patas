@@ -30,8 +30,6 @@ insert into public.conteudo (chave, rotulo, grupo, ordem) values
   ('agencia', 'Agência', 'Doações', 100),
   ('conta', 'Conta corrente', 'Doações', 110),
   ('cnpj', 'CNPJ', 'Doações', 120),
-  ('whatsapp_numero', 'WhatsApp da ONG (só números, com 55 e DDD)', 'Contato', 130),
-  ('whatsapp_texto', 'WhatsApp como aparece no site', 'Contato', 140),
   ('email', 'E-mail da ONG', 'Contato', 150)
 on conflict (chave) do nothing;
 

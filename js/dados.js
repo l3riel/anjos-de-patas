@@ -114,10 +114,6 @@ async function aplicarConteudo() {
 
   aplicarCampanha(valores);
 
-  if (valores.whatsapp_numero) {
-    ONG.whatsappNumero = valores.whatsapp_numero.replace(/\D/g, "");
-    aplicarLinksWhatsApp();
-  }
   if (valores.email) {
     document.querySelectorAll("a[data-email]").forEach((a) => (a.href = `mailto:${valores.email}`));
     ONG.email = valores.email;

@@ -878,7 +878,7 @@
   flex: 1;
 }
 
-/* ---------- 8. Faixa WhatsApp / Instagram ---------- */
+/* ---------- 8. Faixa Instagram ---------- */
 .faixa-redes {
   position: relative;
   background: var(--cor-principal);
@@ -2110,7 +2110,7 @@ a.documento:hover {
   text-align: left;
 }
 
-/* Adoção e apadrinhamento: bloco com requisitos e botão de WhatsApp */
+/* Adoção e apadrinhamento: bloco com requisitos e botão do Instagram */
 .interesse__card {
   display: grid;
   gap: var(--e-2);

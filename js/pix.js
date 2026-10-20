@@ -85,7 +85,6 @@ async function iniciarLojinha() {
   async function mostrar(item, valor) {
     raiz.querySelectorAll("[data-item]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.item === item)));
     const descricao = valor ? `${item} (${formatoReal(valor)})` : item;
-    const msgComprovante = `Olá! Fiz uma doação para a Anjos de Patas: ${descricao}. Segue o comprovante.`;
     painel.hidden = false;
     // No celular o painel fica abaixo dos itens: leva a pessoa até ele
     const irAoPainel = () =>
@@ -94,8 +93,8 @@ async function iniciarLojinha() {
     if (!chave) {
       painel.innerHTML = `
         <p class="lojinha__escolha">Você escolheu: <strong>${descricao}</strong></p>
-        <p>A chave Pix ainda não está publicada no site. A equipe envia pelo WhatsApp na hora.</p>
-        <a class="btn" href="${linkWhatsApp(`Olá! Quero doar ${descricao} para a Anjos de Patas. Pode me passar a chave Pix?`)}" target="_blank" rel="noopener">${icone("whatsapp")}Pedir a chave Pix</a>`;
+        <p>A chave Pix ainda não está publicada no site. Peça para a equipe no direct do Instagram.</p>
+        <a class="btn" href="${ONG.instagram}" target="_blank" rel="noopener">${icone("instagram")}Pedir a chave Pix</a>`;
       irAoPainel();
       return;
     }
@@ -108,13 +107,13 @@ async function iniciarLojinha() {
         <ol class="lojinha__passos">
           <li>No app do banco, escolha <strong>Pix copia e cola</strong> (ou leia o QR Code).</li>
           <li>Cole o código abaixo e confirme o pagamento para <strong>${nome}</strong>.</li>
-          <li>Mande o comprovante pelo WhatsApp, se quiser receber o agradecimento.</li>
+          <li>Mande o comprovante no direct do Instagram, se quiser receber o agradecimento.</li>
         </ol>
         <label class="visualmente-oculto" for="codigo-pix">Código Pix copia e cola</label>
         <textarea id="codigo-pix" class="lojinha__codigo" readonly rows="3">${codigo}</textarea>
         <div class="grupo-botoes">
           <button class="btn" type="button" data-copiar-pix>${icone("copiar")}Copiar código Pix</button>
-          <a class="btn btn--contorno" href="${linkWhatsApp(msgComprovante)}" target="_blank" rel="noopener">${icone("whatsapp")}Enviar comprovante</a>
+          <a class="btn btn--contorno" href="${ONG.instagram}" target="_blank" rel="noopener">${icone("instagram")}Enviar comprovante</a>
         </div>
         <p class="form__status" role="status" aria-live="polite"></p>
       </div>`;

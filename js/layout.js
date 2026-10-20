@@ -1,5 +1,5 @@
 /* =========================================================
-   Layout compartilhado: ícones, header, rodapé e WhatsApp
+   Layout compartilhado: ícones, header e rodapé
    Para trocar contatos/redes, edite só o objeto ONG abaixo.
    ========================================================= */
 
@@ -9,11 +9,7 @@ const ONG = {
   cnpj: "35.761.357/0001-77",
   cidade: "Matipó - MG",
   endereco: "Rua E, Bairro Exposição, ao lado do ESF",
-  // Número com DDI+DDD, só dígitos (ex.: "5531999999999"). Também editável no painel.
-  // Enquanto estiver vazio, os botões de WhatsApp abrem o grupo abaixo.
-  whatsappNumero: "",
-  whatsappTexto: "", // como o número aparece no rodapé, ex.: "(31) 9 9999-9999"
-  whatsappGrupo: "https://chat.whatsapp.com/EZXPNb8ATfT1UnAckykyNl",
+  // O Instagram é o único canal de contato (o link do grupo da ONG fica na bio)
   instagram: "https://www.instagram.com/anjosdepatasmatipo/",
   instagramUsuario: "@anjosdepatasmatipo",
   email: "", // vazio = a linha de e-mail não aparece no rodapé
@@ -25,12 +21,7 @@ const ONG = {
   supabaseAnonKey: "",
 };
 
-function linkWhatsApp(mensagem = "Olá! Vim pelo site da Anjos de Patas.") {
-  if (!ONG.whatsappNumero) return ONG.whatsappGrupo;
-  return `https://wa.me/${ONG.whatsappNumero}?text=${encodeURIComponent(mensagem)}`;
-}
-
-/* Ícones SVG (traço no estilo Lucide; WhatsApp e Instagram simplificados) */
+/* Ícones SVG (traço no estilo Lucide; Instagram simplificado) */
 const ICONES = {
   menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
   fechar: '<path d="M18 6 6 18M6 6l12 12"/>',
@@ -83,8 +74,6 @@ const ICONES = {
   filtro: '<path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>',
   instagram:
     '<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/>',
-  whatsapp:
-    '<path fill="currentColor" stroke="none" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41Z"/>',
 };
 
 function icone(nome, classe = "icone") {
@@ -118,8 +107,7 @@ function paginaAtual(href) {
 
 function sociais() {
   return `
-    <a class="icone-social" href="${ONG.instagram}" target="_blank" rel="noopener" aria-label="Instagram da ONG (abre em nova aba)">${icone("instagram")}</a>
-    <a class="icone-social" href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" aria-label="WhatsApp da ONG (abre em nova aba)">${icone("whatsapp")}</a>`;
+    <a class="icone-social" href="${ONG.instagram}" target="_blank" rel="noopener" aria-label="Instagram da ONG (abre em nova aba)">${icone("instagram")}</a>`;
 }
 
 function montarHeader() {
@@ -184,7 +172,6 @@ function montarRodape() {
   const alvo = document.getElementById("site-footer");
   if (!alvo) return;
   const ano = new Date().getFullYear();
-  const whatsTexto = ONG.whatsappNumero && ONG.whatsappTexto ? ONG.whatsappTexto : "Grupo da ONG no WhatsApp";
 
   alvo.outerHTML = `
   <footer class="rodape">
@@ -230,14 +217,14 @@ function montarRodape() {
             <li><a href="doe.html">Faça uma doação</a></li>
             <li><a href="adote.html">Adote</a></li>
             <li><a href="apadrinhe.html">Apadrinhe</a></li>
-            <li><a href="#" data-whatsapp="Olá! Quero ser voluntário(a) na Anjos de Patas." target="_blank" rel="noopener">Seja voluntário</a></li>
-            <li><a href="#" data-whatsapp="Olá! Posso ser lar temporário para um animal da Anjos de Patas." target="_blank" rel="noopener">Seja lar temporário</a></li>
+            <li><a href="${ONG.instagram}" target="_blank" rel="noopener">Seja voluntário</a></li>
+            <li><a href="${ONG.instagram}" target="_blank" rel="noopener">Seja lar temporário</a></li>
           </ul>
         </nav>
         <div class="rodape__coluna">
           <h2>Fale com a gente</h2>
           <ul class="rodape__contato" role="list">
-            <li>${icone("whatsapp")}<a href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" data-conteudo="whatsapp_texto">${whatsTexto}</a></li>
+            <li>${icone("instagram")}<a href="${ONG.instagram}" target="_blank" rel="noopener">${ONG.instagramUsuario}</a></li>
             <li data-requer="email"${ONG.email ? "" : " hidden"}>${icone("email")}<a href="mailto:${ONG.email}" data-email data-conteudo="email">${ONG.email}</a></li>
             <li>${icone("local")}<span>${ONG.endereco}, ${ONG.cidade}</span></li>
             <li>${icone("relogio")}<span>${ONG.horario}</span></li>
@@ -253,19 +240,10 @@ function montarRodape() {
         <p><a href="quem-somos.html#projeto">Feito pela turma do 4º período de Ciência da Computação da Univértix</a></p>
       </div>
     </div>
-  </footer>
-  <a class="whats-flutuante" href="${linkWhatsApp()}" data-whatsapp target="_blank" rel="noopener" aria-label="Conversar com a ONG no WhatsApp (abre em nova aba)">${icone("whatsapp")}</a>`;
-}
-
-/* Links marcados com data-whatsapp usam o número configurado em ONG */
-function aplicarLinksWhatsApp() {
-  document.querySelectorAll("a[data-whatsapp]").forEach((a) => {
-    a.href = linkWhatsApp(a.dataset.whatsapp || undefined);
-  });
+  </footer>`;
 }
 
 document.documentElement.classList.add("js");
 montarHeader();
 montarRodape();
 aplicarIcones();
-aplicarLinksWhatsApp();

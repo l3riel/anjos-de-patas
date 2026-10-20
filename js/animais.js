@@ -43,11 +43,8 @@ const chamar = (a) => {
   if (a.nome) return `${artigo(a)} ${a.nome}`;
   return a.sexo === "femea" ? `esta ${ESPECIE_FEMININO[a.especie]}` : `este ${a.especie}`;
 };
-const identificar = (a) => (a.nome ? chamar(a) : `${chamar(a)} ainda sem nome (${a.alt})`);
 const tagsAnimal = (a, ...itens) => itens.filter(Boolean).map((t) => `<li>${esc(t)}</li>`).join("");
 
-const msgAdocao = (a) => `Olá! Tenho interesse em adotar ${identificar(a)}. Vi no site da Anjos de Patas.`;
-const msgPadrinho = (a) => `Olá! Quero apadrinhar ${identificar(a)}. Vi no site da Anjos de Patas.`;
 
 function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
   const href = `animal.html?id=${encodeURIComponent(a.id)}`;
@@ -68,11 +65,7 @@ function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
       <div class="animal-card__selos">${selos}</div>
     </div>
     <div class="animal-card__corpo">
-      <h3 class="animal-card__nome">${
-        modo === "padrinho"
-          ? `<a href="${esc(linkWhatsApp(msgPadrinho(a)))}" target="_blank" rel="noopener">${esc(nomeVisivel(a))}<span class="visualmente-oculto"> (abre o WhatsApp)</span></a>`
-          : `<a href="${href}">${esc(nomeVisivel(a))}</a>`
-      }</h3>
+      <h3 class="animal-card__nome"><a href="${href}">${esc(nomeVisivel(a))}</a></h3>
       <ul class="tags" role="list" aria-label="Características">
         ${tagsAnimal(a, a.idadeTexto || ROTULOS.idade[a.idade], ROTULOS.porte[a.porte], ROTULOS.sexo[a.sexo])}
       </ul>
@@ -256,7 +249,7 @@ async function montarDetalhe() {
         </ul>` : ""}
         <div class="grupo-botoes">
           ${a.disponivelAdocao && !a.adocaoEmAndamento ? `<a class="btn" href="#interesse">${icone("coracao")}Quero adotar ${esc(chamar(a))}</a>` : ""}
-          ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="${esc(linkWhatsApp(msgPadrinho(a)))}" target="_blank" rel="noopener">Quero apadrinhar</a>` : ""}
+          ${a.precisaPadrinho ? `<a class="btn btn--contorno" href="${ONG.instagram}" target="_blank" rel="noopener">${icone("instagram")}Quero apadrinhar</a>` : ""}
         </div>
         ${a.adocaoEmAndamento ? `<p class="detalhe__aviso">${o === "a" ? "Ela" : "Ele"} já está conhecendo uma família. Se a adoção não der certo, ${o === "a" ? "ela" : "ele"} volta para a lista. Enquanto isso, conheça outros animais abaixo.</p>` : ""}
         ${!a.disponivelAdocao ? `<p class="detalhe__aviso">${o === "a" ? "Ela" : "Ele"} ainda está em tratamento e logo fica disponível para adoção. Enquanto isso, você pode apadrinhar.</p>` : ""}
@@ -266,9 +259,9 @@ async function montarDetalhe() {
   if (a.disponivelAdocao && !a.adocaoEmAndamento) {
     document.querySelector("[data-bloco-interesse]").hidden = false;
     document.querySelector("[data-nome-animal]").textContent = chamar(a);
-    const botao = document.querySelector("[data-whats-adocao]");
-    botao.href = linkWhatsApp(msgAdocao(a));
-    botao.querySelector("[data-nome-botao]").textContent = chamar(a);
+    document.querySelector("[data-nota-interesse]").textContent = a.nome
+      ? `Mande no direct que quer adotar ${chamar(a)}.`
+      : `Mande no direct um print desta página, para a equipe saber qual é ${chamar(a)}.`;
   }
 
   const outros = animais.filter((x) => x.disponivelAdocao && x.id !== a.id && x.especie === a.especie).slice(0, 3);
@@ -280,7 +273,7 @@ async function montarDetalhe() {
   }
 }
 
-/* /apadrinhe: animais que precisam de padrinho (cada card abre o WhatsApp) */
+/* /apadrinhe: animais que precisam de padrinho */
 async function montarApadrinhe() {
   const alvo = document.querySelector("[data-animais-padrinho]");
   if (!alvo) return;

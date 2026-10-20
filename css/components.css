@@ -826,34 +826,6 @@ fieldset.campo {
   color: var(--cor-texto-suave);
 }
 
-/* ---------- WhatsApp flutuante ---------- */
-.whats-flutuante {
-  position: fixed;
-  right: max(1rem, env(safe-area-inset-right));
-  bottom: max(1rem, env(safe-area-inset-bottom));
-  z-index: var(--z-flutuante);
-  display: inline-grid;
-  place-items: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--cor-botao);
-  color: #fff;
-  box-shadow: 0 6px 20px rgba(47, 106, 216, 0.45);
-  transition: transform var(--t-rapido), background-color var(--t-rapido);
-}
-
-.whats-flutuante:hover {
-  color: #fff;
-  background: var(--cor-destaque-hover);
-  transform: translateY(-3px) scale(1.04);
-}
-
-.whats-flutuante svg {
-  width: 32px;
-  height: 32px;
-}
-
 /* ---------- Rodapé ---------- */
 .rodape {
   margin-top: auto;
@@ -997,6 +969,11 @@ fieldset.campo {
   align-items: flex-start;
 }
 
+/* Linha com link: o padding de toque desalinharia o ícone */
+.rodape__contato li:has(> a) {
+  align-items: center;
+}
+
 .rodape__contato .icone,
 .rodape__denuncia .icone {
   color: var(--cor-secundaria-clara);
@@ -1044,7 +1021,7 @@ fieldset.campo {
   background: var(--cor-principal-escura);
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.85rem;
-  padding: var(--e-2) 0 calc(var(--e-2) + 76px); /* espaço do WhatsApp flutuante */
+  padding: var(--e-2) 0;
 }
 
 .rodape__base-inner {

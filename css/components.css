@@ -966,11 +966,12 @@ fieldset.campo {
   margin-bottom: var(--e-2);
 }
 
-.rodape a {
+/* :not(.btn): os botões do rodapé mantêm as próprias cores (azul com texto branco) */
+.rodape a:not(.btn) {
   color: inherit;
 }
 
-.rodape a:hover {
+.rodape a:not(.btn):hover {
   color: #fff;
 }
 

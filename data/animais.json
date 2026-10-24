@@ -188,26 +188,6 @@
       "temperamento": [],
       "historia": "Ainda não tenho nome nem uma história contada aqui no site, mas já vivo na Anjos de Patas, cuidado e esperando uma família. Quem me adotar pode escolher o meu nome!",
       "exemplo": false
-    },
-    {
-      "id": "sem-nome-8",
-      "nome": "",
-      "especie": "cachorro",
-      "sexo": null,
-      "porte": null,
-      "idade": null,
-      "idadeTexto": null,
-      "foto": "assets/img/fotos/acolhido-9-600.webp",
-      "fotoGrande": "assets/img/fotos/acolhido-9.webp",
-      "alt": "Cão caramelo magro andando pelo corredor do canil",
-      "castrado": false,
-      "vacinado": false,
-      "vermifugado": false,
-      "disponivelAdocao": true,
-      "precisaPadrinho": false,
-      "temperamento": [],
-      "historia": "Ainda não tenho nome nem uma história contada aqui no site, mas já vivo na Anjos de Patas, cuidado e esperando uma família. Quem me adotar pode escolher o meu nome!",
-      "exemplo": false
     }
   ]
 }

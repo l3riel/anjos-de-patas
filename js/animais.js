@@ -65,7 +65,7 @@ function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
       <div class="animal-card__selos">${selos}</div>
     </div>
     <div class="animal-card__corpo">
-      <h3 class="animal-card__nome"><a href="${href}">${esc(nomeVisivel(a))}</a></h3>
+      <h3 class="animal-card__nome"><a href="${href}">${a.nome ? esc(a.nome) : `&nbsp;<span class="visualmente-oculto">${esc(ROTULOS.especie[a.especie])} sem nome</span>`}</a></h3>
       <ul class="tags" role="list" aria-label="Características">
         ${tagsAnimal(a, a.idadeTexto || ROTULOS.idade[a.idade], ROTULOS.porte[a.porte], ROTULOS.sexo[a.sexo])}
       </ul>

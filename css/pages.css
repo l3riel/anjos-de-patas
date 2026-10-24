@@ -1959,65 +1959,19 @@ a.documento:hover {
   }
 }
 
-.participantes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: var(--e-2);
-  list-style: none;
+/* Foto da turma: nunca maior que o tamanho original, sem zoom */
+.projeto__foto {
+  max-width: 640px;
+  justify-self: center;
 }
 
-.participantes li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem;
-  border-radius: var(--raio-pilula);
-  background: var(--cor-fundo-suave);
-  font-weight: 500;
-  color: var(--cor-titulo);
-}
-
-.participantes li span {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--cor-secundaria);
-  color: #fff;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* Autores em destaque: avatar maior, nome e papel */
-.participantes--destaque {
-  grid-template-columns: 1fr;
-}
-
-.participantes--destaque li {
-  padding: 0.85rem 1.25rem 0.85rem 0.85rem;
-}
-
-.participantes--destaque li span {
-  width: 56px;
-  height: 56px;
-  font-size: 1.4rem;
-}
-
-.participantes--destaque strong {
-  display: block;
-  font-size: 1.15rem;
-}
-
-.participantes--destaque small {
-  color: var(--cor-texto-suave);
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
-.projeto__turma {
-  margin-top: var(--e-2);
-  color: var(--cor-texto-suave);
+.projeto__foto img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* =========================================================
@@ -2655,13 +2609,6 @@ a.documento:hover {
     grid-template-columns: 1.3fr 1fr auto;
     gap: var(--e-4);
   }
-}
-
-.projeto__versao h3 {
-  font-size: 1rem;
-  color: var(--cor-texto-suave);
-  font-weight: 600;
-  margin-bottom: var(--e-2);
 }
 
 /* Doe: sem dados bancários cadastrados, o card do Pix fica sozinho e centralizado */

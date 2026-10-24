@@ -205,9 +205,12 @@ function montarRodape() {
           <h2>Navegue</h2>
           <ul class="rodape__links" role="list">
             <li><a href="index.html">Início</a></li>
-            <li><a href="quem-somos.html">Quem somos</a></li>
+            <li><a href="adote.html">Adote</a></li>
+            <li><a href="apadrinhe.html">Apadrinhe</a></li>
             <li><a href="resgates.html">Resgates</a></li>
             <li><a href="ajuda.html">Achei um animal</a></li>
+            <li><a href="quem-somos.html">Quem somos</a></li>
+            <li><a href="index.html#contato">Contato</a></li>
             <li><a href="quem-somos.html#transparencia">Transparência</a></li>
           </ul>
         </nav>
@@ -215,8 +218,6 @@ function montarRodape() {
           <h2>Como ajudar</h2>
           <ul class="rodape__links" role="list">
             <li><a href="doe.html">Faça uma doação</a></li>
-            <li><a href="adote.html">Adote</a></li>
-            <li><a href="apadrinhe.html">Apadrinhe</a></li>
             <li><a href="${ONG.instagram}" target="_blank" rel="noopener">Seja voluntário</a></li>
             <li><a href="${ONG.instagram}" target="_blank" rel="noopener">Seja lar temporário</a></li>
           </ul>

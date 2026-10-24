@@ -111,21 +111,6 @@
     </section>
 
     <!-- AJUDA RÁPIDA (atalhos para quem encontrou um animal) -->
-    <section class="ajuda-rapida" aria-labelledby="ajuda-rapida-titulo">
-      <div class="container">
-        <div class="ajuda-rapida__inner revelar">
-          <h2 id="ajuda-rapida-titulo"><svg data-icone="alerta"></svg>Encontrou um animal precisando de ajuda?</h2>
-          <ul class="ajuda-rapida__links" role="list">
-            <li><a href="ajuda.html#ferido">Animal ferido</a></li>
-            <li><a href="ajuda.html#filhotes">Filhotes sozinhos</a></li>
-            <li><a href="ajuda.html#perdido">Perdido ou encontrado</a></li>
-            <li><a href="ajuda.html#maus-tratos">Maus-tratos</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CAMPANHA (aparece quando campanha_titulo estiver preenchido no painel ou em data/conteudo.json) -->
     <section class="campanha" aria-labelledby="campanha-titulo" data-requer="campanha_titulo" hidden>
       <div class="container">
         <div class="card campanha__card">
@@ -143,35 +128,48 @@
       </div>
     </section>
 
-    <!-- 3. SOBRE ============================================= -->
-    <section class="secao sobre" aria-labelledby="sobre-titulo">
-      <div class="container sobre__grid">
-        <div class="sobre__texto revelar">
-          <p class="sobretitulo"><svg data-icone="pata"></svg>Quem somos</p>
-          <h2 id="sobre-titulo">Tudo começou com um pote de ração na calçada</h2>
-          <p>A Anjos de Patas nasceu de um projeto idealizado pela <strong>Dra. Joice</strong> durante a graduação em Medicina Veterinária: comedouros comunitários espalhados por Matipó para que nenhum animal de rua passasse fome.</p>
-          <p>Com o apoio do <strong>Dr. Salvador Sabino</strong>, o projeto cresceu e virou ONG. Hoje resgatamos animais feridos e em situação de risco, castramos para frear o abandono e acompanhamos cada adoção, guiados pelas leis de proteção animal.</p>
-          <p>Somos uma equipe pequena, movida por amor e pela certeza de que cada vida importa, uma pata de cada vez.</p>
-          <ul class="sobre__fatos" role="list">
-            <li><strong data-conteudo="ano_fundacao">2019</strong><span>ano de fundação</span></li>
-            <li><strong>Matipó</strong><span>onde atuamos, em MG</span></li>
-            <!-- Aparecem quando preenchidos no painel (admin.html) -->
-            <li data-requer="voluntarios" hidden><strong data-conteudo="voluntarios"></strong><span>voluntários ativos</span></li>
-            <li data-requer="comedouros" hidden><strong data-conteudo="comedouros"></strong><span>comedouros na cidade</span></li>
-          </ul>
-          <a class="btn btn--contorno" href="quem-somos.html">Conheça nossa história</a>
+    <!-- 3. ADOTE / APADRINHE =============================== -->
+    <section class="secao" aria-labelledby="adocao-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Adoção responsável</p>
+          <h2 id="adocao-titulo">Esperando por você</h2>
+          <p>Eles só precisam de uma família.</p>
         </div>
-        <div class="sobre__fotos revelar" style="--atraso:120ms">
-          <!-- TROCAR quando houver: foto da Dra. Joice ou da equipe -->
-          <img class="sobre__foto-grande" src="assets/img/fotos/ong2-600.webp" alt="Cães resgatados descansando no espaço da ONG" width="450" height="600" loading="lazy">
-          <img class="sobre__foto-pequena" src="assets/img/fotos/cachorro1-600.webp" alt="Cachorra resgatada usando uma roupinha amarela" width="450" height="600" loading="lazy">
-          <p class="sobre__selo"><strong>Desde 2019</strong>cuidando dos animais de Matipó</p>
+        <p class="nota-exemplo" data-nota-exemplo hidden>Perfis ilustrativos enquanto cadastramos os animais da ONG.</p>
+        <div class="grade-animais" data-animais-home aria-live="polite">
+          <p class="carregando">Carregando animais…</p>
+        </div>
+        <div class="secao__rodape">
+          <a class="btn btn--contorno" href="adote.html">Ver todos os animais<svg data-icone="seta-dir"></svg></a>
+          <p>Não pode adotar agora? <a href="apadrinhe.html">Seja padrinho ou madrinha</a>.</p>
         </div>
       </div>
     </section>
 
-    <!-- 4. COMO FUNCIONA ===================================== -->
-    <section class="secao secao--suave como-funciona" aria-labelledby="como-titulo">
+    <!-- 4. RESGATES: HISTÓRIAS ========================================= -->
+    <section class="secao secao--suave historias" aria-labelledby="historias-titulo">
+      <div class="container">
+        <div class="secao__topo revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Histórias de superação</p>
+          <h2 id="historias-titulo">Eles contam a própria história</h2>
+          <p>Por trás de cada resgate existe alguém que voltou a confiar. Sua doação escreve o próximo final feliz.</p>
+        </div>
+        <p class="nota-exemplo" data-nota-exemplo hidden>Histórias ilustrativas enquanto reunimos as dos nossos resgatados.</p>
+        <div class="carrossel" data-carrossel role="region" aria-roledescription="carrossel" aria-label="Histórias de superação">
+          <ul class="carrossel__trilho" data-historias role="list">
+            <li class="carregando">Carregando histórias…</li>
+          </ul>
+          <div class="carrossel__controles">
+            <button class="carrossel__btn" type="button" data-anterior aria-label="História anterior"><svg data-icone="chevron-esq"></svg></button>
+            <button class="carrossel__btn" type="button" data-proximo aria-label="Próxima história"><svg data-icone="chevron-dir"></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. RESGATES: COMO FUNCIONA ===================================== -->
+    <section class="secao como-funciona" aria-labelledby="como-titulo">
       <div class="container">
         <div class="secao__topo revelar">
           <p class="sobretitulo"><svg data-icone="pata"></svg>Do resgate ao novo lar</p>
@@ -219,7 +217,50 @@
       </div>
     </section>
 
-    <!-- 5. CONTADORES ======================================== -->
+    <!-- 6. ACHEI UM ANIMAL ================================= -->
+    <section class="ajuda-rapida" aria-labelledby="ajuda-rapida-titulo">
+      <div class="container">
+        <div class="ajuda-rapida__inner revelar">
+          <h2 id="ajuda-rapida-titulo"><svg data-icone="alerta"></svg>Encontrou um animal precisando de ajuda?</h2>
+          <ul class="ajuda-rapida__links" role="list">
+            <li><a href="ajuda.html#ferido">Animal ferido</a></li>
+            <li><a href="ajuda.html#filhotes">Filhotes sozinhos</a></li>
+            <li><a href="ajuda.html#perdido">Perdido ou encontrado</a></li>
+            <li><a href="ajuda.html#maus-tratos">Maus-tratos</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAMPANHA (aparece quando campanha_titulo estiver preenchido no painel ou em data/conteudo.json) -->
+    <!-- 7. QUEM SOMOS ============================================= -->
+    <section class="secao sobre" aria-labelledby="sobre-titulo">
+      <div class="container sobre__grid">
+        <div class="sobre__texto revelar">
+          <p class="sobretitulo"><svg data-icone="pata"></svg>Quem somos</p>
+          <h2 id="sobre-titulo">Tudo começou com um pote de ração na calçada</h2>
+          <p>A Anjos de Patas nasceu de um projeto idealizado pela <strong>Dra. Joice</strong> durante a graduação em Medicina Veterinária: comedouros comunitários espalhados por Matipó para que nenhum animal de rua passasse fome.</p>
+          <p>Com o apoio do <strong>Dr. Salvador Sabino</strong>, o projeto cresceu e virou ONG. Hoje resgatamos animais feridos e em situação de risco, castramos para frear o abandono e acompanhamos cada adoção, guiados pelas leis de proteção animal.</p>
+          <p>Somos uma equipe pequena, movida por amor e pela certeza de que cada vida importa, uma pata de cada vez.</p>
+          <ul class="sobre__fatos" role="list">
+            <li><strong data-conteudo="ano_fundacao">2019</strong><span>ano de fundação</span></li>
+            <li><strong>Matipó</strong><span>onde atuamos, em MG</span></li>
+            <!-- Aparecem quando preenchidos no painel (admin.html) -->
+            <li data-requer="voluntarios" hidden><strong data-conteudo="voluntarios"></strong><span>voluntários ativos</span></li>
+            <li data-requer="comedouros" hidden><strong data-conteudo="comedouros"></strong><span>comedouros na cidade</span></li>
+          </ul>
+          <a class="btn btn--contorno" href="quem-somos.html">Conheça nossa história</a>
+        </div>
+        <div class="sobre__fotos revelar" style="--atraso:120ms">
+          <!-- TROCAR quando houver: foto da Dra. Joice ou da equipe -->
+          <img class="sobre__foto-grande" src="assets/img/fotos/ong2-600.webp" alt="Cães resgatados descansando no espaço da ONG" width="450" height="600" loading="lazy">
+          <img class="sobre__foto-pequena" src="assets/img/fotos/cachorro1-600.webp" alt="Cachorra resgatada usando uma roupinha amarela" width="450" height="600" loading="lazy">
+          <p class="sobre__selo"><strong>Desde 2019</strong>cuidando dos animais de Matipó</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CONTADORES ======================================== -->
     <!-- Aparece quando os números reais forem cadastrados no painel -->
     <section class="contadores" aria-labelledby="contadores-titulo" data-requer="contador_resgatados" hidden>
       <div class="container">
@@ -245,47 +286,7 @@
       </div>
     </section>
 
-    <!-- 6. HISTÓRIAS ========================================= -->
-    <section class="secao historias" aria-labelledby="historias-titulo">
-      <div class="container">
-        <div class="secao__topo revelar">
-          <p class="sobretitulo"><svg data-icone="pata"></svg>Histórias de superação</p>
-          <h2 id="historias-titulo">Eles contam a própria história</h2>
-          <p>Por trás de cada resgate existe alguém que voltou a confiar. Sua doação escreve o próximo final feliz.</p>
-        </div>
-        <p class="nota-exemplo" data-nota-exemplo hidden>Histórias ilustrativas enquanto reunimos as dos nossos resgatados.</p>
-        <div class="carrossel" data-carrossel role="region" aria-roledescription="carrossel" aria-label="Histórias de superação">
-          <ul class="carrossel__trilho" data-historias role="list">
-            <li class="carregando">Carregando histórias…</li>
-          </ul>
-          <div class="carrossel__controles">
-            <button class="carrossel__btn" type="button" data-anterior aria-label="História anterior"><svg data-icone="chevron-esq"></svg></button>
-            <button class="carrossel__btn" type="button" data-proximo aria-label="Próxima história"><svg data-icone="chevron-dir"></svg></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. ANIMAIS PARA ADOÇÃO =============================== -->
-    <section class="secao secao--suave" aria-labelledby="adocao-titulo">
-      <div class="container">
-        <div class="secao__topo revelar">
-          <p class="sobretitulo"><svg data-icone="pata"></svg>Adoção responsável</p>
-          <h2 id="adocao-titulo">Esperando por você</h2>
-          <p>Eles só precisam de uma família.</p>
-        </div>
-        <p class="nota-exemplo" data-nota-exemplo hidden>Perfis ilustrativos enquanto cadastramos os animais da ONG.</p>
-        <div class="grade-animais" data-animais-home aria-live="polite">
-          <p class="carregando">Carregando animais…</p>
-        </div>
-        <div class="secao__rodape">
-          <a class="btn btn--contorno" href="adote.html">Ver todos os animais<svg data-icone="seta-dir"></svg></a>
-          <p>Não pode adotar agora? <a href="apadrinhe.html">Seja padrinho ou madrinha</a>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. FAIXA INSTAGRAM ================================== -->
+    <!-- 9. FAIXA REDES ================================== -->
     <section class="faixa-redes" aria-labelledby="redes-titulo">
       <div class="container">
         <div class="faixa-redes__card com-fitas revelar">
@@ -298,7 +299,7 @@
       </div>
     </section>
 
-    <!-- 9. CONTATO =========================================== -->
+    <!-- 10. CONTATO =========================================== -->
     <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
       <div class="container contato__grid">
         <div class="contato__info revelar">

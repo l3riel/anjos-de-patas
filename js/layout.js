@@ -9,9 +9,11 @@ const ONG = {
   cnpj: "35.761.357/0001-77",
   cidade: "Matipó - MG",
   endereco: "Rua E, Bairro Exposição, ao lado do ESF",
-  // O Instagram é o único canal de contato (o link do grupo da ONG fica na bio)
+  // Contato só pelas redes sociais (o link do grupo da ONG fica na bio do Instagram)
   instagram: "https://www.instagram.com/ong_anjosdepatasmatipo/",
   instagramUsuario: "@ong_anjosdepatasmatipo",
+  facebook: "https://www.facebook.com/anjosdepatas.matipo/",
+  facebookNome: "/anjosdepatas.matipo",
   email: "", // vazio = a linha de e-mail não aparece no rodapé
   horario: "Seg. a sex.: 9h às 16h · Sáb.: 9h às 12h",
   // Supabase (veja supabase/LEIA-ME.md). Vazio = o site lê data/animais.json.
@@ -24,6 +26,8 @@ const ONG = {
 /* Ícones SVG (traço no estilo Lucide; Instagram simplificado) */
 const ICONES = {
   menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+  facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+  conversa: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
   fechar: '<path d="M18 6 6 18M6 6l12 12"/>',
   "seta-dir": '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
   "seta-esq": '<path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>',
@@ -107,7 +111,8 @@ function paginaAtual(href) {
 
 function sociais() {
   return `
-    <a class="icone-social" href="${ONG.instagram}" target="_blank" rel="noopener" aria-label="Instagram da ONG (abre em nova aba)">${icone("instagram")}</a>`;
+    <a class="icone-social" href="${ONG.instagram}" target="_blank" rel="noopener" aria-label="Instagram da ONG (abre em nova aba)">${icone("instagram")}</a>
+    <a class="icone-social" href="${ONG.facebook}" target="_blank" rel="noopener" aria-label="Facebook da ONG (abre em nova aba)">${icone("facebook")}</a>`;
 }
 
 function montarHeader() {
@@ -226,6 +231,7 @@ function montarRodape() {
           <h2>Fale com a gente</h2>
           <ul class="rodape__contato" role="list">
             <li>${icone("instagram")}<a href="${ONG.instagram}" target="_blank" rel="noopener">${ONG.instagramUsuario}</a></li>
+            <li>${icone("facebook")}<a href="${ONG.facebook}" target="_blank" rel="noopener">facebook.com${ONG.facebookNome}</a></li>
             <li data-requer="email"${ONG.email ? "" : " hidden"}>${icone("email")}<a href="mailto:${ONG.email}" data-email data-conteudo="email">${ONG.email}</a></li>
             <li>${icone("local")}<span>${ONG.endereco}, ${ONG.cidade}</span></li>
             <li>${icone("relogio")}<span>${ONG.horario}</span></li>
@@ -242,10 +248,57 @@ function montarRodape() {
       </div>
     </div>
   </footer>
-  <a class="insta-flutuante" href="${ONG.instagram}" target="_blank" rel="noopener" aria-label="Falar com a ONG no Instagram (abre em nova aba)">${icone("instagram")}</a>`;
+  <div class="contato-flutuante" data-contato-flutuante>
+    <ul class="contato-flutuante__opcoes" id="contato-flutuante-opcoes" role="list" hidden>
+      <li><a href="${ONG.instagram}" target="_blank" rel="noopener">${icone("instagram")}<span>Instagram</span></a></li>
+      <li><a href="${ONG.facebook}" target="_blank" rel="noopener">${icone("facebook")}<span>Facebook</span></a></li>
+    </ul>
+    <button class="contato-flutuante__botao" type="button" aria-expanded="false" aria-controls="contato-flutuante-opcoes" aria-label="Falar com a ONG">${icone("conversa")}</button>
+  </div>`;
+}
+
+/* Botão flutuante: abre as opções Instagram e Facebook */
+function iniciarContatoFlutuante() {
+  const raiz = document.querySelector("[data-contato-flutuante]");
+  if (!raiz) return;
+  const botao = raiz.querySelector("button");
+  const opcoes = raiz.querySelector("ul");
+  const abrir = (sim) => {
+    opcoes.hidden = !sim;
+    botao.setAttribute("aria-expanded", String(sim));
+    botao.innerHTML = icone(sim ? "fechar" : "conversa");
+  };
+  botao.addEventListener("click", () => abrir(opcoes.hidden));
+  document.addEventListener("keydown", (e) => e.key === "Escape" && !opcoes.hidden && (abrir(false), botao.focus()));
+  // composedPath: o ícone clicado é trocado no meio do clique e sai do DOM
+  document.addEventListener("click", (e) => !e.composedPath().includes(raiz) && abrir(false));
+}
+
+/* Todo botão que leva ao Instagram ganha um par para o Facebook ao lado */
+const PAR_FACEBOOK = { btn: "btn--contorno", "btn--branco": "btn--contorno-claro", "btn--contorno": "btn--contorno", "btn--contorno-claro": "btn--contorno-claro" };
+function adicionarFacebook(raiz = document) {
+  raiz.querySelectorAll(`a.btn[href="${ONG.instagram}"]:not([data-sem-par])`).forEach((a) => {
+    if (a.nextElementSibling?.matches("[data-par-facebook]")) return;
+    const par = a.cloneNode(true);
+    par.href = ONG.facebook;
+    par.dataset.parFacebook = "";
+    const estilo = [...a.classList].find((c) => c in PAR_FACEBOOK && c !== "btn") || "btn";
+    par.classList.remove("btn--branco", "btn--contorno", "btn--contorno-claro");
+    par.classList.add(PAR_FACEBOOK[estilo]);
+    par.innerHTML = icone("facebook") + (a.textContent.includes("Instagram") ? a.textContent.trim().replace("Instagram", "Facebook") : "Pelo Facebook");
+    if (!a.parentElement.matches(".grupo-botoes")) {
+      const grupo = document.createElement("div");
+      grupo.className = "grupo-botoes";
+      a.replaceWith(grupo);
+      grupo.append(a);
+    }
+    a.after(par);
+  });
 }
 
 document.documentElement.classList.add("js");
 montarHeader();
 montarRodape();
 aplicarIcones();
+iniciarContatoFlutuante();
+adicionarFacebook();

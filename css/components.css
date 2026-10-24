@@ -835,32 +835,72 @@ fieldset.campo {
   color: var(--cor-texto-suave);
 }
 
-/* ---------- Instagram flutuante ---------- */
-.insta-flutuante {
+/* ---------- Botão flutuante de contato (Instagram e Facebook) ---------- */
+.contato-flutuante {
   position: fixed;
   right: max(1rem, env(safe-area-inset-right));
   bottom: max(1rem, env(safe-area-inset-bottom));
   z-index: var(--z-flutuante);
+  display: grid;
+  justify-items: end;
+  gap: var(--e-1);
+}
+
+.contato-flutuante__botao {
   display: inline-grid;
   place-items: center;
   width: 60px;
   height: 60px;
+  border: 0;
   border-radius: 50%;
   background: var(--cor-botao);
   color: #fff;
+  cursor: pointer;
   box-shadow: 0 6px 20px rgba(47, 106, 216, 0.45);
   transition: transform var(--t-rapido), background-color var(--t-rapido);
 }
 
-.insta-flutuante:hover {
-  color: #fff;
+.contato-flutuante__botao:hover {
   background: var(--cor-destaque-hover);
   transform: translateY(-3px) scale(1.04);
 }
 
-.insta-flutuante svg {
-  width: 30px;
-  height: 30px;
+.contato-flutuante__botao svg {
+  width: 28px;
+  height: 28px;
+}
+
+.contato-flutuante__opcoes {
+  display: grid;
+  gap: var(--e-1);
+  list-style: none;
+}
+
+.contato-flutuante__opcoes[hidden] {
+  display: none;
+}
+
+.contato-flutuante__opcoes a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--raio-pilula);
+  background: #fff;
+  color: var(--cor-titulo);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--sombra-card);
+}
+
+.contato-flutuante__opcoes a:hover {
+  color: var(--cor-botao);
+}
+
+.contato-flutuante__opcoes svg {
+  width: 22px;
+  height: 22px;
 }
 
 /* ---------- Rodapé ---------- */
@@ -1020,6 +1060,8 @@ fieldset.campo {
 
 .rodape__contato a {
   display: inline-block;
+  min-width: 0;
+  overflow-wrap: anywhere; /* endereços longos quebram em telas estreitas */
   padding-block: 0.6rem; /* área de toque de 44px no celular */
   text-underline-offset: 3px;
 }

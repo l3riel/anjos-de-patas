@@ -213,12 +213,14 @@ async function montarDetalhe() {
       </div>
     </article>`;
 
+  adicionarFacebook(alvo);
+
   if (a.disponivelAdocao && !a.adocaoEmAndamento) {
     document.querySelector("[data-bloco-interesse]").hidden = false;
     document.querySelector("[data-nome-animal]").textContent = chamar(a);
     document.querySelector("[data-nota-interesse]").textContent = a.nome
-      ? `Mande no direct que quer adotar ${chamar(a)}.`
-      : `Mande no direct um print desta página, para a equipe saber qual é ${chamar(a)}.`;
+      ? `Mande uma mensagem dizendo que quer adotar ${chamar(a)}.`
+      : `Mande uma mensagem com um print desta página, para a equipe saber qual é ${chamar(a)}.`;
   }
 
   const outros = animais.filter((x) => x.disponivelAdocao && x.id !== a.id && x.especie === a.especie).slice(0, 3);

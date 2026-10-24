@@ -97,7 +97,7 @@ Abra http://localhost:4173. Use um servidor (e não abrir o arquivo direto) porq
 | Menu, rodapé, Instagram, e-mail, chaves do Supabase | `js/layout.js` (objeto `ONG` no topo) |
 | Cores, fontes, sombras | `css/base.css` (`:root`) |
 
-**Sem formulários:** todo contato (adoção, apadrinhamento, doação, voluntariado, denúncia) leva ao Instagram da ONG (`ONG.instagram`). A ONG não tem WhatsApp próprio; o link do grupo fica na bio do Instagram.
+**Sem formulários:** todo contato (adoção, apadrinhamento, doação, voluntariado, denúncia) leva ao Instagram da ONG (`ONG.instagram`), e cada botão ganha um par para o Facebook (`ONG.facebook`, função `adicionarFacebook` em `js/layout.js`). A ONG não tem WhatsApp próprio; o link do grupo fica na bio do Instagram.
 
 **Dados que faltam não aparecem para o visitante:** blocos com `data-requer="chave"` ficam ocultos até o dado ser cadastrado no painel (aceita várias chaves: `data-requer="pix_chave|banco"`); `data-sem="chave"` mostra uma alternativa enquanto isso. É assim que Pix, dados bancários, lojinha, campanha e contadores aparecem sozinhos quando forem cadastrados. Pendências ficam marcadas em comentários no HTML. Imagens com o comentário `TROCAR` são placeholders (Unsplash) e devem ser substituídas por fotos reais em `assets/img/`.
 

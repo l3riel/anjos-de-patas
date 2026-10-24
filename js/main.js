@@ -82,6 +82,7 @@ function iniciarCarrossel(raiz) {
     const max = trilho.scrollWidth - trilho.clientWidth - 2;
     anterior.disabled = trilho.scrollLeft <= 2;
     proximo.disabled = trilho.scrollLeft >= max;
+    raiz.classList.toggle("carrossel--cabe", max <= 0);
   };
 
   anterior.addEventListener("click", () => trilho.scrollBy({ left: -passo() }));

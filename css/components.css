@@ -730,6 +730,15 @@ fieldset.campo {
   list-style: none;
 }
 
+/* Todos os cards cabem na tela: ficam centralizados e as setas somem */
+.carrossel--cabe .carrossel__trilho {
+  justify-content: center;
+}
+
+.carrossel--cabe .carrossel__controles {
+  display: none;
+}
+
 .carrossel__trilho::-webkit-scrollbar {
   display: none;
 }

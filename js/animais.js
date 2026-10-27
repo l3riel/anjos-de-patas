@@ -69,7 +69,7 @@ function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
     <div class="animal-card__corpo">
       <h3 class="animal-card__nome"><a href="${href}">${nome ? esc(nome) : `&nbsp;<span class="visualmente-oculto">${esc(ROTULOS.especie[a.especie])} para adoção</span>`}</a></h3>
       <ul class="tags" role="list" aria-label="Características">
-        ${tagsAnimal(a, a.idadeTexto || ROTULOS.idade[a.idade], ROTULOS.porte[a.porte], ROTULOS.sexo[a.sexo])}
+        ${tagsAnimal(a, a.idadeTexto || ROTULOS.idade[a.idade], ROTULOS.porte[a.porte])}
       </ul>
       ${modo === "padrinho" ? `<p class="animal-card__resumo">${esc(a.historia)}</p>` : ""}
       <span class="animal-card__cta" aria-hidden="true">${cta}${icone("seta-dir")}</span>
@@ -198,7 +198,7 @@ async function montarDetalhe() {
         </div>
         <h1>${a.nome ? `Oi, eu sou ${o} ${esc(a.nome)}!` : "Oi, ainda não tenho nome!"}</h1>
         <ul class="tags tags--grandes" role="list" aria-label="Características">
-          ${tagsAnimal(a, ROTULOS.especie[a.especie], a.idadeTexto || ROTULOS.idade[a.idade], ROTULOS.porte[a.porte], ROTULOS.sexo[a.sexo])}
+          ${tagsAnimal(a, ROTULOS.especie[a.especie], a.idadeTexto || ROTULOS.idade[a.idade], ROTULOS.porte[a.porte])}
         </ul>
         <p class="detalhe__historia">${esc(a.historia)}</p>
         ${a.exemplo ? '<p class="nota-exemplo">Perfil ilustrativo enquanto cadastramos os animais da ONG.</p>' : ""}

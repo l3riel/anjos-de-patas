@@ -53,19 +53,21 @@ function cardAnimal(a, { modo = "adocao", atraso = 0 } = {}) {
     modo !== "padrinho" && a.precisaPadrinho && !a.adocaoEmAndamento ? `<span class="selo">${icone("coracao")}Precisa de padrinho</span>` : "",
     modo === "padrinho" && !a.disponivelAdocao ? '<span class="selo">Em tratamento</span>' : "",
   ].join("");
+  // Nos cards de adoção o nome fica de fora: ele aparece só onde a história do animal é contada
+  const nome = modo === "padrinho" ? a.nome : "";
   const cta =
     modo === "padrinho"
       ? `Apadrinhar ${esc(chamar(a))}`
-      : `Conhecer ${esc(chamar(a))}`;
+      : `Conhecer ${esc(chamar({ ...a, nome }))}`;
 
   return `
   <article class="card card--interativo animal-card revelar" style="--atraso:${atraso}ms">
     <div class="animal-card__foto">
-      <img src="${esc(a.foto)}" alt="${esc(a.alt || nomeVisivel(a))}" width="600" height="450" loading="lazy" decoding="async">
+      <img src="${esc(a.foto)}" alt="${esc(nome ? a.alt || nome : `${ROTULOS.especie[a.especie]} para adoção`)}" width="600" height="450" loading="lazy" decoding="async">
       <div class="animal-card__selos">${selos}</div>
     </div>
     <div class="animal-card__corpo">
-      <h3 class="animal-card__nome"><a href="${href}">${a.nome ? esc(a.nome) : `&nbsp;<span class="visualmente-oculto">${esc(ROTULOS.especie[a.especie])} sem nome</span>`}</a></h3>
+      <h3 class="animal-card__nome"><a href="${href}">${nome ? esc(nome) : `&nbsp;<span class="visualmente-oculto">${esc(ROTULOS.especie[a.especie])} para adoção</span>`}</a></h3>
       <ul class="tags" role="list" aria-label="Características">
         ${tagsAnimal(a, a.idadeTexto || ROTULOS.idade[a.idade], ROTULOS.porte[a.porte], ROTULOS.sexo[a.sexo])}
       </ul>

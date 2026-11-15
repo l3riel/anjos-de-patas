@@ -1,5 +1,5 @@
 {
-  "_leia-me": "Textos e números do site quando o Supabase NÃO está configurado (com ele, use o painel admin.html). Campo vazio = o bloco fica escondido ou mantém o texto padrão. pix_chave: CNPJ, e-mail, telefone (+5531...) ou chave aleatória. campanha_*: preencha os quatro para mostrar a campanha com barra de progresso na home e na página de doação (valores só com números, ex.: 2000).",
+  "_leia-me": "Textos e números editáveis do site. Campo vazio = o bloco fica escondido ou mantém o texto padrão. pix_chave: CNPJ, e-mail, telefone (+5531...) ou chave aleatória. campanha_*: preencha os quatro para mostrar a campanha com barra de progresso na home e na página de doação (valores só com números, ex.: 2000).",
   "valores": {
     "contador_resgatados": "",
     "contador_adotados": "",

@@ -1,7 +1,7 @@
 /* =========================================================
    Lojinha de donativos: gera o Pix "copia e cola" (BR Code)
    e o QR Code no próprio navegador, sem custo e sem servidor.
-   A chave vem de pix_chave (painel do Supabase ou data/conteudo.json).
+   A chave vem de pix_chave em data/conteudo.json.
    ========================================================= */
 
 /* ---------- BR Code (padrão EMV do Banco Central) ---------- */

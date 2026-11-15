@@ -16,11 +16,6 @@ const ONG = {
   facebookNome: "/anjosdepatas.matipo",
   email: "", // vazio = a linha de e-mail não aparece no rodapé
   horario: "Seg. a sex.: 9h às 16h · Sáb.: 9h às 12h",
-  // Supabase (veja supabase/LEIA-ME.md). Vazio = o site lê data/animais.json.
-  // A chave anon é pública por design; a segurança vem das políticas RLS.
-  // Nunca coloque aqui a chave service_role.
-  supabaseUrl: "",
-  supabaseAnonKey: "",
 };
 
 /* Ícones SVG (traço no estilo Lucide; Instagram simplificado) */

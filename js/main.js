@@ -1,5 +1,5 @@
 /* =========================================================
-   Interações: animação ao rolar, contadores e carrosséis
+   Interações: animação ao rolar e carrosséis
    ========================================================= */
 
 const reduzirMovimento = matchMedia("(prefers-reduced-motion: reduce)");
@@ -27,44 +27,6 @@ function observarRevelar(raiz = document) {
   });
 }
 
-/* ---------- Contadores animados ---------- */
-function animarContador(el) {
-  el.dataset.animado = "1";
-  const alvo = Number(el.dataset.contador);
-  const formatar = (n) => n.toLocaleString("pt-BR");
-  if (reduzirMovimento.matches) {
-    el.textContent = formatar(alvo);
-    return;
-  }
-  const duracao = 1800;
-  const inicio = performance.now();
-  const passo = (agora) => {
-    const t = Math.min((agora - inicio) / duracao, 1);
-    const suave = 1 - Math.pow(1 - t, 3);
-    el.textContent = formatar(Math.round(alvo * suave));
-    if (t < 1) requestAnimationFrame(passo);
-  };
-  requestAnimationFrame(passo);
-}
-
-function iniciarContadores() {
-  const contadores = document.querySelectorAll("[data-contador]");
-  if (!contadores.length) return;
-  if (!("IntersectionObserver" in window)) return contadores.forEach(animarContador);
-  const obs = new IntersectionObserver(
-    (entradas) => {
-      entradas.forEach((e) => {
-        if (!e.isIntersecting) return;
-        animarContador(e.target);
-        obs.unobserve(e.target);
-      });
-    },
-    { threshold: 0.6 }
-  );
-  contadores.forEach((c) => obs.observe(c));
-}
-
-/* ---------- Carrossel de rolagem (histórias) ---------- */
 function iniciarCarrossel(raiz) {
   if (!raiz || raiz.dataset.pronto) return;
   raiz.dataset.pronto = "1";
@@ -179,7 +141,6 @@ function iniciarCopiar() {
 document.addEventListener("DOMContentLoaded", () => {
   iniciarCopiar();
   observarRevelar();
-  iniciarContadores();
   iniciarHero();
   document.querySelectorAll("[data-carrossel]").forEach((c) => {
     if (c.querySelector(".carrossel__item")) iniciarCarrossel(c);

@@ -45,28 +45,10 @@
       </div>
     </section>
 
-    <!-- CAMPANHA (aparece quando campanha_titulo estiver preenchido no painel ou em data/conteudo.json) -->
-    <section class="campanha" aria-labelledby="campanha-titulo" data-requer="campanha_titulo" hidden>
-      <div class="container">
-        <div class="card campanha__card">
-          <div class="campanha__texto">
-            <p class="sobretitulo"><svg data-icone="alerta"></svg>Campanha do momento</p>
-            <h2 id="campanha-titulo" data-conteudo="campanha_titulo"></h2>
-            <p data-conteudo="campanha_texto"></p>
-          </div>
-          <div class="campanha__meta" data-campanha hidden>
-            <div class="campanha__barra" role="progressbar" aria-labelledby="campanha-titulo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
-            <p class="campanha__numeros"><strong data-campanha-arrecadado></strong> de <span data-campanha-meta></span> <span class="campanha__pct" data-campanha-pct></span></p>
-          </div>
-          <a class="btn" href="#lojinha"><svg data-icone="coracao"></svg>Ajudar nesta campanha</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PIX + DADOS BANCÁRIOS -->
-    <section class="secao" aria-labelledby="pix-titulo" data-requer="pix_chave|banco" hidden>
+    <!-- PIX -->
+    <section class="secao" aria-labelledby="pix-titulo">
       <div class="container doe__grid">
-        <article class="card doe-pix com-fitas revelar" data-requer="pix_chave" hidden>
+        <article class="card doe-pix com-fitas revelar">
           <p class="sobretitulo"><svg data-icone="coracao"></svg>Jeito mais rápido</p>
           <h2 id="pix-titulo">Doe por Pix</h2>
           <p>Abra o app do seu banco, escolha <strong>Pix</strong> e cole a chave abaixo. Prefere QR Code? Escolha o valor logo em seguida. Qualquer valor faz diferença.</p>
@@ -79,19 +61,6 @@
             <p class="form__status" role="status" aria-live="polite"></p>
           </div>
           <p class="doe-pix__favorecido">Favorecido: <strong data-conteudo="pix_favorecido">Anjos de Patas Matipó - APM</strong> · CNPJ 35.761.357/0001-77</p>
-        </article>
-
-        <article class="card doe-banco revelar" style="--atraso:100ms" data-requer="banco" hidden>
-          <span class="doe-banco__icone"><svg data-icone="banco"></svg></span>
-          <h2>Transferência ou depósito</h2>
-          <dl class="dados-lista">
-            <div data-requer="banco" hidden><dt>Banco</dt><dd data-conteudo="banco"></dd></div>
-            <div data-requer="agencia" hidden><dt>Agência</dt><dd data-conteudo="agencia"></dd></div>
-            <div data-requer="conta" hidden><dt>Conta corrente</dt><dd data-conteudo="conta"></dd></div>
-            <div><dt>CNPJ</dt><dd><span data-conteudo="cnpj">35.761.357/0001-77</span></dd></div>
-            <div><dt>Titular</dt><dd>Anjos de Patas Matipó - APM</dd></div>
-          </dl>
-          <p class="doe-banco__nota">Quer recibo? Mande o comprovante pelo <a href="https://www.instagram.com/ong_anjosdepatasmatipo/" target="_blank" rel="noopener">Instagram</a> ou pelo <a href="https://www.facebook.com/anjosdepatas.matipo/" target="_blank" rel="noopener">Facebook</a>.</p>
         </article>
       </div>
     </section>

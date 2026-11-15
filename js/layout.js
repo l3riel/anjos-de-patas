@@ -14,7 +14,6 @@ const ONG = {
   instagramUsuario: "@ong_anjosdepatasmatipo",
   facebook: "https://www.facebook.com/anjosdepatas.matipo/",
   facebookNome: "/anjosdepatas.matipo",
-  email: "", // vazio = a linha de e-mail não aparece no rodapé
   horario: "Seg. a sex.: 9h às 16h · Sáb.: 9h às 12h",
 };
 
@@ -227,7 +226,6 @@ function montarRodape() {
           <ul class="rodape__contato" role="list">
             <li>${icone("instagram")}<a href="${ONG.instagram}" target="_blank" rel="noopener">${ONG.instagramUsuario}</a></li>
             <li>${icone("facebook")}<a href="${ONG.facebook}" target="_blank" rel="noopener">facebook.com${ONG.facebookNome}</a></li>
-            <li data-requer="email"${ONG.email ? "" : " hidden"}>${icone("email")}<a href="mailto:${ONG.email}" data-email data-conteudo="email">${ONG.email}</a></li>
             <li>${icone("local")}<span>${ONG.endereco}, ${ONG.cidade}</span></li>
             <li>${icone("relogio")}<span>${ONG.horario}</span></li>
           </ul>

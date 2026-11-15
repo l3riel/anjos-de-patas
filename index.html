@@ -110,24 +110,6 @@
       </ul>
     </section>
 
-    <!-- AJUDA RÁPIDA (atalhos para quem encontrou um animal) -->
-    <section class="campanha" aria-labelledby="campanha-titulo" data-requer="campanha_titulo" hidden>
-      <div class="container">
-        <div class="card campanha__card">
-          <div class="campanha__texto">
-            <p class="sobretitulo"><svg data-icone="alerta"></svg>Campanha do momento</p>
-            <h2 id="campanha-titulo" data-conteudo="campanha_titulo"></h2>
-            <p data-conteudo="campanha_texto"></p>
-          </div>
-          <div class="campanha__meta" data-campanha hidden>
-            <div class="campanha__barra" role="progressbar" aria-labelledby="campanha-titulo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
-            <p class="campanha__numeros"><strong data-campanha-arrecadado></strong> de <span data-campanha-meta></span> <span class="campanha__pct" data-campanha-pct></span></p>
-          </div>
-          <a class="btn" href="doe.html"><svg data-icone="coracao"></svg>Ajudar nesta campanha</a>
-        </div>
-      </div>
-    </section>
-
     <!-- 3. ADOTE / APADRINHE =============================== -->
     <section class="secao" aria-labelledby="adocao-titulo">
       <div class="container">
@@ -232,7 +214,6 @@
       </div>
     </section>
 
-    <!-- CAMPANHA (aparece quando campanha_titulo estiver preenchido no painel ou em data/conteudo.json) -->
     <!-- 7. QUEM SOMOS ============================================= -->
     <section class="secao sobre" aria-labelledby="sobre-titulo">
       <div class="container sobre__grid">
@@ -245,9 +226,6 @@
           <ul class="sobre__fatos" role="list">
             <li><strong data-conteudo="ano_fundacao">2019</strong><span>ano de fundação</span></li>
             <li><strong>Matipó</strong><span>onde atuamos, em MG</span></li>
-            <!-- Aparecem quando preenchidos no painel (admin.html) -->
-            <li data-requer="voluntarios" hidden><strong data-conteudo="voluntarios"></strong><span>voluntários ativos</span></li>
-            <li data-requer="comedouros" hidden><strong data-conteudo="comedouros"></strong><span>comedouros na cidade</span></li>
           </ul>
           <a class="btn btn--contorno" href="quem-somos.html">Conheça nossa história</a>
         </div>
@@ -257,32 +235,6 @@
           <img class="sobre__foto-pequena" src="assets/img/fotos/cachorro1-600.webp" alt="Cachorra resgatada usando uma roupinha amarela" width="450" height="600" loading="lazy">
           <p class="sobre__selo"><strong>Desde 2019</strong>cuidando dos animais de Matipó</p>
         </div>
-      </div>
-    </section>
-
-    <!-- 8. CONTADORES ======================================== -->
-    <!-- Aparece quando os números reais forem cadastrados no painel -->
-    <section class="contadores" aria-labelledby="contadores-titulo" data-requer="contador_resgatados" hidden>
-      <div class="container">
-        <h2 id="contadores-titulo" class="visualmente-oculto">Nossos números</h2>
-        <ul class="contadores__lista" role="list">
-          <li>
-            <svg data-icone="resgate"></svg>
-            <p class="contadores__numero">+<span data-contador="0" data-conteudo="contador_resgatados">0</span></p>
-            <p>animais resgatados</p>
-          </li>
-          <li>
-            <svg data-icone="coracao"></svg>
-            <p class="contadores__numero">+<span data-contador="0" data-conteudo="contador_adotados">0</span></p>
-            <p>animais adotados</p>
-          </li>
-          <li>
-            <svg data-icone="seringa"></svg>
-            <p class="contadores__numero">+<span data-contador="0" data-conteudo="contador_castrados">0</span></p>
-            <p>animais castrados</p>
-          </li>
-        </ul>
-        
       </div>
     </section>
 

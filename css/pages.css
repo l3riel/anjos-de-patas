@@ -266,7 +266,6 @@
   }
 }
 
-
 /* Fotos com leve aproximação ao trocar (desligada com reduced-motion) */
 .hero__slide img {
   transform: scale(1.06);
@@ -783,68 +782,6 @@
   width: 120px;
 }
 
-/* ---------- 5. Contadores ---------- */
-.contadores {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  background: var(--cor-principal);
-  color: #fff;
-  padding-block: var(--e-6);
-}
-
-.contadores::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 60vw;
-  aspect-ratio: 2 / 1;
-  right: -20vw;
-  top: -40%;
-  border-radius: 50%;
-  background: var(--cor-secundaria);
-  opacity: 0.6;
-}
-
-.contadores__lista {
-  display: grid;
-  gap: var(--e-4);
-  list-style: none;
-  text-align: center;
-}
-
-.contadores__lista li {
-  display: grid;
-  justify-items: center;
-  gap: 0.25rem;
-  font-size: 1.05rem;
-}
-
-.contadores__lista .icone {
-  width: 40px;
-  height: 40px;
-  margin-bottom: var(--e-1);
-  opacity: 0.9;
-}
-
-.contadores__numero {
-  font-size: clamp(2.6rem, 2rem + 3vw, 4rem);
-  font-weight: 700;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-
-
-@media (min-width: 768px) {
-  .contadores__lista {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .contadores__lista li + li {
-    border-left: 1px solid rgba(255, 255, 255, 0.25);
-  }
-}
-
 /* ---------- 6. Histórias ---------- */
 .historia-card {
   height: 100%;
@@ -1043,16 +980,11 @@
 /* =========================================================
    DOE
    ========================================================= */
+/* Card do Pix sozinho e centralizado */
 .doe__grid {
   display: grid;
-  gap: var(--e-5);
-  align-items: start;
-}
-
-@media (min-width: 960px) {
-  .doe__grid {
-    grid-template-columns: 1.5fr 1fr;
-  }
+  grid-template-columns: minmax(0, 640px);
+  justify-content: center;
 }
 
 .doe-pix {
@@ -1066,14 +998,11 @@
   margin-top: var(--e-1);
 }
 
-
 @media (min-width: 560px) {
   .doe-pix__conteudo {
     grid-template-columns: auto 1fr;
   }
 }
-
-
 
 .doe-pix__chave {
   display: grid;
@@ -1103,68 +1032,6 @@
   font-size: 0.9rem;
   color: var(--cor-texto-suave);
 }
-
-.doe-banco {
-  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  background: var(--cor-principal);
-  color: #fff;
-}
-
-.doe-banco h2 {
-  color: #fff;
-  font-size: var(--fs-h3);
-  margin: var(--e-2) 0;
-}
-
-.doe-banco__icone {
-  display: inline-grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.doe-banco__icone .icone {
-  width: 28px;
-  height: 28px;
-}
-
-.dados-lista {
-  display: grid;
-  gap: 0;
-}
-
-.dados-lista div {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--e-2);
-  padding: 0.7rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dados-lista dt {
-  opacity: 0.85;
-}
-
-.dados-lista dd {
-  font-weight: 600;
-  text-align: right;
-}
-
-.doe-banco__nota {
-  margin-top: var(--e-3);
-  font-size: 0.9rem;
-}
-
-.doe-banco__nota a {
-  color: #fff;
-}
-
-
-
-
-
 
 .itens__grid {
   display: grid;
@@ -1469,8 +1336,6 @@
   }
 }
 
-
-
 .opcao--termo {
   align-items: flex-start;
   font-weight: 400;
@@ -1575,9 +1440,6 @@
 
 /* Rádio em formato de pílula */
 
-
-
-
 /* =========================================================
    RESGATES
    ========================================================= */
@@ -1591,11 +1453,6 @@
   gap: var(--e-4);
   align-items: center;
 }
-
-
-
-
-
 
 .resgate__texto {
   display: grid;
@@ -1885,14 +1742,6 @@
     grid-template-columns: 1fr;
   }
 }
-
-
-
-
-
-
-
-
 
 .documentos__titulo {
   font-size: var(--fs-h3);
@@ -2550,69 +2399,4 @@ a.documento:hover {
 .comparador:has(.comparador__controle:focus-visible) {
   outline: 3px solid var(--cor-destaque);
   outline-offset: 3px;
-}
-
-/* ---------- Campanha com meta (home e doe) ---------- */
-.campanha {
-  padding-top: var(--e-4);
-}
-
-.campanha__card {
-  display: grid;
-  gap: var(--e-3);
-  align-items: center;
-  padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
-  border-left: 6px solid var(--cor-principal);
-}
-
-.campanha__texto > * + * {
-  margin-top: var(--e-1);
-}
-
-.campanha__texto p:last-child {
-  color: var(--cor-texto-suave);
-}
-
-.campanha__card .btn {
-  justify-self: start;
-}
-
-.campanha__barra {
-  height: 14px;
-  border-radius: 14px;
-  background: var(--cor-secundaria-clara);
-  overflow: hidden;
-}
-
-.campanha__barra > span {
-  display: block;
-  height: 100%;
-  width: var(--pct, 0%);
-  border-radius: 14px;
-  background: linear-gradient(90deg, var(--cor-secundaria), var(--cor-principal));
-  transition: width 1s var(--ease-saida);
-}
-
-.campanha__numeros {
-  margin-top: 0.5rem;
-  color: var(--cor-texto-suave);
-  font-variant-numeric: tabular-nums;
-}
-
-.campanha__numeros strong {
-  color: var(--cor-principal);
-  font-size: 1.15rem;
-}
-
-@media (min-width: 900px) {
-  .campanha__card {
-    grid-template-columns: 1.3fr 1fr auto;
-    gap: var(--e-4);
-  }
-}
-
-/* Doe: sem dados bancários cadastrados, o card do Pix fica sozinho e centralizado */
-.doe__grid:not(:has(.doe-banco:not([hidden]))) {
-  grid-template-columns: minmax(0, 640px);
-  justify-content: center;
 }

@@ -41,15 +41,7 @@ async function aplicarConteudo() {
   document.querySelectorAll("[data-conteudo]").forEach((el) => {
     const valor = valores[el.dataset.conteudo];
     if (!valor) return;
-    if ("contador" in el.dataset) {
-      // Contadores: só números; a animação usa o data-contador atualizado
-      const numero = valor.replace(/\D/g, "");
-      if (!numero) return;
-      el.dataset.contador = numero;
-      el.textContent = Number(numero).toLocaleString("pt-BR");
-    } else {
-      el.textContent = valor;
-    }
+    el.textContent = valor;
     el.classList.remove("preencher");
   });
 
@@ -60,31 +52,6 @@ async function aplicarConteudo() {
   });
   document.querySelectorAll("[data-sem]").forEach((el) => {
     if (valores[el.dataset.sem]) el.hidden = true;
-  });
-
-  aplicarCampanha(valores);
-
-  if (valores.email) {
-    document.querySelectorAll("a[data-email]").forEach((a) => (a.href = `mailto:${valores.email}`));
-    ONG.email = valores.email;
-  }
-}
-
-function aplicarCampanha(valores) {
-  const meta = Number(String(valores.campanha_meta || "").replace(/\D/g, ""));
-  const arrecadado = Number(String(valores.campanha_arrecadado || "").replace(/\D/g, ""));
-  if (!meta) return;
-  const pct = Math.min(100, Math.round((arrecadado / meta) * 100));
-  const real = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
-  document.querySelectorAll("[data-campanha]").forEach((el) => {
-    el.hidden = false;
-    const barra = el.querySelector("[role=progressbar]");
-    barra.setAttribute("aria-valuenow", pct);
-    barra.setAttribute("aria-valuetext", `${real(arrecadado)} de ${real(meta)}, ${pct}%`);
-    barra.style.setProperty("--pct", `${pct}%`);
-    el.querySelector("[data-campanha-arrecadado]").textContent = real(arrecadado);
-    el.querySelector("[data-campanha-meta]").textContent = real(meta);
-    el.querySelector("[data-campanha-pct]").textContent = `(${pct}%)`;
   });
 }
 
